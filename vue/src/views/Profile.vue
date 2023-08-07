@@ -1,7 +1,7 @@
 <template>
   <div>
-      <h1>Edit profile info</h1>
-      <p>Items to edit: </p>
+      <h1>User profile</h1>
+      <p>Purpose of page is to display current profile info and allow user to make changes</p>
       <ul>
           <li>name</li>
           <li>email address</li>
