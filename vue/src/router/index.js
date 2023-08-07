@@ -5,6 +5,9 @@ import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import Profile from '../views/Profile.vue'
+import LogWorkout from '../views/LogWorkout.vue'
+import WorkoutTimer from '../views/WorkoutTimer.vue'
+import ExerciseAssistance from '../views/ExerciseAssistance.vue'
 
 import store from '../store/index'
 
@@ -62,9 +65,35 @@ const router = new Router({
       meta: {
         requiresAuth: true
       }
-    }
+    }, 
+    {
+      path: "/log-workout",
+      name: "log-workout",
+      component: LogWorkout,
+      meta: {
+        requiresAuth: true
+      }
+    },
+
+      {
+        path: "/workout-timer",
+        name: "workout-timer",
+        component: WorkoutTimer,
+        meta: {
+          requiresAuth: true
+        }
+      }, 
+
+      {
+        path: "/exercise-assistance",
+        name: "exercise-assistance",
+        component: ExerciseAssistance,
+        meta: {
+          requiresAuth: true
+        }
+      }
   ]
-})
+});
 
 router.beforeEach((to, from, next) => {
   // Determine if the route requires Authentication
