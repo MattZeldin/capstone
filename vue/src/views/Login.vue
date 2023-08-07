@@ -11,17 +11,20 @@
           Thank you for registering, please sign in.
         </div>
         <div id="username-password-submit">
-          <div class="form-input-group" id="username">
-            <label for="username">Username</label>
-            <input type="text" id="username" v-model="user.username" required autofocus />
+          <div id="username-password">
+            <div class="form-input-group" id="username">
+              <label for="username">Username</label>
+              <input type="text" id="username" v-model="user.username" required autofocus />
+            </div>
+            <div class="form-input-group" id="password">
+              <label for="password">Password</label>
+              <input type="password" id="password" v-model="user.password" required />
+            </div>
           </div>
-          <div class="form-input-group" id="password">
-            <label for="password">Password</label>
-            <input type="password" id="password" v-model="user.password" required />
-          </div>
-          <button type="submit">Sign in</button>
+
+          <button type="submit" id="submit-button">Sign in</button>
           <p>
-          <router-link :to="{ name: 'register' }">Need an account? Sign up.</router-link></p>
+          <router-link :to="{ name: 'register' }" id="routerlink">Need an account? Sign up.</router-link></p>
         </div>
       </form>
     </div>
@@ -83,9 +86,11 @@ body {
 
 .container {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
   grid-template-areas:
       "header"
+      "sign-in"
+      "sign-in"
       "sign-in";
   gap: 10px;
   align-items: center;
@@ -93,8 +98,8 @@ body {
   height: 100vh; 
   
 
-  flex-wrap: wrap;
-  justify-content: space-around;
+  /* flex-wrap: wrap; */
+  /* justify-content: space-around; */
   /* position: absolute; */
   left: 0;
   right: 0;
@@ -114,7 +119,9 @@ h1 {
   grid-area: sign-in;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-end;
+  padding: .5em;
+  align-items:center;
   flex-grow: 1;
 }
 
