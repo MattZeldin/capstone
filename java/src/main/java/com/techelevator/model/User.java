@@ -20,12 +20,12 @@ public class User {
 
    public User() { }
 
-   public User(int id, String username, String password, String authorities/*, String email, String name*/) {
+   public User(int id, String username, String password, String authorities, String email, String name) {
       this.id = id;
       this.username = username;
       this.password = password;
-//      this.email = email;
-//      this.name = name;
+      this.email = email;
+      this.name = name;
       if (authorities != null) this.setAuthorities(authorities);
       this.activated = true;
    }
@@ -53,12 +53,12 @@ public class User {
    public void setPassword(String password) {
       this.password = password;
    }
-//   public String getName(){
-//      return name;
-//   }
-//   public String getEmail(){
-//      return email;
-//   }
+   public String getName(){
+      return name;
+   }
+   public String getEmail(){
+      return email;
+   }
 //
    public void setEmail(String email){
       this.email = email;
@@ -106,7 +106,7 @@ public class User {
 
    @Override
    public int hashCode() {
-      return Objects.hash(id, username, password, activated, authorities);
+      return Objects.hash(id, username, password, activated, authorities, email, name);
    }
 
    @Override
@@ -116,6 +116,8 @@ public class User {
               ", username='" + username + '\'' +
               ", activated=" + activated +
               ", authorities=" + authorities +
+              ", email=" + email +
+              ", name=" + name +
               '}';
    }
 }

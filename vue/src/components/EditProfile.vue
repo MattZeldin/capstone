@@ -11,6 +11,10 @@
         <label for="email">Email:</label>
         <input id="email" type="text" v-model="user.email" required="false" />
       </div>
+      <div class="form-element">
+        <label for="username">User Name:</label>
+        <input id="username" type="text" v-model="user.username" required="false" />
+      </div>
       <input type="submit" value="Save" v-on:click.prevent="updateUser" />
       <input type="button" value="Cancel" v-on:click="resetForm" />
     </form>
@@ -26,6 +30,7 @@ export default {
       user:{
         name: this.$store.state.user.name,
         email: this.$store.state.user.email,
+        username: this.$store.state.user.username
       }
     };
   },
