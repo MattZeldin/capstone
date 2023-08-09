@@ -28,6 +28,25 @@ export default {
 
 <style scoped>
   h1 {
-    font-size: 20pt;
+    font-size: 10vh;
+    margin: 5%;
+    text-shadow: 0px 0px 5px white;
   }
+
+  #app > div:nth-child(2) > p {
+    font-size: 5vh;
+  }
+
+  #app > div:nth-child(2) > ul {
+    font-size: 5vh;
+  }
+
+  #app > div:nth-child(2) > div {
+    text-align: center;
+  }
+
+  #app > div:nth-child(2) > div > button {
+    
+  }
+
 </style>
