@@ -7,6 +7,7 @@ import com.techelevator.model.*;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.core.Authentication;
@@ -38,6 +39,19 @@ public class UserController {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Username or password is incorrect.");
         }
         return user;
+    }
+
+    // handle PUT request for updating user profile information
+    @PreAuthorize("permitAll()")
+    @RequestMapping(path = "/user/{userId}/profile", method = RequestMethod.PUT)
+    public User updateProfile(@PathVariable int userId, @RequestBody User updatedUser){
+        User result;
+        try {
+            result = userDao.updateUser(updatedUser);
+        } catch (DaoException e) {
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Username or password is incorrect.");
+        }
+        return result;
     }
 
 }

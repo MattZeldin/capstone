@@ -87,7 +87,22 @@ public class JdbcUserDao implements UserDao {
         }
         return newUser;
     }
+    @Override
+    public User updateUser(User updatedUser){
+        User result = updatedUser;
+        String sql = "UPDATE users SET username = ?, email = ?, name = ?  WHERE user_id = ? RETURNING user_id;";
+        try {
+            int newId = jdbcTemplate.update(sql, result.getUsername(), result.getEmail(), result.getName(), result.getId());
+            result = getUserById(newId);
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data integrity violation", e);
+        }
 
+        return result;
+
+    };
     private User mapRowToUser(SqlRowSet rs) {
         User user = new User();
         user.setId(rs.getInt("user_id"));
