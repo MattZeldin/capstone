@@ -2,8 +2,7 @@
   <div>
     <h1>User Profile</h1>
     <p>
-      The purpose of this page is to display current profile info and allow user to make
-      changes to their profile.
+      Select "Edit Profile" to change name and/or email.
     </p>
     <ul>
       <li>Name: {{ this.$store.state.user.username }} </li>
@@ -23,8 +22,12 @@ export default {
   components: {
     EditProfile
   },
+
 };
 </script>
 
-<style>
+<style scoped>
+  h1 {
+    font-size: 20pt;
+  }
 </style>

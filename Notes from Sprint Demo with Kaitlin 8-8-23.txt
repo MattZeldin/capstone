@@ -1,0 +1,13 @@
+Notes from Sprint Demo with Kaitlin on 8/8/23
+
+Additions/ changes to make:
+- option to change password in user profile
+- make the background color a lighter shade of blue
+- decide on and add a logo
+	- trail/path
+	- weights
+	- something with an elevator or triangle
+- registration form prompts user for their workout goals
+- workout timer reroutes to workout log when finished
+
+Send Kaitlin screenshots of login/register page when styling is adjusted
