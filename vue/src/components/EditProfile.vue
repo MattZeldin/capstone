@@ -22,8 +22,8 @@
 </template>
 
 <script>
-import UserService from '../services/UserService';
-import authService from '../services/AuthService';
+import userService from '../services/UserService';
+
 
 export default {
   name: 'edit-profile',
@@ -33,40 +33,25 @@ export default {
       user:{
         name: this.$store.state.user.name,
         email: this.$store.state.user.email,
-        username: this.$store.state.user.username
+        username: this.$store.state.user.username,
+        id: this.$store.state.user.id
       }
     };
   },
   methods:{
     updateUser(){
-      this.$store.commit("UPDATE_USER",this.user);
-      // this.user=if(!this.user.name==='');
-      // this.user=if(!this.user.email==='');
-      this.user={
-        name: this.$store.state.user.name,
-        email: this.$store.state.user.email,
-      };
-      authService
-        .login(this.user)
-        .then((response) => {
-          if (response.status == 200) {
-            this.$store.commit("SET_AUTH_TOKEN", response.data.token);
-            this.$store.commit("SET_USER", response.data.user);
-            this.$router.push("/");
-          }
-        })
-        .catch((error) => {
-          const response = error.response;
-
-          if (response.status === 401) {
-            this.invalidCredentials = true;
-          }
-        });
-      UserService
+      this.$store.commit("SET_USER",this.user);
+      
+      // this.user={
+      //   name: this.$store.state.user.name,
+      //   email: this.$store.state.user.email,
+      // };
+  
+      userService
       .updateProfile(this.user)
       .then((response) => {
           if (response.status == 200) {
-            this.$router.push("/profile");
+            this.$router.push("/");
           }
         })
         .catch((error) => {
