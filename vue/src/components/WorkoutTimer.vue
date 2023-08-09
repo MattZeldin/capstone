@@ -1,29 +1,98 @@
-<!-- <template>
+<template>
   <div id="clock">
-  
-  <span class="time">{{ time }}</span>
-  
-  <div class="btn-container">
-    <a id="start">Start</a>
-    <a id="stop">Stop</a>
-    <a id="reset">Reset</a>
+    <span class="time">{{ time }}</span>
+
+    <div class="btn-container">
+      <a id="start" v-on:click="start">Start</a>
+      <a id="stop" v-on:click="stop">Stop</a>
+      <a id="reset" v-on:click="reset">Reset</a>
+    </div>
+
+    <div class="text">
+      <a href="https://codepen.io/raphael_octau" target="_blank"
+        >@raphael_octau</a
+      >
+    </div>
   </div>
-  
-  
-  <div class="text">
-    <a href="https://codepen.io/raphael_octau" target="_blank">@raphael_octau</a>
-  </div>
-</div>
 </template>
 
- <script> -->
-// export default {
+<script>
+export default {
+  name: 'workoutTimer',
+  data() {
+    return {
+      time: '00:00:00.000',
+      timeBegan: null, 
+      timeStopped: null, 
+      started: null,
+      stoppedDuration: 0, 
+      running: false
+    }
+  },
+  methods: {
+    start() {
+      if(this.running) return;
+  
+  if (this.timeBegan === null) {
+    this.reset();
+    this.timeBegan = new Date();
+  }
+
+  if (this.timeStopped !== null) {
+    this.stoppedDuration += (new Date() - this.timeStopped);
+  }
+
+  this.started = setInterval(this.clockRunning, 10);	
+  this.running = true;
+    },
+
+    stop() {
+        this.running = false;
+  this.timeStopped = new Date();
+  clearInterval(this.started);
+    },
+
+    reset() {
+        this.running = false;
+  clearInterval(this.started);
+  this.stoppedDuration = 0;
+  this.timeBegan = null;
+  this.timeStopped = null;
+  this.time = "00:00:00.000";
+    },
+
+    clockRunning() {
+    let currentTime = new Date();
+    let timeElapsed = new Date(currentTime - this.timeBegan - this.stoppedDuration);
+    let hour = timeElapsed.getUTCHours()
+    let min = timeElapsed.getUTCMinutes()
+    let sec = timeElapsed.getUTCSeconds()
+    let ms = timeElapsed.getUTCMilliseconds();
+
+  this.time = 
+    this.zeroPrefix(hour, 2) + ":" + 
+    this.zeroPrefix(min, 2) + ":" + 
+    this.zeroPrefix(sec, 2) + "." + 
+    this.zeroPrefix(ms, 3);
+    },
+
+    zeroPrefix(num, digit) { 
+      let zero = '';
+  for(let i = 0; i < digit; i++) {
+    zero += '0';
+  }
+  return (zero + num).slice(-digit);}
+
+  }
+}
+
+
 //     var clock = new Vue({
 //   el: '#clock',
 //   data: {
-//     time: '00:00:00.000'
+    
 //   }
-// });
+// }),
 
 // var timeBegan = null
 // , timeStopped = null
@@ -89,88 +158,91 @@
 //   return (zero + num).slice(-digit);
 // }
 
-// </script>
+</script>
 
-// <style>
-// $color: rgb(200, 200, 200);
-// $color-light: white;
+<style scoped>
 
-// @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
 
-// html, body {
-//   padding: 0; margin: 0;
-//   width: 100%;
-//   height: 100%;
-// }
+@import url("https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap");
 
-// body {
-//   background-color: rgb(10, 10, 10);
-//   font-family: 'Share Tech Mono', sans-serif;
+html,
+body {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
 
-//   display: flex;
-//   flex-direction: row;
-//   flex-wrap: nowrap;
-//   justify-content: center;
-//   align-content: stretch;
-//   align-items: center;
-// }
+body {
+  background-color: rgb(10, 10, 10);
+  font-family: "Share Tech Mono", sans-serif;
 
-// #clock {
-//   order: 0;
-//   flex: 0 1 auto;
-//   align-self: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-content: stretch;
+  align-items: center;
+}
 
-//   color: $color;
-//   //text-shadow: 0px 0px 25px $color;
+#clock {
+  order: 0;
+  flex: 0 1 auto;
+  align-self: center;
 
-//   .time {
-//     font-size: 6.5em;
-//   }
+  color: rgb(200, 200, 200);
+  text-shadow: 0px 0px 25px rgb(200, 200, 200);
+}
 
-//   .text {
-//     margin-top: 30px;
-//     font-size: 1em;
-//     color: rgba($color, .4);
-//     text-align: center;
+  #clock.time {
+    font-size: 6.5em;
+  }
 
-//     a {
-//       text-decoration: none;
-//       color: inherit;
+  .text {
+    margin-top: 30px;
+    font-size: 1em;
+    color: rgba(rgb(200, 200, 200), 0.4);
+    text-align: center;
+  }
 
-//       transition: color .1s ease-out;
+  .text > a {
+      text-decoration: none;
+      color: inherit;
 
-//       &:hover {
-//         color: $color;
-//       }
-//     }
-//   }
+      transition: color 0.1s ease-out;
+    }
+  
+   .text > a:hover {
+        color: rgb(200, 200, 200);
+      }
 
-//   .btn-container {
-//     display: flex;
-//     margin-top: 15px;
+  .btn-container {
+    display: flex;
+    margin-top: 15px;
+  }
 
-//     a {
-//       text-align: center;
-//       font-family: 'Share Tech Mono', sans-serif;
-//       background: transparent;
-//       //border: 3px solid $color;
-//       border: none;
-//       color: $color;
-//       padding: 10px 15px;
-//       margin: 0 10px;
-//       text-transform: uppercase;
-//       font-size: 2em;
-//       cursor: pointer;
-//       //text-shadow: 0px 0px 10px $color;
+  .btn-container > a {
+      text-align: center;
+      font-family: "Share Tech Mono", sans-serif;
+      background: transparent;
+      border: 3px solid rgb(200, 200, 200);
+      border: none;
+      color: rgb(200, 200, 200);
+      padding: 10px 15px;
+      margin: 0 10px;
+      text-transform: uppercase;
+      font-size: 2em;
+      cursor: pointer;
+      text-shadow: 0px 0px 10px rgb(200, 200, 200);
 
-//       flex-grow: 1;
+      flex-grow: 1;
 
-//       transition: color .1s ease-out;
+      transition: color 0.1s ease-out;
 
-//       &:hover {
-//         color: $color-light;
-//       }
-//     }
-//   }
-// }
-// </style>
+  }
+      
+  .btn-container > a:hover {
+        color: white;
+      }
+
+</style>
