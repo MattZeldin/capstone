@@ -6,6 +6,7 @@ import java.util.Objects;
 
 import com.techelevator.exception.DaoException;
 import com.techelevator.model.RegisterUserDto;
+import com.techelevator.model.UserDto;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -38,6 +39,22 @@ public class JdbcUserDao implements UserDao {
         }
         return user;
     }
+
+    @Override
+    public UserDto getUserDtoById(int userId) {
+        UserDto user = null;
+        String sql = "SELECT user_id, username, email, name FROM users WHERE user_id = ?";
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
+            if (results.next()) {
+                user = mapRowToUserDto(results);
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        }
+        return user;
+    }
+
 
     @Override
     public List<User> getUsers() {
@@ -88,12 +105,12 @@ public class JdbcUserDao implements UserDao {
         return newUser;
     }
     @Override
-    public User updateUser(User updatedUser){
-        User result = updatedUser;
+    public UserDto updateUserDto(UserDto updatedUser){
+        UserDto result;
         String sql = "UPDATE users SET username = ?, email = ?, name = ?  WHERE user_id = ? RETURNING user_id;";
         try {
-            int newId = jdbcTemplate.update(sql, result.getUsername(), result.getEmail(), result.getName(), result.getId());
-            result = getUserById(newId);
+            int newId = jdbcTemplate.queryForObject(sql, int.class, updatedUser.getUsername(), updatedUser.getEmail(), updatedUser.getName(), updatedUser.getId());
+            result = getUserDtoById(newId);
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
         } catch (DataIntegrityViolationException e) {
@@ -112,6 +129,15 @@ public class JdbcUserDao implements UserDao {
         user.setPassword(rs.getString("password_hash"));
         user.setAuthorities(Objects.requireNonNull(rs.getString("role")));
         user.setActivated(true);
+        return user;
+    }
+
+    private UserDto mapRowToUserDto(SqlRowSet rs) {
+        UserDto user = new UserDto();
+        user.setId(rs.getInt("user_id"));
+        user.setName(rs.getString("name"));
+        user.setEmail(rs.getString("email"));
+        user.setUsername(rs.getString("username"));
         return user;
     }
 }

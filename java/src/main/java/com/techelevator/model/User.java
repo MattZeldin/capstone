@@ -114,10 +114,10 @@ public class User {
       return "User{" +
               "id=" + id +
               ", username='" + username + '\'' +
-              ", activated=" + activated +
-              ", authorities=" + authorities +
               ", email=" + email +
               ", name=" + name +
+              ", activated=" + activated +
+              ", authorities=" + authorities +
               '}';
    }
 }

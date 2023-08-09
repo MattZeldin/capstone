@@ -31,10 +31,10 @@ public class UserController {
 
     // handle get request for all user profile information
     @RequestMapping(path = "/user/{userId}/profile", method = RequestMethod.GET)
-    public User profile(@PathVariable int userId){
-        User user;
+    public UserDto profile(@PathVariable int userId){
+        UserDto user;
         try {
-            user = userDao.getUserById(userId);
+            user = userDao.getUserDtoById(userId);
         } catch (DaoException e) {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Username or password is incorrect.");
         }
@@ -44,12 +44,12 @@ public class UserController {
     // handle PUT request for updating user profile information
     @PreAuthorize("permitAll()")
     @RequestMapping(path = "/user/{userId}/profile", method = RequestMethod.PUT)
-    public User updateProfile(@PathVariable int userId, @RequestBody User updatedUser){
-        User result;
+    public UserDto updateProfile(@PathVariable int userId, @RequestBody UserDto updatedUser){
+        UserDto result;
         try {
-            result = userDao.updateUser(updatedUser);
+            result = userDao.updateUserDto(updatedUser);
         } catch (DaoException e) {
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Username or password is incorrect.");
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Username or password is incorrect." + e.getMessage());
         }
         return result;
     }
