@@ -69,5 +69,18 @@ public class WorkoutController {
         return result;
     }
 
+    //get a workout data DTO for the home page
+    @RequestMapping(path = "/{username}/workouts/data", method = RequestMethod.GET)
+    public WorkoutDataDto getData(@PathVariable String username){
+        WorkoutDataDto data;
+        try {
+            WorkoutDataDto result = new WorkoutDataDto(workoutDao.countWorkouts(username), workoutDao.calculateAverageMinutes(username));
+            data = result;
+        } catch (DaoException e) {
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Data posting failed. " + e.getMessage());
+        }
+        return data;
+    }
+
 
 }
