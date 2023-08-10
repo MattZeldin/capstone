@@ -14,6 +14,6 @@ public interface WorkoutDao {
     WorkoutDto getWorkoutById(int id);
     WorkoutDto getWorkoutByDate(LocalDate date);
     WorkoutDto createWorkout(WorkoutDto newWorkout);
-    WorkoutDto updateWorkout(WorkoutDto updateWorkout);
+    WorkoutDto updateWorkoutDto(WorkoutDto updateWorkout);
 
 }
