@@ -5,15 +5,8 @@
     <ul>
       <li>Name: {{ this.$store.state.user.name }}</li>
       <li>Email Address: {{ this.$store.state.user.email }}</li>
-<<<<<<< HEAD
       <li>Username: {{ this.$store.state.user.username }}</li>
       <li>Password:</li>
-=======
-      <li>User Name: {{ this.$store.state.user.username }} </li>
-      <li>Password: </li>
-      <li>Target days per week: {{ this.$store.state.user.days }} </li>
-      <li>Minutes per workout: {{ this.$store.state.user.minutes }} </li>
->>>>>>> 8333da94f4deda61a6263491403a9fa6ee3f0b49
 
       <!--<li>photo</li>
           <li>workout goals</li>
@@ -44,6 +37,10 @@ h1 {
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: black;
   text-shadow: 0px 0px 10px cyan;
+}
+
+#app > div:nth-child(2) > h1{
+
 }
 
 #app > div:nth-child(2) > p {
