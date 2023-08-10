@@ -21,6 +21,8 @@ import com.techelevator.dao.WorkoutDao;
 import com.techelevator.security.jwt.JWTFilter;
 import com.techelevator.security.jwt.TokenProvider;
 
+import java.util.List;
+
 @RestController
 @CrossOrigin
 public class WorkoutController {
@@ -29,19 +31,43 @@ public class WorkoutController {
     public WorkoutController(WorkoutDao workoutDao){
         this.workoutDao = workoutDao;
     }
-//
-//    // handle get request for all user profile information
-//    @RequestMapping(path = "/user/{userId}/profile", method = RequestMethod.GET)
-//    public UserDto profile(@PathVariable int userId){
-//        UserDto user;
-//        try {
-//            user = userDao.getUserDtoById(userId);
-//        } catch (DaoException e) {
-//            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Username or password is incorrect.");
-//        }
-//        return user;
-//    }
 
+    // handle get request for all workouts in database. Maybe change so it gets all workouts for a given user
+    @RequestMapping(path = "/{username}/workouts", method = RequestMethod.GET)
+    public List<WorkoutDto> workouts(@PathVariable String username){
+        List<WorkoutDto> workouts;
+        try {
+            workouts = workoutDao.getWorkoutsByUsername(username);
+        } catch (DaoException e) {
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Username or password is incorrect.");
+        }
+        return workouts;
+    }
+
+    // handle post request for adding a new workout to the database
+    @RequestMapping(path = "/{username}/workouts", method = RequestMethod.POST)
+    public void addWorkout(@PathVariable String username, @RequestBody WorkoutDto newWorkout) {
+        try {
+            WorkoutDto workout = workoutDao.createWorkout(newWorkout);
+            if (workout == null) {
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Logging new workout failed.");
+            }
+        } catch (DaoException e) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Logging new workout failed.");
+        }
+    }
+
+    // handle update workout request
+    @RequestMapping(path = "/{username}/workouts", method = RequestMethod.PUT)
+    public WorkoutDto updateWorkout(@PathVariable String username, @RequestBody WorkoutDto updatedWorkout){
+        WorkoutDto result;
+        try {
+            result = workoutDao.updateWorkout(updatedWorkout);
+        } catch (DaoException e) {
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Update workout failed. " + e.getMessage());
+        }
+        return result;
+    }
 
 
 }
