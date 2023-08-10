@@ -1,12 +1,7 @@
 <template>
   <div>
-<<<<<<< HEAD
-    <button id="button" v-on:click="edit = true">Edit Profile</button>
-    <form v-show="edit === true">
-=======
  <button v-on:click="edit=true">Edit Profile</button>
     <form id="form" v-show="edit === true">
->>>>>>> 8333da94f4deda61a6263491403a9fa6ee3f0b49
       <div class="form-element">
         <label id="field_name" for="name">Name:</label>
         <input id="field" type="text" v-model="user.name" required="false" />
@@ -25,15 +20,6 @@
           required="false"
         />
       </div>
-<<<<<<< HEAD
-      <input
-        id="button"
-        type="submit"
-        value="Save"
-        v-on:click.prevent="updateUser"
-      />
-      <input id="button" type="button" value="Cancel" v-on:click="resetForm" />
-=======
       <div class="form-element">
         <label for="days">Target days per week:</label>
         <input id="days" type="text" v-model="user.days" required="false" />
@@ -44,7 +30,6 @@
       </div>
       <input type="submit" value="Save" v-on:click.prevent="updateUser" />
       <input type="button" value="Cancel" v-on:click="resetForm" />
->>>>>>> 8333da94f4deda61a6263491403a9fa6ee3f0b49
     </form>
   </div>
 </template>
@@ -62,13 +47,9 @@ export default {
         email: this.$store.state.user.email,
         username: this.$store.state.user.username,
         id: this.$store.state.user.id,
-<<<<<<< HEAD
-      },
-=======
         days: this.$store.state.user.days,
         minutes: this.$store.state.user.minutes
       }
->>>>>>> 8333da94f4deda61a6263491403a9fa6ee3f0b49
     };
   },
   methods: {
@@ -95,12 +76,6 @@ export default {
           }
         });
     },
-<<<<<<< HEAD
-    resetForm() {
-      this.edit = false;
-    },
-  },
-=======
     resetForm(){
     
       this.edit = false;
@@ -108,7 +83,6 @@ export default {
 
     }
   }
->>>>>>> 8333da94f4deda61a6263491403a9fa6ee3f0b49
 };
 </script>
 <style>
