@@ -19,6 +19,7 @@ public class User {
    private Set<Authority> authorities = new HashSet<>();
 
    private int days;
+   private int minutes;
 
 
    public int getDays() {
@@ -49,7 +50,7 @@ public class User {
       this.minutes = minutes;
    }
 
-   private int minutes;
+
 
    public User() { }
 
