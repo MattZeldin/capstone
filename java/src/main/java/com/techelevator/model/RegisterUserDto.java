@@ -22,6 +22,8 @@ public class RegisterUserDto {
 
     private int days;
 
+    private int minutes;
+
     public int getDays() {
         return days;
     }
@@ -38,7 +40,6 @@ public class RegisterUserDto {
         this.minutes = minutes;
     }
 
-    private int minutes;
 
     public String getUsername() {
         return username;

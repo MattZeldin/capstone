@@ -28,7 +28,7 @@ public class JdbcUserDao implements UserDao {
     @Override
     public User getUserById(int userId) {
         User user = null;
-        String sql = "SELECT user_id, username, password_hash, role, email, name FROM users WHERE user_id = ?";
+        String sql = "SELECT user_id, username, password_hash, role, email, name, days, minutes FROM users WHERE user_id = ?";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
             if (results.next()) {
@@ -43,7 +43,7 @@ public class JdbcUserDao implements UserDao {
     @Override
     public UserDto getUserDtoById(int userId) {
         UserDto user = null;
-        String sql = "SELECT user_id, username, email, name FROM users WHERE user_id = ?";
+        String sql = "SELECT user_id, username, email, name, days, minutes FROM users WHERE user_id = ?";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
             if (results.next()) {
@@ -76,7 +76,7 @@ public class JdbcUserDao implements UserDao {
     public User getUserByUsername(String username) {
         if (username == null) throw new IllegalArgumentException("Username cannot be null");
         User user = null;
-        String sql = "SELECT user_id, username, password_hash, email, name, role FROM users WHERE username = ?;";
+        String sql = "SELECT user_id, username, password_hash, email, name, role, days, minutes FROM users WHERE username = ?;";
         try {
             SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, username);
             if (rowSet.next()) {
@@ -126,6 +126,8 @@ public class JdbcUserDao implements UserDao {
         user.setName(rs.getString("name"));
         user.setEmail(rs.getString("email"));
         user.setUsername(rs.getString("username"));
+        user.setDays(rs.getInt("days"));
+        user.setMinutes(rs.getInt("minutes"));
         user.setPassword(rs.getString("password_hash"));
         user.setAuthorities(Objects.requireNonNull(rs.getString("role")));
         user.setActivated(true);
