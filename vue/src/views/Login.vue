@@ -81,9 +81,9 @@ export default {
             this.invalidCredentials = true;
           }
         });
-        userService
-      .profile(this.$store.state.user.id)
-      .then((response) => {
+      userService
+        .profile(this.$store.state.user.id)
+        .then((response) => {
           if (response.status == 200) {
             this.$store.commit("SET_USER", response.data.user);
             this.$router.push("/");
@@ -108,11 +108,18 @@ export default {
   margin-left: auto;
   margin-right: auto;
   border: 10px solid black;
+  max-height: 300px;
 }
 
-#login > form {
-  display: grid;
-  background-color: darkblue;
+body {
+  background-color: skyblue;
+}
+
+#login {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  align-items: center;
 }
 
 #mainhead {
@@ -120,8 +127,8 @@ export default {
   justify-content: center;
   margin: auto;
   padding: 5%;
-  color: white;
-  text-shadow: 0px 0px 5px white;
+  color: black;
+  text-shadow: 0px 0px 5px black;
 }
 
 #username-password-submit {
@@ -151,7 +158,26 @@ export default {
 #username-password-submit > p {
   margin: auto;
   padding-bottom: 10%;
-
 }
 
+#routerlink {
+  font-size: 2.5vh;
+}
+
+/* unvisited link */
+a:link {
+  color: white;
+}
+/* visited link */
+a:visited {
+  color: darkblue;
+}
+/* mouse over link */
+a:hover {
+  color: cyan;
+}
+/* selected link */
+a:active {
+  color: #1926ef;
+}
 </style>
