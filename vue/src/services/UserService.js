@@ -9,8 +9,4 @@ export default {
   updateProfile(user){
     return axios.put(`/user/${user.id}/profile`, user)
   }
-
-  // updateProfile(user){
-  //   return axios.get(`/user/${user.id}/profile`)
-  // }
 }

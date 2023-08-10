@@ -18,79 +18,83 @@
 
 <script>
 export default {
-  name: 'workoutTimer',
+  name: "workoutTimer",
   data() {
     return {
-      time: '00:00:00.000',
-      timeBegan: null, 
-      timeStopped: null, 
+      time: "00:00:00.000",
+      timeBegan: null,
+      timeStopped: null,
       started: null,
-      stoppedDuration: 0, 
-      running: false
-    }
+      stoppedDuration: 0,
+      running: false,
+    };
   },
   methods: {
     start() {
-      if(this.running) return;
-  
-  if (this.timeBegan === null) {
-    this.reset();
-    this.timeBegan = new Date();
-  }
+      if (this.running) return;
 
-  if (this.timeStopped !== null) {
-    this.stoppedDuration += (new Date() - this.timeStopped);
-  }
+      if (this.timeBegan === null) {
+        this.reset();
+        this.timeBegan = new Date();
+      }
 
-  this.started = setInterval(this.clockRunning, 10);	
-  this.running = true;
+      if (this.timeStopped !== null) {
+        this.stoppedDuration += new Date() - this.timeStopped;
+      }
+
+      this.started = setInterval(this.clockRunning, 10);
+      this.running = true;
     },
 
     stop() {
-        this.running = false;
-  this.timeStopped = new Date();
-  clearInterval(this.started);
+      this.running = false;
+      this.timeStopped = new Date();
+      clearInterval(this.started);
     },
 
     reset() {
-        this.running = false;
-  clearInterval(this.started);
-  this.stoppedDuration = 0;
-  this.timeBegan = null;
-  this.timeStopped = null;
-  this.time = "00:00:00.000";
+      this.running = false;
+      clearInterval(this.started);
+      this.stoppedDuration = 0;
+      this.timeBegan = null;
+      this.timeStopped = null;
+      this.time = "00:00:00.000";
     },
 
     clockRunning() {
-    let currentTime = new Date();
-    let timeElapsed = new Date(currentTime - this.timeBegan - this.stoppedDuration);
-    let hour = timeElapsed.getUTCHours()
-    let min = timeElapsed.getUTCMinutes()
-    let sec = timeElapsed.getUTCSeconds()
-    let ms = timeElapsed.getUTCMilliseconds();
+      let currentTime = new Date();
+      let timeElapsed = new Date(
+        currentTime - this.timeBegan - this.stoppedDuration
+      );
+      let hour = timeElapsed.getUTCHours();
+      let min = timeElapsed.getUTCMinutes();
+      let sec = timeElapsed.getUTCSeconds();
+      let ms = timeElapsed.getUTCMilliseconds();
 
-  this.time = 
-    this.zeroPrefix(hour, 2) + ":" + 
-    this.zeroPrefix(min, 2) + ":" + 
-    this.zeroPrefix(sec, 2) + "." + 
-    this.zeroPrefix(ms, 3);
+      this.time =
+        this.zeroPrefix(hour, 2) +
+        ":" +
+        this.zeroPrefix(min, 2) +
+        ":" +
+        this.zeroPrefix(sec, 2) +
+        "." +
+        this.zeroPrefix(ms, 3);
     },
 
-    zeroPrefix(num, digit) { 
-      let zero = '';
-  for(let i = 0; i < digit; i++) {
-    zero += '0';
-  }
-  return (zero + num).slice(-digit);}
-
-  }
-}
-
+    zeroPrefix(num, digit) {
+      let zero = "";
+      for (let i = 0; i < digit; i++) {
+        zero += "0";
+      }
+      return (zero + num).slice(-digit);
+    },
+  },
+};
 
 //     var clock = new Vue({
 //   el: '#clock',
 //   data: {
-    
+
 //   }
 // }),
 
@@ -106,7 +110,7 @@ export default {
 
 // function start() {
 //   if(running) return;
-  
+
 //   if (timeBegan === null) {
 //     reset();
 //     timeBegan = new Date();
@@ -116,7 +120,7 @@ export default {
 //     stoppedDuration += (new Date() - timeStopped);
 //   }
 
-//   started = setInterval(clockRunning, 10);	
+//   started = setInterval(clockRunning, 10);
 //   running = true;
 // }
 
@@ -143,10 +147,10 @@ export default {
 //   , sec = timeElapsed.getUTCSeconds()
 //   , ms = timeElapsed.getUTCMilliseconds();
 
-//   clock.time = 
-//     zeroPrefix(hour, 2) + ":" + 
-//     zeroPrefix(min, 2) + ":" + 
-//     zeroPrefix(sec, 2) + "." + 
+//   clock.time =
+//     zeroPrefix(hour, 2) + ":" +
+//     zeroPrefix(min, 2) + ":" +
+//     zeroPrefix(sec, 2) + "." +
 //     zeroPrefix(ms, 3);
 // };
 
@@ -157,12 +161,9 @@ export default {
 //   }
 //   return (zero + num).slice(-digit);
 // }
-
 </script>
 
 <style scoped>
-
-
 @import url("https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap");
 
 html,
@@ -171,6 +172,13 @@ body {
   margin: 0;
   width: 100%;
   height: 100%;
+}
+#clock > span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  font-size: 15vh;
 }
 
 body {
@@ -190,59 +198,62 @@ body {
   flex: 0 1 auto;
   align-self: center;
 
-  color: rgb(200, 200, 200);
-  text-shadow: 0px 0px 25px rgb(200, 200, 200);
+  color: white;
+  text-shadow: 0px 0px 25px cyan;
 }
 
-  #clock.time {
-    font-size: 6.5em;
-  }
+#clock.time {
+  font-size: 6.5em;
+}
 
-  .text {
-    margin-top: 30px;
-    font-size: 1em;
-    color: rgba(rgb(200, 200, 200), 0.4);
-    text-align: center;
-  }
+.text {
+  margin-top: 30px;
+  font-size: 1em;
+  color: white;
+  text-align: center;
+}
 
-  .text > a {
-      text-decoration: none;
-      color: inherit;
+.text > a {
+  text-decoration: none;
+  color: inherit;
 
-      transition: color 0.1s ease-out;
-    }
-  
-   .text > a:hover {
-        color: rgb(200, 200, 200);
-      }
+  transition: color 0.1s ease-out;
+}
 
-  .btn-container {
-    display: flex;
-    margin-top: 15px;
-  }
+.text > a:hover {
+  color: white;
+}
 
-  .btn-container > a {
-      text-align: center;
-      font-family: "Share Tech Mono", sans-serif;
-      background: transparent;
-      border: 3px solid rgb(200, 200, 200);
-      border: none;
-      color: rgb(200, 200, 200);
-      padding: 10px 15px;
-      margin: 0 10px;
-      text-transform: uppercase;
-      font-size: 2em;
-      cursor: pointer;
-      text-shadow: 0px 0px 10px rgb(200, 200, 200);
+.btn-container {
+  display: flex;
+  margin-top: 15px;
+  font-size: 4vh;
+}
 
-      flex-grow: 1;
+.btn-container > a {
+  text-align: center;
+  font-family: "Share Tech Mono", sans-serif;
+  background: transparent;
+  border: 3px solid rgb(200, 200, 200);
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  margin: 0 10px;
+  text-transform: uppercase;
+  font-size: 2em;
+  cursor: pointer;
+  text-shadow: 0px 0px 25px cyan;
 
-      transition: color 0.1s ease-out;
+  flex-grow: 1;
 
-  }
-      
-  .btn-container > a:hover {
-        color: white;
-      }
+  transition: color 0.1s ease-out;
+}
 
+.btn-container > a:hover {
+  color: cyan;
+}
+
+#clock > div.text > a:hover {
+  color: cyan;
+}
 </style>

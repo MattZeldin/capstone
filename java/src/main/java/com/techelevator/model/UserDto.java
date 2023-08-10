@@ -16,6 +16,35 @@ public class UserDto {
     private String email;
     private String name;
 
+    private int days;
+
+    public UserDto(int id, String username, String email, String name, int days, int minutes) {
+        this.id = id;
+        this.username = username;
+        this.email = email;
+        this.name = name;
+        this.days = days;
+        this.minutes = minutes;
+    }
+
+    public int getDays() {
+        return days;
+    }
+
+    public void setDays(int days) {
+        this.days = days;
+    }
+
+    public int getMinutes() {
+        return minutes;
+    }
+
+    public void setMinutes(int minutes) {
+        this.minutes = minutes;
+    }
+
+    private int minutes;
+
 
 
     public UserDto() { }
@@ -68,14 +97,15 @@ public class UserDto {
     }
 
 
-
     @Override
     public String toString() {
-        return "User{" +
+        return "UserDto{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
-                ", email=" + email +
-                ", name=" + name +
+                ", email='" + email + '\'' +
+                ", name='" + name + '\'' +
+                ", days=" + days +
+                ", minutes=" + minutes +
                 '}';
     }
 }
