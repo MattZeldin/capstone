@@ -20,6 +20,27 @@ public class RegisterUserDto {
     @NotEmpty(message = "Please select a role for this user.")
     private String role;
 
+    private int days;
+
+    private int minutes;
+
+    public int getDays() {
+        return days;
+    }
+
+    public void setDays(int days) {
+        this.days = days;
+    }
+
+    public int getMinutes() {
+        return minutes;
+    }
+
+    public void setMinutes(int minutes) {
+        this.minutes = minutes;
+    }
+
+
     public String getUsername() {
         return username;
     }

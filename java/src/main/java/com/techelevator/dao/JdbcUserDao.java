@@ -28,7 +28,7 @@ public class JdbcUserDao implements UserDao {
     @Override
     public User getUserById(int userId) {
         User user = null;
-        String sql = "SELECT user_id, username, password_hash, role, email, name FROM users WHERE user_id = ?";
+        String sql = "SELECT user_id, username, password_hash, role, email, name, days, minutes FROM users WHERE user_id = ?";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
             if (results.next()) {
@@ -43,7 +43,7 @@ public class JdbcUserDao implements UserDao {
     @Override
     public UserDto getUserDtoById(int userId) {
         UserDto user = null;
-        String sql = "SELECT user_id, username, email, name FROM users WHERE user_id = ?";
+        String sql = "SELECT user_id, username, email, name, days, minutes FROM users WHERE user_id = ?";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
             if (results.next()) {
@@ -76,7 +76,7 @@ public class JdbcUserDao implements UserDao {
     public User getUserByUsername(String username) {
         if (username == null) throw new IllegalArgumentException("Username cannot be null");
         User user = null;
-        String sql = "SELECT user_id, username, password_hash, email, name, role FROM users WHERE username = ?;";
+        String sql = "SELECT user_id, username, password_hash, email, name, role, days, minutes FROM users WHERE username = ?;";
         try {
             SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, username);
             if (rowSet.next()) {
@@ -91,11 +91,11 @@ public class JdbcUserDao implements UserDao {
     @Override
     public User createUser(RegisterUserDto user) {
         User newUser = null;
-        String insertUserSql = "INSERT INTO users (username, password_hash, role, email, name) values (?, ?, ?, ?, ?) RETURNING user_id";
+        String insertUserSql = "INSERT INTO users (username, password_hash, role, email, name, days, minutes) values (?, ?, ?, ?, ?, ?, ?) RETURNING user_id";
         String password_hash = new BCryptPasswordEncoder().encode(user.getPassword());
         String ssRole = user.getRole().toUpperCase().startsWith("ROLE_") ? user.getRole().toUpperCase() : "ROLE_" + user.getRole().toUpperCase();
         try {
-            int newUserId = jdbcTemplate.queryForObject(insertUserSql, int.class, user.getUsername(), password_hash, ssRole, user.getEmail(), user.getName());
+            int newUserId = jdbcTemplate.queryForObject(insertUserSql, int.class, user.getUsername(), password_hash, ssRole, user.getEmail(), user.getName(), user.getDays(), user.getMinutes());
             newUser = getUserById(newUserId);
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
@@ -107,9 +107,9 @@ public class JdbcUserDao implements UserDao {
     @Override
     public UserDto updateUserDto(UserDto updatedUser){
         UserDto result;
-        String sql = "UPDATE users SET username = ?, email = ?, name = ?  WHERE user_id = ? RETURNING user_id;";
+        String sql = "UPDATE users SET username = ?, email = ?, name = ? , days = ? , minutes = ? WHERE user_id = ? RETURNING user_id;";
         try {
-            int newId = jdbcTemplate.queryForObject(sql, int.class, updatedUser.getUsername(), updatedUser.getEmail(), updatedUser.getName(), updatedUser.getId());
+            int newId = jdbcTemplate.queryForObject(sql, int.class, updatedUser.getUsername(), updatedUser.getEmail(), updatedUser.getName(), updatedUser.getDays(), updatedUser.getMinutes(), updatedUser.getId());
             result = getUserDtoById(newId);
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
@@ -126,6 +126,8 @@ public class JdbcUserDao implements UserDao {
         user.setName(rs.getString("name"));
         user.setEmail(rs.getString("email"));
         user.setUsername(rs.getString("username"));
+        user.setDays(rs.getInt("days"));
+        user.setMinutes(rs.getInt("minutes"));
         user.setPassword(rs.getString("password_hash"));
         user.setAuthorities(Objects.requireNonNull(rs.getString("role")));
         user.setActivated(true);
@@ -138,6 +140,8 @@ public class JdbcUserDao implements UserDao {
         user.setName(rs.getString("name"));
         user.setEmail(rs.getString("email"));
         user.setUsername(rs.getString("username"));
+        user.setDays(rs.getInt("days"));
+        user.setMinutes(rs.getInt("minutes"));
         return user;
     }
 }

@@ -48,6 +48,30 @@
           <label for="name">Name</label>
           <input type="text" id="name" v-model="user.name" required autofocus />
         </div>
+          <h2>Goals</h2>  
+        <div class="form-input-group">
+          <label for="goals-days">Target days per week</label>
+          <input
+            type="text"
+            id="goals-days"
+            v-model="user.days"
+            required
+            autofocus
+          />
+        </div>
+
+        <div class="form-input-group">
+          <label for="goals-minutes">Target minutes per workout</label>
+          <input
+            type="text"
+            id="goals-minutes"
+            v-model="user.minutes"
+            required
+            autofocus
+          />
+        </div>
+
+
         <button type="submit">Create Account</button>
         <p>
           <router-link :to="{ name: 'login' }"
@@ -73,6 +97,8 @@ export default {
         role: "user",
         name: "",
         email: "",
+        days: "", 
+        minutes: ""
       },
       registrationErrors: false,
       registrationErrorMsg: "There were problems registering this user.",

@@ -18,6 +18,40 @@ public class User {
    private boolean activated;
    private Set<Authority> authorities = new HashSet<>();
 
+   private int days;
+   private int minutes;
+
+
+   public int getDays() {
+      return days;
+   }
+
+   public void setDays(int days) {
+      this.days = days;
+   }
+
+   public int getMinutes() {
+      return minutes;
+   }
+
+   public User(int id, String username, String password, String email, String name, boolean activated, Set<Authority> authorities, int days, int minutes) {
+      this.id = id;
+      this.username = username;
+      this.password = password;
+      this.email = email;
+      this.name = name;
+      this.activated = activated;
+      this.authorities = authorities;
+      this.days = days;
+      this.minutes = minutes;
+   }
+
+   public void setMinutes(int minutes) {
+      this.minutes = minutes;
+   }
+
+
+
    public User() { }
 
    public User(int id, String username, String password, String authorities, String email, String name) {
@@ -114,10 +148,13 @@ public class User {
       return "User{" +
               "id=" + id +
               ", username='" + username + '\'' +
-              ", email=" + email +
-              ", name=" + name +
+              ", password='" + password + '\'' +
+              ", email='" + email + '\'' +
+              ", name='" + name + '\'' +
               ", activated=" + activated +
               ", authorities=" + authorities +
+              ", days=" + days +
+              ", minutes=" + minutes +
               '}';
    }
 }
