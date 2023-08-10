@@ -9,6 +9,8 @@
       <li>Email Address: {{ this.$store.state.user.email }}</li>
       <li>User Name: {{ this.$store.state.user.username }} </li>
       <li>Password: </li>
+      <li>Target days per week: {{ this.$store.state.user.days }} </li>
+      <li>Minutes per workout: {{ this.$store.state.user.minutes }} </li>
 
       <!--<li>photo</li>
           <li>workout goals</li>
