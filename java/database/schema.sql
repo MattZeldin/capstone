@@ -15,4 +15,15 @@ CREATE TABLE users (
 	CHECK(days > 0 and days < 8)
 );
 
+CREATE TABLE workouts (
+    workout_id SERIAL,
+    workout_type varchar(50) NOT NULL,
+    exercise varchar(50),
+    workout_date date,
+    workout_duration_minutes int,
+    workout_notes varchar(500),
+    username varchar(50) NOT NULL UNIQUE,
+    CONSTRAINT PK_workout PRIMARY KEY (workout_id)
+);
+
 COMMIT TRANSACTION;
