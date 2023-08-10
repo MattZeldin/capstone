@@ -5,7 +5,7 @@ import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import Profile from '../views/Profile.vue'
-import LogWorkout from '../views/LogWorkout.vue'
+import MyWorkout from '../views/MyWorkout.vue'
 import WorkoutTimer from '../views/WorkoutTimer.vue'
 import ExerciseAssistance from '../views/ExerciseAssistance.vue'
 
@@ -67,9 +67,9 @@ const router = new Router({
       }
     }, 
     {
-      path: "/log-workout",
-      name: "log-workout",
-      component: LogWorkout,
+      path: "/my-workout",
+      name: "my-workout",
+      component: MyWorkout,
       meta: {
         requiresAuth: true
       }
