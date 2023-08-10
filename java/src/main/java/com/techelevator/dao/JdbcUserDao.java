@@ -91,11 +91,11 @@ public class JdbcUserDao implements UserDao {
     @Override
     public User createUser(RegisterUserDto user) {
         User newUser = null;
-        String insertUserSql = "INSERT INTO users (username, password_hash, role, email, name) values (?, ?, ?, ?, ?) RETURNING user_id";
+        String insertUserSql = "INSERT INTO users (username, password_hash, role, email, name, days, minutes) values (?, ?, ?, ?, ?, ?, ?) RETURNING user_id";
         String password_hash = new BCryptPasswordEncoder().encode(user.getPassword());
         String ssRole = user.getRole().toUpperCase().startsWith("ROLE_") ? user.getRole().toUpperCase() : "ROLE_" + user.getRole().toUpperCase();
         try {
-            int newUserId = jdbcTemplate.queryForObject(insertUserSql, int.class, user.getUsername(), password_hash, ssRole, user.getEmail(), user.getName());
+            int newUserId = jdbcTemplate.queryForObject(insertUserSql, int.class, user.getUsername(), password_hash, ssRole, user.getEmail(), user.getName(), user.getDays(), user.getMinutes());
             newUser = getUserById(newUserId);
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
@@ -107,9 +107,9 @@ public class JdbcUserDao implements UserDao {
     @Override
     public UserDto updateUserDto(UserDto updatedUser){
         UserDto result;
-        String sql = "UPDATE users SET username = ?, email = ?, name = ?  WHERE user_id = ? RETURNING user_id;";
+        String sql = "UPDATE users SET username = ?, email = ?, name = ? , days = ? , minutes = ? WHERE user_id = ? RETURNING user_id;";
         try {
-            int newId = jdbcTemplate.queryForObject(sql, int.class, updatedUser.getUsername(), updatedUser.getEmail(), updatedUser.getName(), updatedUser.getId());
+            int newId = jdbcTemplate.queryForObject(sql, int.class, updatedUser.getUsername(), updatedUser.getEmail(), updatedUser.getName(), updatedUser.getDays(), updatedUser.getMinutes(), updatedUser.getId());
             result = getUserDtoById(newId);
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
@@ -138,6 +138,8 @@ public class JdbcUserDao implements UserDao {
         user.setName(rs.getString("name"));
         user.setEmail(rs.getString("email"));
         user.setUsername(rs.getString("username"));
+        user.setDays(rs.getInt("days"));
+        user.setMinutes(rs.getInt("minutes"));
         return user;
     }
 }
