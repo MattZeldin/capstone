@@ -3,17 +3,22 @@
  <button v-on:click="edit=true">Edit Profile</button>
     <form id="form" v-show="edit === true">
       <div class="form-element">
-        <label for="name">Name:</label>
-        <input id="name" type="text" v-model="user.name" required="false" />
+        <label id="field_name" for="name">Name:</label>
+        <input id="field" type="text" v-model="user.name" required="false" />
       </div>
 
       <div class="form-element">
-        <label for="email">Email:</label>
-        <input id="email" type="text" v-model="user.email" required="false" />
+        <label id="field_name" for="email">Email:</label>
+        <input id="field" type="text" v-model="user.email" required="false" />
       </div>
       <div class="form-element">
-        <label for="username">User Name:</label>
-        <input id="username" type="text" v-model="user.username" required="false" />
+        <label id="field_name" for="username">Username:</label>
+        <input
+          id="field"
+          type="text"
+          v-model="user.username"
+          required="false"
+        />
       </div>
       <div class="form-element">
         <label for="days">Target days per week:</label>
@@ -30,15 +35,14 @@
 </template>
 
 <script>
-import userService from '../services/UserService';
-
+import userService from "../services/UserService";
 
 export default {
-  name: 'edit-profile',
+  name: "edit-profile",
   data() {
     return {
       edit: false,
-      user:{
+      user: {
         name: this.$store.state.user.name,
         email: this.$store.state.user.email,
         username: this.$store.state.user.username,
@@ -48,18 +52,18 @@ export default {
       }
     };
   },
-  methods:{
-    updateUser(){
-      this.$store.commit("SET_USER",this.user);
-      
+  methods: {
+    updateUser() {
+      this.$store.commit("SET_USER", this.user);
+
       // this.user={
       //   name: this.$store.state.user.name,
       //   email: this.$store.state.user.email,
       // };
-  
+
       userService
-      .updateProfile(this.user)
-      .then((response) => {
+        .updateProfile(this.user)
+        .then((response) => {
           if (response.status == 200) {
             this.$router.push("/");
           }
@@ -82,4 +86,38 @@ export default {
 };
 </script>
 <style>
+
+#button {
+  background-color: #1926ef;
+  border: 3px solid #19c2ff;
+  color: white;
+  text-shadow: 0px 0px 5px cyan;
+  font-family: "Share Tech Mono", sans-serif;
+  padding: 10px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 40px;
+  border-radius: 5px;
+}
+
+#field_name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  margin: 10px;
+  font-size: 20px
+}
+
+#field {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding: 10px;
+  margin: auto;
+  margin-bottom: 10px;
+  min-width: 50%;
+}
+
 </style>

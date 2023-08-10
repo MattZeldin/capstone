@@ -182,7 +182,7 @@ body {
 }
 
 body {
-  background-color: rgb(10, 10, 10);
+  background-color: black;
   font-family: "Share Tech Mono", sans-serif;
 
   display: flex;
@@ -200,6 +200,8 @@ body {
 
   color: white;
   text-shadow: 0px 0px 25px cyan;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: black;
 }
 
 #clock.time {
@@ -208,9 +210,11 @@ body {
 
 .text {
   margin-top: 30px;
-  font-size: 1em;
-  color: white;
+  font-size: 2.5vh;
+  color: black;
   text-align: center;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black
 }
 
 .text > a {
@@ -234,13 +238,13 @@ body {
   text-align: center;
   font-family: "Share Tech Mono", sans-serif;
   background: transparent;
-  border: 3px solid rgb(200, 200, 200);
+  border: 3px solid black;
   border: none;
   color: white;
   padding: 10px 15px;
   margin: 0 10px;
   text-transform: uppercase;
-  font-size: 2em;
+  font-size: 10vh;
   cursor: pointer;
   text-shadow: 0px 0px 25px cyan;
 
@@ -250,10 +254,10 @@ body {
 }
 
 .btn-container > a:hover {
-  color: cyan;
+  color: #1926ef;
 }
 
 #clock > div.text > a:hover {
-  color: cyan;
+  color: #1926ef;
 }
 </style>
