@@ -13,21 +13,57 @@
   </div>
 </template>
 
-<style >
+<style>
+  /*
+  blue logo: #1926ef
+  light blue logo: #19c2ff 
+  */
+
+  body {
+  background-color: #19c2ff;
+  color: white;
+  font-family: "Share Tech Mono", sans-serif;
+  }
+
+  #nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: black;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+
+  }
+
+  #app {
+    background-color: darkblue;
+    color: white;
+  }
+
+  #app > div:nth-child(2) {
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 5%;
+    padding-bottom: 10%;
+  }
+
   /* unvisited link */
   a:link {
-  color: red;
+  color: white;
   }
   /* visited link */
   a:visited {
-  color: green;
+  color: #19c2ff;
   }
   /* mouse over link */
   a:hover {
-    color: hotpink;
+    color: cyan;
   }
   /* selected link */
   a:active {
-  color: blue;
+  color: #1926ef;
   }
 </style>

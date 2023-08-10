@@ -2,8 +2,8 @@
   <body>
     <div id="login">
       <form @submit.prevent="login" class="container">
-        <h1 id="mainhead">Workout Companion App</h1>
-        <!-- <h3>User Sign In</h3> -->
+        <img src="../../../images/ActivElevate_Logo_3.png" alt="logo" />
+        <h1 id="mainhead">ActivElevate</h1>
         <div role="alert" v-if="invalidCredentials">
           Invalid username and password!
         </div>
@@ -101,57 +101,57 @@ export default {
 };
 </script>
 
-<style>
-.form-input-group {
-  margin-bottom: 1rem;
-}
-label {
-  margin-right: 0.5rem;
+<style scoped>
+
+#login > form > img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border: 10px solid black;
 }
 
-body {
-  background-color: rgb(1, 48, 92);
-  color: white;
-  font-family: "Montserrat", sans-serif;
-}
-
-.container {
+#login > form {
   display: grid;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
-  grid-template-areas:
-    "header"
-    "sign-in"
-    "sign-in"
-    "sign-in";
-  gap: 10px;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-
-  /* flex-wrap: wrap; */
-  /* justify-content: space-around; */
-  /* position: absolute; */
-  left: 0;
-  right: 0;
-  bottom: 0;
-  /* background-color: rgb(219, 218, 218);   */
+  background-color: darkblue;
 }
 
-h1 {
-  display: flex;
-  flex-wrap: wrap;
-  font-size: 10vh;
-  flex-grow: 2;
-  grid-area: header;
+#mainhead {
+  font-size: 7.5vh;
+  justify-content: center;
+  margin: auto;
+  padding: 5%;
+  color: white;
+  text-shadow: 0px 0px 5px white;
 }
 
 #username-password-submit {
-  grid-area: sign-in;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 0.5em;
-  align-items: center;
-  flex-grow: 1;
+  display: grid;
+  margin: auto;
 }
+
+#username {
+  padding: 10px;
+  font-size: 2.5vh;
+}
+
+#password {
+  padding: 10px;
+  font-size: 2.5vh;
+}
+
+#submit-button {
+  margin-left: 25%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  width: 50%;
+  padding: 10px;
+  font-size: 2.5vh;
+}
+
+#username-password-submit > p {
+  margin: auto;
+  padding-bottom: 10%;
+
+}
+
 </style>
