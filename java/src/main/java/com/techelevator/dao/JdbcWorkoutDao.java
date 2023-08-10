@@ -94,7 +94,7 @@ public class JdbcWorkoutDao implements WorkoutDao{
         String insertWorkoutSql = "INSERT INTO workouts (workout_type, exercise, workout_date, workout_duration_minutes, workout_notes, username) values (?, ?, ?, ?, ?, ?) RETURNING workout_id";
 
         try {
-            int newWorkoutId = jdbcTemplate.queryForObject(insertWorkoutSql, int.class, workout.getWorkout_type(), workout.getExercise(), workout.getWorkout_date(), workout.getDuration_minutes(), workout.getWorkout_notes(), workout.getUsername());
+            int newWorkoutId = jdbcTemplate.queryForObject(insertWorkoutSql, int.class, workout.getWorkout_type(), workout.getExercise(), workout.getWorkout_date(), workout.getWorkout_duration_minutes(), workout.getWorkout_notes(), workout.getUsername());
             newWorkout = getWorkoutById(newWorkoutId);
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
@@ -105,11 +105,11 @@ public class JdbcWorkoutDao implements WorkoutDao{
     };
 
     @Override
-    public WorkoutDto updateWorkout(WorkoutDto updatedWorkout) {
+    public WorkoutDto updateWorkoutDto(WorkoutDto updatedWorkout) {
         WorkoutDto result;
         String sql = "UPDATE workouts SET workout_type = ?, exercise = ?, workout_date = ?, workout_duration_minutes = ?, workout_notes = ?, username = ? WHERE workout_id = ? RETURNING workout_id;";
         try {
-            int newId = jdbcTemplate.queryForObject(sql, int.class, updatedWorkout.getWorkout_type(), updatedWorkout.getExercise(), updatedWorkout.getWorkout_date(), updatedWorkout.getDuration_minutes(), updatedWorkout.getWorkout_notes(), updatedWorkout.getUsername(), updatedWorkout.getId());
+            int newId = jdbcTemplate.queryForObject(sql, int.class, updatedWorkout.getWorkout_type(), updatedWorkout.getExercise(), updatedWorkout.getWorkout_date(), updatedWorkout.getWorkout_duration_minutes(), updatedWorkout.getWorkout_notes(), updatedWorkout.getUsername(), updatedWorkout.getId());
             result = getWorkoutById(newId);
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
@@ -126,7 +126,7 @@ public class JdbcWorkoutDao implements WorkoutDao{
         workout.setWorkout_type(rs.getString("workout_type"));
         workout.setExercise(rs.getString("exercise"));
         workout.setWorkout_date(rs.getDate("workout_date").toLocalDate());
-        workout.setDuration_minutes(rs.getInt("workout_duration_minutes"));
+        workout.setWorkout_duration_minutes(rs.getInt("workout_duration_minutes"));
         workout.setWorkout_notes(rs.getString("workout_notes"));
         workout.setUsername(rs.getString("username"));
         return workout;

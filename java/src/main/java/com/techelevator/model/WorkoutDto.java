@@ -10,18 +10,18 @@ public class WorkoutDto {
     private String workout_type;
     private String exercise;
     private LocalDate workout_date;
-    private int duration_minutes;
+    private int workout_duration_minutes;
     private String workout_notes;
     private String username;
 
     // constructors
 
-    public WorkoutDto(int id, String workout_type, String exercise, LocalDate workout_date, int duration_minutes, String workout_notes, String username) {
+    public WorkoutDto(int id, String workout_type, String exercise, LocalDate workout_date, int workout_duration_minutes, String workout_notes, String username) {
         this.id = id;
         this.workout_type = workout_type;
         this.exercise = exercise;
         this.workout_date = workout_date;
-        this.duration_minutes = duration_minutes;
+        this.workout_duration_minutes = workout_duration_minutes;
         this.workout_notes = workout_notes;
         this.username = username;
     }
@@ -60,12 +60,12 @@ public class WorkoutDto {
         this.workout_date = workout_date;
     }
 
-    public int getDuration_minutes() {
-        return duration_minutes;
+    public int getWorkout_duration_minutes() {
+        return workout_duration_minutes;
     }
 
-    public void setDuration_minutes(int duration_minutes) {
-        this.duration_minutes = duration_minutes;
+    public void setWorkout_duration_minutes(int workout_duration_minutes) {
+        this.workout_duration_minutes = workout_duration_minutes;
     }
 
     public String getWorkout_notes() {
@@ -86,4 +86,16 @@ public class WorkoutDto {
 
     // other methods
 
+    @Override
+    public String toString() {
+        return "WorkoutDto{" +
+                "workout_id=" + id +
+                ", workout_type='" + workout_type + '\'' +
+                ", exercise='" + exercise + '\'' +
+                ", workout_date=" + workout_date +
+                ", workout_duration_minutes=" + workout_duration_minutes +
+                ", workout_notes='" + workout_notes + '\'' +
+                ", username='" + username + '\'' +
+                '}';
+    }
 }
