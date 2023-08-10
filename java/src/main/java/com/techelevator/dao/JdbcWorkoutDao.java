@@ -98,6 +98,36 @@ public class JdbcWorkoutDao implements WorkoutDao{
 
     };
 
+    @Override
+    public int countWorkouts(String username) {
+        int count = 0;
+        String sql = "SELECT COUNT(workout_id) FROM workouts WHERE workout_date >= (SELECT CURRENT_DATE - EXTRACT(dow FROM CURRENT_DATE)::integer) AND username = ?;";
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, username);
+            if (results.next()) {
+                count = results.getInt("count");
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+        throw new DaoException("Unable to connect to server or database", e);
+        }
+        return count;
+    }
+    @Override
+    public double calculateAverageMinutes(String username) {
+        double avgMins = 0;
+        String sql = "SELECT AVG(workout_duration_minutes) FROM workouts WHERE workout_date >= (SELECT CURRENT_DATE - EXTRACT(dow FROM CURRENT_DATE)::integer) AND username = ?;";
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, username);
+            if (results.next()) {
+                avgMins = results.getDouble("avg");
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        }
+        return avgMins;
+    }
+
+
     private WorkoutDto mapRowToWorkoutDto(SqlRowSet rs) {
         WorkoutDto workout = new WorkoutDto();
         workout.setId(rs.getInt("workout_id"));
@@ -109,5 +139,7 @@ public class JdbcWorkoutDao implements WorkoutDao{
         workout.setUsername(rs.getString("username"));
         return workout;
     }
+
+
 
 }

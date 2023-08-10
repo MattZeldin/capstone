@@ -22,7 +22,7 @@ CREATE TABLE workouts (
     workout_date date,
     workout_duration_minutes int,
     workout_notes varchar(500),
-    username varchar(50) NOT NULL UNIQUE,
+    username varchar(50) NOT NULL,
     CONSTRAINT PK_workout PRIMARY KEY (workout_id)
 );
 
