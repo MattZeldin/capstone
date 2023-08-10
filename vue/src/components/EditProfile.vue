@@ -45,15 +45,6 @@ export default {
         id: this.$store.state.user.id,
         days: this.$store.state.user.days,
         minutes: this.$store.state.user.minutes
-      },
-
-      UpdatedUser: {
-        name: "",
-        email: "", 
-        username: "",
-        id: "",
-        days: "", 
-        minutes: ""
       }
     };
   },
@@ -82,11 +73,10 @@ export default {
         });
     },
     resetForm(){
+    
       this.edit = false;
-      // var element = document.getElementById("form");
-      // element.reset();
-      var allInputs = document.querySelectorAll('#form');
-      allInputs.forEach(singleInput => singleInput.reset());
+      
+
     }
   }
 };
