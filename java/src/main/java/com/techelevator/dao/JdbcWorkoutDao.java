@@ -89,13 +89,35 @@ public class JdbcWorkoutDao implements WorkoutDao{
     };
 
     @Override
-    public WorkoutDto createWorkout(WorkoutDto newWorkout) {
+    public WorkoutDto createWorkout(WorkoutDto workout) {
+        WorkoutDto newWorkout = null;
+        String insertWorkoutSql = "INSERT INTO workouts (workout_type, exercise, workout_date, workout_duration_minutes, workout_notes, username) values (?, ?, ?, ?, ?, ?) RETURNING workout_id";
 
+        try {
+            int newWorkoutId = jdbcTemplate.queryForObject(insertWorkoutSql, int.class, workout.getWorkout_type(), workout.getExercise(), workout.getWorkout_date(), workout.getDuration_minutes(), workout.getWorkout_notes(), workout.getUsername());
+            newWorkout = getWorkoutById(newWorkoutId);
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data integrity violation", e);
+        }
+        return newWorkout;
     };
 
     @Override
-    public WorkoutDto updateWorkout(WorkoutDto updateWorkout) {
+    public WorkoutDto updateWorkout(WorkoutDto updatedWorkout) {
+        WorkoutDto result;
+        String sql = "UPDATE workouts SET workout_type = ?, exercise = ?, workout_date = ?, workout_duration_minutes = ?, workout_notes = ?, username = ? WHERE workout_id = ? RETURNING workout_id;";
+        try {
+            int newId = jdbcTemplate.queryForObject(sql, int.class, updatedWorkout.getWorkout_type(), updatedWorkout.getExercise(), updatedWorkout.getWorkout_date(), updatedWorkout.getDuration_minutes(), updatedWorkout.getWorkout_notes(), updatedWorkout.getUsername(), updatedWorkout.getId());
+            result = getWorkoutById(newId);
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data integrity violation", e);
+        }
 
+        return result;
     };
 
     @Override
