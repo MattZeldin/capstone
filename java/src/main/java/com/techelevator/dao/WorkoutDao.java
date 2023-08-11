@@ -15,5 +15,6 @@ public interface WorkoutDao {
     double calculateAverageMinutes(String username);
     int countWorkouts(String username);
     WorkoutDto updateWorkoutDto(WorkoutDto updateWorkout);
+    int deleteWorkoutById(int workoutId);
 
 }
