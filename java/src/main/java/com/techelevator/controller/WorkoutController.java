@@ -33,11 +33,11 @@ public class WorkoutController {
     }
 
     // handle get request for all workouts in database. Maybe change so it gets all workouts for a given user
-    @RequestMapping(path = "/{username}/workouts", method = RequestMethod.GET)
-    public List<WorkoutDto> workouts(@PathVariable String username){
+    @RequestMapping(path = "/workouts", method = RequestMethod.GET)
+    public List<WorkoutDto> workouts(){
         List<WorkoutDto> workouts;
         try {
-            workouts = workoutDao.getWorkoutsByUsername(username);
+            workouts = workoutDao.getWorkouts();
         } catch (DaoException e) {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Username or password is incorrect.");
         }
@@ -70,6 +70,13 @@ public class WorkoutController {
         return result;
     }
 
+    // delete a single workout by workout_id
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @RequestMapping(path = "/{username}/workouts/{workoutId}", method = RequestMethod.DELETE)
+    public void deleteWorkout(@PathVariable int workoutId) {
+        workoutDao.deleteWorkoutById(workoutId);
+    }
+
     //get a workout data DTO for the home page
     @RequestMapping(path = "/{username}/workouts/data", method = RequestMethod.GET)
     public WorkoutDataDto getData(@PathVariable String username){
@@ -82,6 +89,8 @@ public class WorkoutController {
         }
         return data;
     }
+
+
 
 
 }
