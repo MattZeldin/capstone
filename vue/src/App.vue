@@ -13,9 +13,9 @@
         >My Profile</router-link
       >&nbsp;|&nbsp;
       <router-link
-        v-bind:to="{ name: 'MyWorkout' }"
+        v-bind:to="{ name: 'my-workout' }"
         v-if="$store.state.token != ''"
-        >My Workout</router-link
+        >My Workouts</router-link
       >&nbsp;|&nbsp;
       <router-link
         v-bind:to="{ name: 'workout-timer' }"
