@@ -45,5 +45,10 @@ export default new Vuex.Store({
       state.userData = userData;
       localStorage.setItem('userData',JSON.stringify(userData));
     },
+    }
+    // ,
+    // SET_WORKOUTS(state, workout) {
+    //   state.workouts
+    // }
   }
-})
+)
