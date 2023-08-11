@@ -2,8 +2,10 @@ import axios from 'axios';
 
 export default {
 
+
   getWorkouts() {
-    return axios.get(`/workouts`)
+    return axios.get('/workouts')
+
   },
   
   addWorkout(workout) {
