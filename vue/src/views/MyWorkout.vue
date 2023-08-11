@@ -1,6 +1,6 @@
 <template>
   <div>
-      <h1>My workouts page </h1>
+      <h2>My workouts page </h2>
       <button v-on:click="addWorkout=true">Add workout</button>
       <form id="button" v-show="addWorkout === true">
       <div class="form-element">
