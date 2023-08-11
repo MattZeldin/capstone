@@ -1,16 +1,11 @@
 <template>
   <div>
-    <h1>My Workouts Page</h1>
-    <button id="button2" v-on:click="addWorkout = true">Add workout</button>
-    <form id="form" v-show="addWorkout === true">
+      <h2>My workouts page </h2>
+      <button v-on:click="addWorkout=true">Add workout</button>
+      <form id="button" v-show="addWorkout === true">
       <div class="form-element">
         <label id="field_name" for="workoutType">Workout type:</label>
-        <input
-          id="field"
-          type="text"
-          v-model="workout.workoutType"
-          required="false"
-        />
+        <input id="workoutType" type="text" v-model="workout.workout_type" required="false" />
       </div>
       <div class="form-element">
         <label id="field_name" for="exercise">Exercise:</label>
@@ -23,68 +18,69 @@
       </div>
       <div class="form-element">
         <label id="field_name" for="workoutDate">Workout date:</label>
-        <input
-          id="field"
-          type="date"
-          v-model="workout.workoutDate"
-          required="false"
-        />
+        <input id="workoutDate" type="date" v-model="workout.workout_date" required="false" />
       </div>
       <div class="form-element">
-        <label id="field_name" for="workoutDuration"
-          >Workout duration (minutes):</label
-        >
-        <input
-          id="field"
-          type="text"
-          v-model="workout.workoutDuration"
-          required="false"
-        />
+        <label id="field_name" for="workoutDuration">Workout duration (minutes):</label>
+        <input id="workoutDuration" type="text" v-model="workout.workout_duration_minutes" required="false" />
       </div>
       <div class="form-element">
         <label id="field_name" for="workoutNotes">Workout notes:</label>
-        <textarea
-          id="field"
-          rows="4"
-          cols="50"
-          v-model="workout.workoutNotes"
-          required="false"
-        />
+        <textarea id="workoutNotes" rows="4" cols="50" v-model="workout.workout_notes" required="false" />
       </div>
-
-      <input
-        id="button2"
-        type="submit"
-        value="Save"
-        v-on:click.prevent="updateWorkouts"
-      />
-      <input id="button2" type="button" value="Cancel" v-on:click="resetForm" />
+ 
+      <input type="submit" value="Save" v-on:click.prevent="updateWorkouts" />
+      <input type="button" value="Cancel" v-on:click="resetForm" />
     </form>
     <display-workout></display-workout>
   </div>
 </template>
 
 <script>
-import DisplayWorkout from "../components/DisplayWorkout.vue";
+import DisplayWorkout from "../components/DisplayWorkout.vue"
+import workoutService from "../services/WorkoutService";
 
 export default {
-  name: "my-workout",
-  components: {
-    DisplayWorkout,
-  },
-  data() {
-    return {
-      addWorkout: false,
-      workout: {
-        workoutType: "",
-        exercise: "",
-        workoutDate: "",
-        workoutDuration: "",
-        workoutNotes: "",
-        username: "",
-      },
-    };
-  },
+    name: "my-workout",
+    components: {
+        DisplayWorkout
+    },
+    data() {
+        return {
+            addWorkout: false,
+            workout: {
+                workout_type: "",
+                exercise: "",
+                workout_date: "",
+                workout_duration_minutes: "",
+                workout_notes: "",
+                username: this.$store.state.user.username
+            }
+        }
+    },
+    methods: {
+        updateWorkouts() {
+            // a commit line that updates the workouts array in the vuex
+            workoutService
+            .addWorkout(this.workout)
+            .then((response) => {
+          if (response.status == 200) {
+            this.$router.push("/");
+          }
+        })
+        .catch((error) => {
+          const response = error.response;
+
+          if (response.status === 401) {
+            this.invalidCredentials = true;
+          }
+        });
+        },
+        resetForm(){
+            this.addWorkout = false;
+        }
+    }
+
 };
 </script>
 
