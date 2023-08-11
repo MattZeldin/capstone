@@ -50,7 +50,7 @@
 <script>
 import authService from "../services/AuthService";
 import userService from "../services/UserService";
-// import WorkoutService from '../services/WorkoutService';
+// import workoutService from '../services/WorkoutService';
 
 export default {
   name: "login",
@@ -97,8 +97,22 @@ export default {
             this.invalidCredentials = true;
           }
         });
+        // workoutService
+        //   .getWorkouts()
+        //   .then((response) => {
+        //    if (response.status == 200) {
+        //      this.$store.commit("SET_WORKOUTS", response.data);
+        //     //  this.$router.push("/");
+        //   }
+        // })
+        // .catch((error) => {
+        //   const response = error.response;
 
-        // this.$store.state.workouts = WorkoutService.getWorkouts
+        //   if (response.status === 401) {
+        //     this.invalidCredentials = true;
+        //   }
+        // });
+        
     },
   },
 };

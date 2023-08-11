@@ -52,7 +52,7 @@ export default new Vuex.Store({
 
     SET_WORKOUTS(state, workouts) {
       state.workouts = workouts;
-
+      // localStorage.setItem('workouts',JSON.stringify(workouts));
     }
   }
 })

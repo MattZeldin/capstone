@@ -11,43 +11,53 @@
       </tr>
   </thead>
   <tbody>
-    <tr>
-      <td> {{}} </td>
-      <td> {{}} </td> 
-      <td> {{}} </td>
-      <td> {{}} </td>
-      <td> {{}} </td>
+    <tr v-for="workout in this.$store.state.workouts" v-bind:key="workout.id">
+      <td> {{workout.workout_type}} </td>
+      <td> {{workout.exercise}} </td> 
+      <td> {{workout.workout_date}} </td>
+      <td> {{workout.workout_duration_minutes}} </td>
+      <td> {{workout.workout_notes}} </td>
+      <td> {{workout.username}} </td>
     </tr>
   </tbody> 
  </table>    
 </template>
 
 <script>
-// import WorkoutService from '../services/WorkoutService'
+import workoutService from '../services/WorkoutService'
 
 
 export default {
   name: "display-workout" , 
    data(){
       return {
-      workouts: []
+      workouts: this.$store.state.workouts
      }
    }, 
 
    methods: {
+    updateWorkoutLog() {
 
-   }, 
+    
+      workoutService
+          .getWorkouts()
+          .then((response) => {
+           if (response.status == 200) {
+             this.$store.commit("SET_WORKOUTS", response.data);
+            //  this.$router.push("/");
+          }
+        })
+        .catch((error) => {
+          const response = error.response;
 
-  //  created(){
-  //    WorkoutService.getWorkouts(this.username).then((response) => {
-  //      this.$store.commit("SET_WORKOUTS" , this.workouts);
-  //    })
-  //    .catch((error) => {
-  //      if (error.response.status == 400){
-  //         this.invalidCredentials = true;      
-  //          }
-  //    });
-  //  }
+          if (response.status === 401) {
+            this.invalidCredentials = true;
+          }
+        });
+   }
+   } 
+
+
 }
 </script>
 

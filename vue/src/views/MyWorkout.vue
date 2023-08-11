@@ -61,11 +61,28 @@ export default {
     methods: {
         updateWorkouts() {
             // a commit line that updates the workouts array in the vuex
+            // this.$store.state.workouts.unshift(this.workout) 
             workoutService
             .addWorkout(this.workout)
             .then((response) => {
           if (response.status == 200) {
-            this.$router.push("/");
+            // this.$router.push("/");
+          }
+        })
+        .catch((error) => {
+          const response = error.response;
+
+          if (response.status === 401) {
+            this.invalidCredentials = true;
+          }
+        });
+         workoutService
+          .getWorkouts()
+          .then((response) => {
+           if (response.status == 200) {
+             this.$store.commit("SET_WORKOUTS", response.data);
+             this.addWorkout = false;
+             this.$router.push("/my-workout");
           }
         })
         .catch((error) => {
@@ -76,6 +93,7 @@ export default {
           }
         });
         },
+
         resetForm(){
             this.addWorkout = false;
         }
