@@ -23,8 +23,31 @@
 </template>
 
 <script>
-export default {
+// import WorkoutService from '../services/WorkoutService'
 
+
+export default {
+  name: "display-workout" , 
+   data(){
+      return {
+      workouts: []
+     }
+   }, 
+
+   methods: {
+
+   }, 
+
+  //  created(){
+  //    WorkoutService.getWorkouts(this.username).then((response) => {
+  //      this.$store.commit("SET_WORKOUTS" , this.workouts);
+  //    })
+  //    .catch((error) => {
+  //      if (error.response.status == 400){
+  //         this.invalidCredentials = true;      
+  //          }
+  //    });
+  //  }
 }
 </script>
 
