@@ -40,8 +40,8 @@
 
 body {
   background-color: #1926ef;
-  color: black;
   font-family: "Share Tech Mono", sans-serif;
+  font-size: 20px;
   border-radius: 10px;
 }
 

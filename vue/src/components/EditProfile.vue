@@ -102,12 +102,13 @@ export default {
   color: white;
   text-shadow: 0px 0px 5px cyan;
   font-family: "Share Tech Mono", sans-serif;
-  margin: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   padding: 10px 10px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 40px;
+  font-size: 30px;
   border-radius: 5px;
   min-width: 100%
 }

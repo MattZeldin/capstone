@@ -128,25 +128,26 @@ body {
 #mainhead {
   font-size: 7.5vh;
   justify-content: center;
-  margin: auto;
-  padding: 5%;
-  color: black;
+  color: white;
   text-shadow: 0px 0px 5px black;
 }
 
 #username-password-submit {
   display: grid;
-  margin: auto;
 }
 
 #username {
   padding: 10px;
+  margin-left: 10px;
   font-size: 2.5vh;
+  border-radius: 10px;
 }
 
 #password {
   padding: 10px;
+  margin-left: 10px;
   font-size: 2.5vh;
+  border-radius: 10px;
 }
 
 #submit-button {
