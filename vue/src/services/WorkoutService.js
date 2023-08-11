@@ -2,8 +2,8 @@ import axios from 'axios';
 
 export default {
 
-  getWorkouts(workout) {
-    return axios.get(`${workout.username}/workouts`)
+  getWorkouts() {
+    return axios.get(`/workouts`)
   },
   
   addWorkout(workout) {
