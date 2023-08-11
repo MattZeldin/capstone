@@ -12,6 +12,14 @@
         <input id="field" type="text" v-model="user.email" required="false" />
       </div>
       <div class="form-element">
+        <label id="field_name" for="currentPassword">Enter current password first to change it:</label>
+        <input id="field" type="text" v-model="user.password" required="false" />
+      </div>
+      <div class="form-element">
+        <label id="field_name" for="newPassword">Enter new password:</label>
+        <input id="field" type="text" v-model="user.email" required="false" />
+      </div>
+      <div class="form-element">
         <label id="field_name" for="username">Username:</label>
         <input
           id="field"
@@ -48,7 +56,8 @@ export default {
         username: this.$store.state.user.username,
         id: this.$store.state.user.id,
         days: this.$store.state.user.days,
-        minutes: this.$store.state.user.minutes
+        minutes: this.$store.state.user.minutes,
+        password: this.$store.state.user.password
       }
     };
   },

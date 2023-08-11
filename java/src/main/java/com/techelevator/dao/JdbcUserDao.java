@@ -43,7 +43,7 @@ public class JdbcUserDao implements UserDao {
     @Override
     public UserDto getUserDtoById(int userId) {
         UserDto user = null;
-        String sql = "SELECT user_id, username, email, name, days, minutes FROM users WHERE user_id = ?";
+        String sql = "SELECT user_id, username, password_hash, email, name, days, minutes FROM users WHERE user_id = ?";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
             if (results.next()) {
@@ -120,6 +120,21 @@ public class JdbcUserDao implements UserDao {
         return result;
 
     };
+
+    @Override
+    public int deleteUserById(int userId) {
+        int numberOfRows = 0;
+        String sql = "DELETE FROM users WHERE user_id = ?;";
+        try {
+            numberOfRows = jdbcTemplate.update(sql, userId);
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data integrity violation", e);
+        }
+        return numberOfRows;
+    }
+
     private User mapRowToUser(SqlRowSet rs) {
         User user = new User();
         user.setId(rs.getInt("user_id"));
@@ -138,6 +153,7 @@ public class JdbcUserDao implements UserDao {
         UserDto user = new UserDto();
         user.setId(rs.getInt("user_id"));
         user.setName(rs.getString("name"));
+        user.setPassword(rs.getString("password_hash"));
         user.setEmail(rs.getString("email"));
         user.setUsername(rs.getString("username"));
         user.setDays(rs.getInt("days"));
