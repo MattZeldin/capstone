@@ -1,11 +1,11 @@
 <template>
   <div>
-      <h2>My workouts page </h2>
-      <button v-on:click="addWorkout=true">Add workout</button>
-      <form id="button" v-show="addWorkout === true">
+      <h1>My Workouts</h1>
+      <button id="button2" v-on:click="addWorkout=true">Add workout</button>
+      <form v-show="addWorkout === true">
       <div class="form-element">
         <label id="field_name" for="workoutType">Workout type:</label>
-        <input id="workoutType" type="text" v-model="workout.workout_type" required="false" />
+        <input id="field" type="text" v-model="workout.workout_type" required="false" />
       </div>
       <div class="form-element">
         <label id="field_name" for="exercise">Exercise:</label>
@@ -18,19 +18,19 @@
       </div>
       <div class="form-element">
         <label id="field_name" for="workoutDate">Workout date:</label>
-        <input id="workoutDate" type="date" v-model="workout.workout_date" required="false" />
+        <input id="field" type="date" v-model="workout.workout_date" required="false" />
       </div>
       <div class="form-element">
         <label id="field_name" for="workoutDuration">Workout duration (minutes):</label>
-        <input id="workoutDuration" type="text" v-model="workout.workout_duration_minutes" required="false" />
+        <input id="field" type="text" v-model="workout.workout_duration_minutes" required="false" />
       </div>
       <div class="form-element">
         <label id="field_name" for="workoutNotes">Workout notes:</label>
-        <textarea id="workoutNotes" rows="4" cols="50" v-model="workout.workout_notes" required="false" />
+        <textarea id="field" rows="4" cols="50" v-model="workout.workout_notes" required="false" />
       </div>
  
-      <input type="submit" value="Save" v-on:click.prevent="updateWorkouts" />
-      <input type="button" value="Cancel" v-on:click="resetForm" />
+      <input id="button2" type="submit" value="Save" v-on:click.prevent="updateWorkouts" />
+      <input id="button2" type="button" value="Cancel" v-on:click="resetForm" />
     </form>
     <display-workout></display-workout>
   </div>
@@ -91,7 +91,7 @@ h1 {
   color: white;
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: black;
-  text-shadow: 0px 0px 10px cyan;
+  text-shadow: 0px 0px 5px black;
 }
 
 #button2 {

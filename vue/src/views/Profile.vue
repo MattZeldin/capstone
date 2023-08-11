@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>User Profile</h1>
-    <p>Select "Edit Profile" to change name and/or email.</p>
+    <p>Current User Information:</p>
     <ul>
       <li>Name: {{ this.$store.state.user.name }}</li>
       <li>Email Address: {{ this.$store.state.user.email }}</li>
@@ -9,11 +9,8 @@
       <li>Password:</li>
       <li>Target days per week: {{ this.$store.state.user.days }}</li>
       <li>Target minutes per week: {{ this.$store.state.user.minutes }}</li>
-
-      <!--<li>photo</li>
-          <li>workout goals</li>
-          <li>workout profile?</li>-->
     </ul>
+    <p>Click "Edit Profile" to modify user information and goals</p>
     <edit-profile />
   </div>
 </template>
@@ -38,11 +35,13 @@ h1 {
   color: white;
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: black;
-  text-shadow: 0px 0px 10px cyan;
+  text-shadow: 0px 0px 10px black;
 }
 
 #app > div:nth-child(2) > p {
-  font-size: 4vh;
+  color: #1926ef;
+  text-shadow: 0px 0px 10px white;
+  font-size: 35px;
 }
 
 #app > div:nth-child(2) > ul {

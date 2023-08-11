@@ -71,13 +71,8 @@
           />
         </div>
 
-
-        <button type="submit">Create Account</button>
-        <p>
-          <router-link :to="{ name: 'login' }"
-            >Already have an account? Log in.</router-link
-          >
-        </p>
+        <button id="button4" type="submit">Create Account</button>
+        <router-link id="button4" :to="{ name: 'login' }">Log In</router-link>
       </div>
     </form>
   </div>
@@ -138,10 +133,39 @@ export default {
 </script>
 
 <style scoped>
+
 .form-input-group {
   margin-bottom: 1rem;
 }
+
+
+
 label {
   margin-right: 0.5rem;
+}
+
+
+
+#button4 {
+  background-color: #1926ef;
+  border: 3px solid #19c2ff;
+  color: white;
+  text-shadow: 0px 0px 5px cyan;
+  font-family: "Share Tech Mono", sans-serif;
+  padding: 10px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 30px;
+  border-radius: 5px;
+  min-width: 25%;
+  max-width: 25%;
+  margin: 10px
+}
+
+#button4:hover {
+  background-color: cyan;
+  color: #1926ef;
+  text-shadow: 0px 0px 10px #1926ef;
 }
 </style>

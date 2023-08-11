@@ -199,7 +199,7 @@ body {
   align-self: center;
 
   color: white;
-  text-shadow: 0px 0px 25px cyan;
+  text-shadow: 0px 0px 10px black;
   -webkit-text-stroke-width: 2px;
   -webkit-text-stroke-color: black;
 }
@@ -210,8 +210,8 @@ body {
 
 .text {
   margin-top: 30px;
-  font-size: 2.5vh;
-  color: black;
+  font-size: 3vh;
+  color: white;
   text-align: center;
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: black
@@ -246,7 +246,7 @@ body {
   text-transform: uppercase;
   font-size: 10vh;
   cursor: pointer;
-  text-shadow: 0px 0px 25px cyan;
+  text-shadow: 0px 0px 10px black;
 
   flex-grow: 1;
 
@@ -254,10 +254,10 @@ body {
 }
 
 .btn-container > a:hover {
-  color: #1926ef;
+  color: cyan;
 }
 
 #clock > div.text > a:hover {
-  color: #1926ef;
+  color: cyan;
 }
 </style>
