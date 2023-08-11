@@ -50,6 +50,7 @@
 <script>
 import authService from "../services/AuthService";
 import userService from "../services/UserService";
+// import WorkoutService from '../services/WorkoutService';
 
 export default {
   name: "login",
@@ -96,6 +97,8 @@ export default {
             this.invalidCredentials = true;
           }
         });
+
+        // this.$store.state.workouts = WorkoutService.getWorkouts
     },
   },
 };
