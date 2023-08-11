@@ -103,6 +103,12 @@ export default {
   min-width: 100%
 }
 
+#button:hover {
+  background-color: cyan;
+  color: #1926ef;
+  text-shadow: 0px 0px 10px #1926ef;
+}
+
 #field_name {
   display: flex;
   justify-content: center;
