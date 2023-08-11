@@ -70,6 +70,13 @@ public class WorkoutController {
         return result;
     }
 
+    // delete a single workout by workout_id
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @RequestMapping(path = "/{username}/workouts/{workoutId}", method = RequestMethod.DELETE)
+    public void deleteWorkout(@PathVariable int workoutId) {
+        workoutDao.deleteWorkoutById(workoutId);
+    }
+
     //get a workout data DTO for the home page
     @RequestMapping(path = "/{username}/workouts/data", method = RequestMethod.GET)
     public WorkoutDataDto getData(@PathVariable String username){
@@ -82,6 +89,8 @@ public class WorkoutController {
         }
         return data;
     }
+
+
 
 
 }
