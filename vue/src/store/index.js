@@ -11,6 +11,8 @@ Vue.use(Vuex)
  */
 const currentToken = localStorage.getItem('token')
 const currentUser = JSON.parse(localStorage.getItem('user'));
+const currentUserData = JSON.parse(localStorage.getItem('userData'));
+
 
 
 if(currentToken != null) {
@@ -20,8 +22,11 @@ if(currentToken != null) {
 export default new Vuex.Store({
   state: {
     token: currentToken || '',
-    user: currentUser || {} , 
+
+    user: currentUser || {},
+    userData: currentUserData || {} ,
     workouts: []
+
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -40,8 +45,14 @@ export default new Vuex.Store({
       state.user = {};
       axios.defaults.headers.common = {};
     },
+    SET_USER_DATA(state, userData) {
+      state.userData = userData;
+      localStorage.setItem('userData',JSON.stringify(userData));
+    },
+
     SET_WORKOUTS(state, workouts) {
       state.workouts = workouts;
+
     }
   }
 })
