@@ -35,7 +35,7 @@
             </div>
           </div>
 
-          <button type="submit" id="submit-button">Sign in</button>
+          <button type="submit" id="button">Sign in</button>
           <p>
             <router-link :to="{ name: 'register' }" id="routerlink"
               >Need an account? Sign up.</router-link
@@ -50,6 +50,7 @@
 <script>
 import authService from "../services/AuthService";
 import userService from "../services/UserService";
+// import WorkoutService from '../services/WorkoutService';
 
 export default {
   name: "login",
@@ -96,6 +97,8 @@ export default {
             this.invalidCredentials = true;
           }
         });
+
+        // this.$store.state.workouts = WorkoutService.getWorkouts
     },
   },
 };

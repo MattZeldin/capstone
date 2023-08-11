@@ -1,6 +1,6 @@
 <template>
   <div>
- <button v-on:click="edit=true">Edit Profile</button>
+ <button id="button" v-on:click="edit=true">Edit Profile</button>
     <form id="form" v-show="edit === true">
       <div class="form-element">
         <label id="field_name" for="name">Name:</label>
@@ -9,6 +9,14 @@
 
       <div class="form-element">
         <label id="field_name" for="email">Email:</label>
+        <input id="field" type="text" v-model="user.email" required="false" />
+      </div>
+      <div class="form-element">
+        <label id="field_name" for="currentPassword">Enter current password first to change it:</label>
+        <input id="field" type="text" v-model="user.password" required="false" />
+      </div>
+      <div class="form-element">
+        <label id="field_name" for="newPassword">Enter new password:</label>
         <input id="field" type="text" v-model="user.email" required="false" />
       </div>
       <div class="form-element">
@@ -21,15 +29,15 @@
         />
       </div>
       <div class="form-element">
-        <label for="days">Target days per week:</label>
-        <input id="days" type="text" v-model="user.days" required="false" />
+        <label id="field_name" for="days">Target days per week:</label>
+        <input id="field" type="text" v-model="user.days" required="false" />
       </div>
       <div class="form-element">
-        <label for="minutes">Minutes per workout:</label>
-        <input id="minutes" placeholder="" type="text" v-model="user.minutes" required="false" />
+        <label id="field_name" for="minutes">Minutes per workout:</label>
+        <input id="field" placeholder="" type="text" v-model="user.minutes" required="false" />
       </div>
-      <input type="submit" value="Save" v-on:click.prevent="updateUser" />
-      <input type="button" value="Cancel" v-on:click="resetForm" />
+      <input id="button" type="submit" value="Save" v-on:click.prevent="updateUser" />
+      <input id="button" type="button" value="Cancel" v-on:click="resetForm" />
     </form>
   </div>
 </template>
@@ -48,7 +56,8 @@ export default {
         username: this.$store.state.user.username,
         id: this.$store.state.user.id,
         days: this.$store.state.user.days,
-        minutes: this.$store.state.user.minutes
+        minutes: this.$store.state.user.minutes,
+        password: this.$store.state.user.password
       }
     };
   },
@@ -93,12 +102,20 @@ export default {
   color: white;
   text-shadow: 0px 0px 5px cyan;
   font-family: "Share Tech Mono", sans-serif;
+  margin: 10px;
   padding: 10px 10px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 40px;
   border-radius: 5px;
+  min-width: 100%
+}
+
+#button:hover {
+  background-color: cyan;
+  color: #1926ef;
+  text-shadow: 0px 0px 10px #1926ef;
 }
 
 #field_name {

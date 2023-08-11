@@ -148,7 +148,19 @@ public class JdbcWorkoutDao implements WorkoutDao{
         }
         return avgMins;
     }
-
+    @Override
+    public int deleteWorkoutById(int workoutId) {
+        int numberOfRows = 0;
+        String sql = "DELETE FROM workouts WHERE workout_id = ?;";
+        try {
+            numberOfRows = jdbcTemplate.update(sql, workoutId);
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data integrity violation", e);
+        }
+        return numberOfRows;
+    }
 
     private WorkoutDto mapRowToWorkoutDto(SqlRowSet rs) {
         WorkoutDto workout = new WorkoutDto();

@@ -18,6 +18,6 @@ public interface UserDao {
 
     User createUser(RegisterUserDto user);
 
-
+    int deleteUserById(int userId);
     UserDto updateUserDto(UserDto updatedUser);
 }
