@@ -8,5 +8,10 @@ export default {
 
   updateProfile(user){
     return axios.put(`/user/${user.id}/profile`, user)
+  },
+  userDataLocation(username) {
+    console.log(username);
+    return axios.get(`/${username}/workouts/userData`)
   }
+
 }

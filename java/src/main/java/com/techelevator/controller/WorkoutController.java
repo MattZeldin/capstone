@@ -71,7 +71,7 @@ public class WorkoutController {
     }
 
     //get a workout data DTO for the home page
-    @RequestMapping(path = "/{username}/workouts/data", method = RequestMethod.GET)
+    @RequestMapping(path = "/{username}/workouts/userData", method = RequestMethod.GET)
     public WorkoutDataDto getData(@PathVariable String username){
         WorkoutDataDto data;
         try {
@@ -82,6 +82,4 @@ public class WorkoutController {
         }
         return data;
     }
-
-
 }
