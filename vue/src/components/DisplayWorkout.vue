@@ -24,7 +24,12 @@
 
 <script>
 export default {
+  // name: "display-workout" , 
+  // data(){
+  //   return {
 
+  //   }
+  // }
 }
 </script>
 

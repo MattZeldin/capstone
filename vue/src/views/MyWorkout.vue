@@ -57,8 +57,6 @@ export default {
                 username: this.$store.state.user.username
             }
         }
-<<<<<<< HEAD
-=======
     },
     methods: {
         updateWorkouts() {
@@ -81,7 +79,6 @@ export default {
         resetForm(){
             this.addWorkout = false;
         }
->>>>>>> 2485a0c3498a609d9a72987f85538d2984ceb780
     }
 
 };
