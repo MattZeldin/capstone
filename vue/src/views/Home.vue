@@ -2,10 +2,7 @@
   <div class="home">
     <h1>Home</h1>
     <track-goals/>
-<<<<<<< HEAD
     <quotes/>
-=======
->>>>>>> b819e754cdb3190251f804edc4398a66b9001258
   </div>
 </template>
 
