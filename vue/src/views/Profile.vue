@@ -41,10 +41,6 @@ h1 {
   text-shadow: 0px 0px 10px cyan;
 }
 
-#app > div:nth-child(2) > h1{
-
-}
-
 #app > div:nth-child(2) > p {
   font-size: 4vh;
 }

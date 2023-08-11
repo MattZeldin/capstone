@@ -35,7 +35,7 @@
             </div>
           </div>
 
-          <button type="submit" id="submit-button">Sign in</button>
+          <button type="submit" id="button">Sign in</button>
           <p>
             <router-link :to="{ name: 'register' }" id="routerlink"
               >Need an account? Sign up.</router-link

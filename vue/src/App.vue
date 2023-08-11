@@ -70,7 +70,7 @@ body {
   padding-right: 5%;
   padding-bottom: 5%;
 }
-
+/*for nav bar only*/
 /* unvisited link */
 a:link {
   color: white;
