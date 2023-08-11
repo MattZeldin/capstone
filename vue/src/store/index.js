@@ -14,8 +14,12 @@ const currentUser = JSON.parse(localStorage.getItem('user'));
 const currentUserData = JSON.parse(localStorage.getItem('userData'));
 
 
+<<<<<<< HEAD
+if (currentToken != null) {
+=======
 
 if(currentToken != null) {
+>>>>>>> 4bffff57a6b044ee9bc913d0d5ca7e6f80942f93
   axios.defaults.headers.common['Authorization'] = `Bearer ${currentToken}`;
 }
 
@@ -36,7 +40,7 @@ export default new Vuex.Store({
     },
     SET_USER(state, user) {
       state.user = user;
-      localStorage.setItem('user',JSON.stringify(user));
+      localStorage.setItem('user', JSON.stringify(user));
     },
     LOGOUT(state) {
       localStorage.removeItem('token');
@@ -47,7 +51,7 @@ export default new Vuex.Store({
     },
     SET_USER_DATA(state, userData) {
       state.userData = userData;
-      localStorage.setItem('userData',JSON.stringify(userData));
+      localStorage.setItem('userData', JSON.stringify(userData));
     },
 
     SET_WORKOUTS(state, workouts) {
