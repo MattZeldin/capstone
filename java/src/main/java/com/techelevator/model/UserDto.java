@@ -12,20 +12,22 @@ public class UserDto {
     private String username;
 
 //    @JsonIgnore
-//    private String password;
+    private String password;
     private String email;
     private String name;
 
     private int days;
 
-    public UserDto(int id, String username, String email, String name, int days, int minutes) {
+    public UserDto(int id, String username, String email, String password, String name, int days, int minutes) {
         this.id = id;
         this.username = username;
+        this.password = password;
         this.email = email;
         this.name = name;
         this.days = days;
         this.minutes = minutes;
     }
+
 
     public int getDays() {
         return days;
@@ -74,13 +76,13 @@ public class UserDto {
         this.username = username;
     }
 
-//    public String getPassword() {
-//        return password;
-//    }
-//
-//    public void setPassword(String password) {
-//        this.password = password;
-//    }
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
     public String getName(){
         return name;
     }
@@ -103,6 +105,7 @@ public class UserDto {
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
                 ", name='" + name + '\'' +
                 ", days=" + days +
                 ", minutes=" + minutes +

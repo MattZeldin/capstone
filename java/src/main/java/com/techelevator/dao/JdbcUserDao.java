@@ -43,7 +43,7 @@ public class JdbcUserDao implements UserDao {
     @Override
     public UserDto getUserDtoById(int userId) {
         UserDto user = null;
-        String sql = "SELECT user_id, username, email, name, days, minutes FROM users WHERE user_id = ?";
+        String sql = "SELECT user_id, username, password_hash, email, name, days, minutes FROM users WHERE user_id = ?";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
             if (results.next()) {
@@ -120,19 +120,6 @@ public class JdbcUserDao implements UserDao {
         return result;
 
     };
-    private User mapRowToUser(SqlRowSet rs) {
-        User user = new User();
-        user.setId(rs.getInt("user_id"));
-        user.setName(rs.getString("name"));
-        user.setEmail(rs.getString("email"));
-        user.setUsername(rs.getString("username"));
-        user.setDays(rs.getInt("days"));
-        user.setMinutes(rs.getInt("minutes"));
-        user.setPassword(rs.getString("password_hash"));
-        user.setAuthorities(Objects.requireNonNull(rs.getString("role")));
-        user.setActivated(true);
-        return user;
-    }
 
     @Override
     public int deleteUserById(int userId) {
@@ -148,10 +135,25 @@ public class JdbcUserDao implements UserDao {
         return numberOfRows;
     }
 
+    private User mapRowToUser(SqlRowSet rs) {
+        User user = new User();
+        user.setId(rs.getInt("user_id"));
+        user.setName(rs.getString("name"));
+        user.setEmail(rs.getString("email"));
+        user.setUsername(rs.getString("username"));
+        user.setDays(rs.getInt("days"));
+        user.setMinutes(rs.getInt("minutes"));
+        user.setPassword(rs.getString("password_hash"));
+        user.setAuthorities(Objects.requireNonNull(rs.getString("role")));
+        user.setActivated(true);
+        return user;
+    }
+
     private UserDto mapRowToUserDto(SqlRowSet rs) {
         UserDto user = new UserDto();
         user.setId(rs.getInt("user_id"));
         user.setName(rs.getString("name"));
+        user.setPassword(rs.getString("password_hash"));
         user.setEmail(rs.getString("email"));
         user.setUsername(rs.getString("username"));
         user.setDays(rs.getInt("days"));
