@@ -2,6 +2,7 @@
   <div>
       <h1>My Workouts</h1>
       <button id="button2" v-on:click="addWorkout=true">Add workout</button>
+      <!-- <router-link v-bind:to="{name:}"> -->
       <form v-show="addWorkout === true">
       <div class="form-element">
         <label id="field_name" for="workoutType">Workout type:</label>
@@ -29,7 +30,7 @@
         <textarea id="field" rows="4" cols="50" v-model="workout.workout_notes" required="false" />
       </div>
  
-      <input id="button2" type="submit" value="Save" v-on:click.prevent="updateWorkouts" />
+      <input id="button2" type="submit" value="Save" v-on:click="updateWorkouts" />
       <input id="button2" type="button" value="Cancel" v-on:click="resetForm" />
     </form>
     <display-workout></display-workout>
@@ -67,6 +68,8 @@ export default {
             .then((response) => {
           if (response.status == 200) {
             // this.$router.push("/");
+            this.$store.commit("SET_WORKOUTS", response.data);
+            this.$router.push("/my-workout");
           }
         })
         .catch((error) => {
@@ -76,8 +79,32 @@ export default {
             this.invalidCredentials = true;
           }
         });
-         workoutService
-          .getWorkouts()
+        //  workoutService
+        //   .getWorkouts()
+        //   .then((response) => {
+        //    if (response.status == 200) {
+        //      this.$store.commit("SET_WORKOUTS", response.data);
+        //      this.addWorkout = false;
+        //      this.$router.push("/my-workout");
+        //   }
+        // })
+        // .catch((error) => {
+        //   const response = error.response;
+
+        //   if (response.status === 401) {
+        //     this.invalidCredentials = true;
+        //   }
+        // });
+        },
+
+        resetForm(){
+            this.addWorkout = false;
+        }
+    }
+    ,
+    beforeMount() {
+      workoutService
+          .getWorkoutsByUsername(this.$store.state.user.username)
           .then((response) => {
            if (response.status == 200) {
              this.$store.commit("SET_WORKOUTS", response.data);
@@ -92,17 +119,12 @@ export default {
             this.invalidCredentials = true;
           }
         });
-        },
-
-        resetForm(){
-            this.addWorkout = false;
-        }
     }
 
 };
 </script>
 
-<style>
+<style scoped>
 
 h1 {
   font-size: 10vh;

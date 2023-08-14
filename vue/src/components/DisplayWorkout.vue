@@ -1,12 +1,12 @@
 <template>
 <!-- <p> workout table goes here</p> -->
- <table>
+ <table width="100%">
   <thead>
     <tr>
       <th>Type of Workout</th>
       <th>Excerise</th>
-      <th>Date of Workout</th>
-      <th>Duration of Workout in Minutes</th>
+      <th>Date</th>
+      <th>Duration (minutes)</th>
       <th>Workout Notes</th>
       </tr>
   </thead>
@@ -17,7 +17,6 @@
       <td> {{workout.workout_date}} </td>
       <td> {{workout.workout_duration_minutes}} </td>
       <td> {{workout.workout_notes}} </td>
-      <td> {{workout.username}} </td>
     </tr>
   </tbody> 
  </table>    
@@ -40,7 +39,25 @@ export default {
 
     
       workoutService
-          .getWorkouts()
+          .getWorkoutsByUsername(this.$store.user.username)
+          .then((response) => {
+           if (response.status == 200) {
+             this.$store.commit("SET_WORKOUTS", response.data);
+            //  this.$router.push("/");
+          }
+        })
+        .catch((error) => {
+          const response = error.response;
+
+          if (response.status === 401) {
+            this.invalidCredentials = true;
+          }
+        });
+   },
+    getWorkouts() {
+    
+      workoutService
+          .getWorkoutsByUsername(this.$store.user.username)
           .then((response) => {
            if (response.status == 200) {
              this.$store.commit("SET_WORKOUTS", response.data);
@@ -55,6 +72,8 @@ export default {
           }
         });
    }
+
+
    } 
 
 
