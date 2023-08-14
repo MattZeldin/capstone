@@ -26,4 +26,15 @@ CREATE TABLE workouts (
     CONSTRAINT PK_workout PRIMARY KEY (workout_id)
 );
 
+CREATE TABLE calendar (
+	event_id SERIAL, 
+	start_time TIME,
+	date date, 
+	end_time TIME,   
+	event_title varchar(50),
+	content varchar(500),
+	user_id int, 
+	CONSTRAINT FK_user FOREIGN KEY(user_id) REFERENCES users(user_id)
+
+);
 COMMIT TRANSACTION;
