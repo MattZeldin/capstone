@@ -108,9 +108,12 @@ export default {
       this.time = "00:00:00.000";
     },
     saveTime() {
+      this.running = false;
+      this.timeStopped = new Date();
+      clearInterval(this.started);
       this.addWorkout = true;
       this.workout.workout_duration_minutes = 60 * parseInt(this.time.substring(0,2)) + parseInt(this.time.substring(3,5));
-      this.running = false;
+      
       
     },
     updateWorkouts() {
