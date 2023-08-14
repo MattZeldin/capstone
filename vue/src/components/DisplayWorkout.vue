@@ -1,6 +1,6 @@
 <template>
 <!-- <p> workout table goes here</p> -->
- <table>
+ <table width="100%">
   <thead>
     <tr>
       <th>Type of Workout</th>

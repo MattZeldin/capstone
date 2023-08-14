@@ -75,7 +75,7 @@ public class JdbcWorkoutDao implements WorkoutDao{
     @Override
     public List<WorkoutDto> getWorkoutsByUsername(String username){
         List<WorkoutDto> workouts = new ArrayList<>();
-        String sql = "SELECT workout_id, workout_type, exercise, workout_date, workout_duration_minutes, workout_notes, username FROM workouts WHERE username = ?";
+        String sql = "SELECT workout_id, workout_type, exercise, workout_date, workout_duration_minutes, workout_notes, username FROM workouts WHERE username = ? ORDER BY workout_date DESC;";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, username);
             while (results.next()) {

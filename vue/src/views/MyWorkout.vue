@@ -68,6 +68,7 @@ export default {
             .then((response) => {
           if (response.status == 200) {
             // this.$router.push("/");
+            this.$store.commit("SET_WORKOUTS", response.data);
             this.$router.push("/my-workout");
           }
         })
