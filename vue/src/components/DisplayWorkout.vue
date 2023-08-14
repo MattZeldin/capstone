@@ -1,22 +1,22 @@
 <template>
 <!-- <p> workout table goes here</p> -->
- <table width="100%">
+ <table id= 'table' width="100%">
   <thead>
     <tr>
-      <th>Type of Workout</th>
-      <th>Excerise</th>
-      <th>Date</th>
-      <th>Duration (minutes)</th>
-      <th>Workout Notes</th>
+      <th id= 'tableItems'>Type of Workout</th>
+      <th id= 'tableItems'>Excerise</th>
+      <th id= 'tableItems'>Date</th>
+      <th id= 'tableItems'>Duration (minutes)</th>
+      <th id= 'tableItems'>Workout Notes</th>
       </tr>
   </thead>
   <tbody>
     <tr v-for="workout in this.$store.state.workouts" v-bind:key="workout.id">
-      <td> {{workout.workout_type}} </td>
-      <td> {{workout.exercise}} </td> 
-      <td> {{workout.workout_date}} </td>
-      <td> {{workout.workout_duration_minutes}} </td>
-      <td> {{workout.workout_notes}} </td>
+      <td id= 'tableItems'> {{workout.workout_type}} </td>
+      <td id= 'tableItems'> {{workout.exercise}} </td> 
+      <td id= 'tableItems'> {{workout.workout_date}} </td>
+      <td id= 'tableItems'> {{workout.workout_duration_minutes}} </td>
+      <td id= 'tableItems'> {{workout.workout_notes}} </td>
     </tr>
   </tbody> 
  </table>    
@@ -80,6 +80,24 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+
+#table {
+  justify-content: space-around;
+  background: #19c2ff;
+  padding: 20px;
+
+  border: 5px solid darkblue;
+  border-radius: 10px;
+}
+
+#tableItems {
+  padding: 20px;
+  border: 3px solid #1926ef;
+  background: white;
+  border-radius: 10px;
+  font-size: 25px;
+  color: darkblue;
+}
 
 </style>

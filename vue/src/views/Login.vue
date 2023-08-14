@@ -139,13 +139,6 @@ body {
   align-items: center;
 }
 
-#mainhead {
-  font-size: 7.5vh;
-  justify-content: center;
-  color: white;
-  text-shadow: 0px 0px 5px black;
-}
-
 #username-password-submit {
   display: grid;
 }
