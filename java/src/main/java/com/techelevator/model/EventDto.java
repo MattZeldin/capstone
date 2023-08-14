@@ -1,29 +1,46 @@
 package com.techelevator.model;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 public class EventDto {
 
     private int eventId;
     private LocalDate date;
-    private LocalTime startTime;
-    private LocalTime endTime;
+    private LocalDateTime startTime;
+    private LocalDateTime endTime;
     private String eventTitle;
     private String content;
+    private String classVarchar;
     private int userId;
 
-    public EventDto(int eventId, LocalDate date, LocalTime startTime, LocalTime endTime, String eventTitle, String content, int userId) {
+    public EventDto(int eventId, LocalDate date, LocalDateTime startTime, LocalDateTime endTime, String eventTitle, String content, int userId, String classVarchar) {
         this.eventId = eventId;
         this.date = date;
         this.startTime = startTime;
         this.endTime = endTime;
         this.eventTitle = eventTitle;
         this.content = content;
+        this.classVarchar = classVarchar;
         this.userId = userId;
     }
-
+    public EventDto(LocalDateTime startTime, LocalDateTime endTime, String eventTitle, String content, String classVarchar) {
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.eventTitle = eventTitle;
+        this.content = content;
+        this.classVarchar = classVarchar;
+    }
     public EventDto() {
+    }
+
+    public String getClassVarchar() {
+        return classVarchar;
+    }
+
+    public void setClassVarchar(String classVarchar) {
+        this.classVarchar = classVarchar;
     }
 
     public int getEventId() {
@@ -42,19 +59,19 @@ public class EventDto {
         this.date = date;
     }
 
-    public LocalTime getStartTime() {
+    public LocalDateTime getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(LocalTime startTime) {
+    public void setStartTime(LocalDateTime startTime) {
         this.startTime = startTime;
     }
 
-    public LocalTime getEndTime() {
+    public LocalDateTime getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(LocalTime endTime) {
+    public void setEndTime(LocalDateTime endTime) {
         this.endTime = endTime;
     }
 
@@ -91,6 +108,7 @@ public class EventDto {
                 ", endTime=" + endTime +
                 ", eventTitle='" + eventTitle +
                 ", content='" + content +
+                ", class='" + classVarchar +
                 ", userId='" + userId +
                 '}';
     }
