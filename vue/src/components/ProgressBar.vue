@@ -2,7 +2,7 @@
   <div id="progress-bar">
     <div class="shell">
       <div class="bar" :style="{ width: progress + '%' }">
-        <span>{{ progress }}%</span>
+        <span>{{ progress > 100 ? 100 : progress }}%</span>
       </div>
     </div>
   </div>
@@ -39,6 +39,7 @@ export default {
   background: linear-gradient(to left, #1926ef, #19c2ff);
   height: 50px;
   width: 15px;
+  max-width: 480px;
   border-radius: 10px;
 }
 

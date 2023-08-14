@@ -49,6 +49,14 @@ body {
   border-radius: 10px;
 }
 
+h1 {
+  font-size: 10vh;
+  color: white;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+  text-shadow: 0px 0px 10px black;
+}
+
 #nav {
   display: flex;
   align-items: center;

@@ -28,15 +28,6 @@ export default {
 <style scoped>
 
 
-h1 {
-  font-size: 10vh;
-  margin: 5%;
-  color: white;
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: black;
-  text-shadow: 0px 0px 10px black;
-}
-
 #app > div:nth-child(2) > p {
   color: #1926ef;
   text-shadow: 0px 0px 10px white;
