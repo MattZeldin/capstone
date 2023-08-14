@@ -24,7 +24,9 @@ export default new Vuex.Store({
 
     user: currentUser || {},
     userData: currentUserData || {} ,
-    workouts: []
+    workouts: [] ,
+    events: [] , 
+    eventObjects: []
 
   },
   mutations: {
@@ -52,6 +54,13 @@ export default new Vuex.Store({
     SET_WORKOUTS(state, workouts) {
       state.workouts = workouts;
       // localStorage.setItem('workouts',JSON.stringify(workouts));
+    }, 
+
+    SET_EVENTS(state, events) {
+      state.events = events; 
+    }, 
+    SET_EVENTS_OBJECTS(state, eventObjects) {
+      state.eventObjects = eventObjects; 
     }
   }
 })
