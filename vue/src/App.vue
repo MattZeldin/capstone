@@ -23,7 +23,7 @@
         >Workout Timer</router-link
       >&nbsp;|&nbsp;
       <router-link
-        v-bind:to="{ name: 'ExerciseAssistance' }"
+        v-bind:to="{ name: 'exercise-assistance' }"
         v-if="$store.state.token != ''"
         >Exercise Assistance</router-link
       >&nbsp;|&nbsp;
