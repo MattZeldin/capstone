@@ -1,8 +1,8 @@
 <template>
   <div id="progress-bar">
     <div class="shell">
-      <div class="bar" :style="{ width: progress + '%' }">
-        <span>{{ progress > 100 ? 100 : progress }}%</span>
+      <div class="bar" :style="{ width: barIndicator + '%' }">
+        <span>{{ barIndicator > 100 ? 100 : barIndicator }}%</span>
       </div>
     </div>
   </div>
@@ -12,10 +12,13 @@
 export default {
   name: 'progress-bar',
   data() {
-    return {
-      progress: Math.floor((this.$store.state.userData.numberOfWorkouts / this.$store.state.user.days).toFixed(2)*100)
-    };
+    return {};
   },
+  computed: {
+    barIndicator(){
+      return Math.floor((this.$store.state.userData.numberOfWorkouts / this.$store.state.user.days).toFixed(2)*100);
+    }
+  }
 };
 </script>
 
