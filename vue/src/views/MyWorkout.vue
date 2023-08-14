@@ -66,7 +66,7 @@ export default {
             workoutService
             .addWorkout(this.workout)
             .then((response) => {
-          if (response.status == 200) {
+          if (response.status == 201) {
             // this.$router.push("/");
             this.$store.commit("SET_WORKOUTS", response.data);
             this.$router.push("/my-workout");
