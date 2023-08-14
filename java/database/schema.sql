@@ -28,15 +28,14 @@ CREATE TABLE workouts (
 
 CREATE TABLE events (
 	event_id SERIAL, 
-	start_date timestamp,
-	date date,
-	end_date timestamp,
+	starts timestamp, 
+	date date, 
+	ends timestamp,   
 	title varchar(50),
 	content varchar(500),
 	class varchar(50),
 	user_id int, 
-	CONSTRAINT FK_user FOREIGN KEY(user_id) REFERENCES users(user_id), 
-	CONSTRAINT PK_events PRIMARY KEY (event_id)
-
+	CONSTRAINT PK_events PRIMARY KEY (event_id),
+	CONSTRAINT FK_user FOREIGN KEY(user_id) REFERENCES users(user_id)
 );
 COMMIT TRANSACTION;

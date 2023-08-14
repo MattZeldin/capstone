@@ -38,7 +38,7 @@ public class JdbcEventDao implements EventDao {
     @Override
     public List<EventDto> getEventsByUserId(int userId) {
         List<EventDto> events = new ArrayList<>();
-        String sql = "SELECT start, end, title, content, class FROM events WHERE user_id = ?"; // ORDER BY date DESC;
+        String sql = "SELECT starts, ends, title, content, class FROM events WHERE user_id = ?"; // ORDER BY date DESC;
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
             while (results.next()) {
