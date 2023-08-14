@@ -44,6 +44,19 @@ public class WorkoutController {
         return workouts;
     }
 
+    // handle get request for all workouts for a given username in database. Maybe change so it gets all workouts for a given user
+    @RequestMapping(path = "/{username}/workouts", method = RequestMethod.GET)
+    public List<WorkoutDto> getWorkoutsByUsername(@PathVariable String username){
+        List<WorkoutDto> workouts;
+        try {
+            workouts = workoutDao.getWorkoutsByUsername(username);
+        } catch (DaoException e) {
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Username or password is incorrect.");
+        }
+        return workouts;
+    }
+
+
     // handle post request for adding a new workout to the database
     @RequestMapping(path = "/{username}/workouts", method = RequestMethod.POST)
     public void addWorkout(@PathVariable String username, @RequestBody WorkoutDto newWorkout) {

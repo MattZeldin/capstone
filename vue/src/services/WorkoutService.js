@@ -7,6 +7,11 @@ export default {
     return axios.get('/workouts')
 
   },
+
+  getWorkoutsByUsername(username) {
+    return axios.get(`${username}/workouts`)
+
+  },
   
   addWorkout(workout) {
     return axios.post(`${workout.username}/workouts`, workout)
