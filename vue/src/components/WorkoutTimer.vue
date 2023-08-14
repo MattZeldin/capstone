@@ -134,6 +134,10 @@ export default {
         });
     },
 
+    resetForm(){
+        this.addWorkout = false;
+    },
+
     clockRunning() {
       let currentTime = new Date();
       let timeElapsed = new Date(
