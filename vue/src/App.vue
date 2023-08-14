@@ -27,6 +27,10 @@
         v-if="$store.state.token != ''"
         >Exercise Assistance</router-link
       >&nbsp;|&nbsp;
+      <router-link
+        v-bind:to="{ name: 'calendar' }"
+        v-if="$store.state.token != ''"
+        >My Calendar</router-link>
     </div>
     <router-view />
   </div>
