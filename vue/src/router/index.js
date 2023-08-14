@@ -8,6 +8,7 @@ import Profile from '../views/Profile.vue'
 import MyWorkout from '../views/MyWorkout.vue'
 import WorkoutTimer from '../views/WorkoutTimer.vue'
 import ExerciseAssistance from '../views/ExerciseAssistance.vue'
+import Calendar from '../views/Calendar.vue'
 
 import store from '../store/index'
 
@@ -88,6 +89,15 @@ const router = new Router({
         path: "/exercise-assistance",
         name: "exercise-assistance",
         component: ExerciseAssistance,
+        meta: {
+          requiresAuth: true
+        }
+      },
+
+      {
+        path: "/calendar",
+        name: "calendar",
+        component: Calendar,
         meta: {
           requiresAuth: true
         }
