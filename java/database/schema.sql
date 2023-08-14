@@ -26,7 +26,7 @@ CREATE TABLE workouts (
     CONSTRAINT PK_workout PRIMARY KEY (workout_id)
 );
 
-CREATE TABLE calendar (
+CREATE TABLE events (
 	event_id SERIAL, 
 	start_time TIME,
 	date date, 
