@@ -6,7 +6,43 @@
       <a id="start" v-on:click="start">Start</a>
       <a id="stop" v-on:click="stop">Stop</a>
       <a id="reset" v-on:click="reset">Reset</a>
+      <a id="save" v-on:click="saveTime">Save</a>
     </div>
+
+
+    <!-- drop down form for logging a workout  -->
+    <form v-if="addWorkout === true">
+      <div class="form-element">
+        <label id="field_name" for="workoutType">Workout type:</label>
+        <input id="field" type="text" v-model="workout.workout_type" required="false" />
+      </div>
+      <div class="form-element">
+        <label id="field_name" for="exercise">Exercise:</label>
+        <input
+          id="field"
+          type="text"
+          v-model="workout.exercise"
+          required="false"
+        />
+      </div>
+      <div class="form-element">
+        <label id="field_name" for="workoutDate">Workout date:</label>
+        <input id="field" type="date" v-model="workout.workout_date" required="false" />
+      </div>
+      <div class="form-element">
+        <label id="field_name" for="workoutDuration">Workout duration (minutes):</label>
+        <input id="field" type="text" v-model="workout.workout_duration_minutes" required="false" />
+      </div>
+      <div class="form-element">
+        <label id="field_name" for="workoutNotes">Workout notes:</label>
+        <textarea id="field" rows="4" cols="50" v-model="workout.workout_notes" required="false" />
+      </div>
+ 
+      <input id="button2" type="submit" value="Save" v-on:click="updateWorkouts" />
+      <input id="button2" type="button" value="Cancel" v-on:click="resetForm" />
+    </form>
+
+
 
     <div class="text">
       <a href="https://codepen.io/raphael_octau" target="_blank"
@@ -17,6 +53,8 @@
 </template>
 
 <script>
+import workoutService from '../services/WorkoutService'
+
 export default {
   name: "workoutTimer",
   data() {
@@ -27,6 +65,15 @@ export default {
       started: null,
       stoppedDuration: 0,
       running: false,
+      addWorkout: false,
+      workout: {
+                workout_type: "",
+                exercise: "",
+                workout_date: "",
+                workout_duration_minutes: "",
+                workout_notes: "",
+                username: this.$store.state.user.username
+            }
     };
   },
   methods: {
@@ -59,6 +106,32 @@ export default {
       this.timeBegan = null;
       this.timeStopped = null;
       this.time = "00:00:00.000";
+    },
+    saveTime() {
+      this.addWorkout = true;
+      this.workout.workout_duration_minutes = 60 * parseInt(this.time.substring(0,2)) + parseInt(this.time.substring(3,5));
+      this.running = false;
+      
+    },
+    updateWorkouts() {
+            // a commit line that updates the workouts array in the vuex
+            // this.$store.state.workouts.unshift(this.workout) 
+            workoutService
+            .addWorkout(this.workout)
+            .then((response) => {
+          if (response.status == 200) {
+            // this.$router.push("/");
+            this.$store.commit("SET_WORKOUTS", response.data);
+            this.$router.push("/my-workout");
+          }
+        })
+        .catch((error) => {
+          const response = error.response;
+
+          if (response.status === 401) {
+            this.invalidCredentials = true;
+          }
+        });
     },
 
     clockRunning() {
