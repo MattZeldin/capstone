@@ -14,8 +14,7 @@ const currentUser = JSON.parse(localStorage.getItem('user'));
 const currentUserData = JSON.parse(localStorage.getItem('userData'));
 
 
-
-if(currentToken != null) {
+if (currentToken != null) {
   axios.defaults.headers.common['Authorization'] = `Bearer ${currentToken}`;
 }
 
