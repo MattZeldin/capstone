@@ -38,7 +38,7 @@
         <textarea id="field" rows="4" cols="50" v-model="workout.workout_notes" required="false" />
       </div>
  
-      <input id="button2" type="submit" value="Save" v-on:click="updateWorkouts" />
+      <input id="button2" type="submit" value="Save" v-on:click.prevent="updateWorkouts" />
       <input id="button2" type="button" value="Cancel" v-on:click="resetForm" />
     </form>
 
