@@ -20,10 +20,25 @@ public class JdbcEventDao implements EventDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
+//    @Override
+//    public List<EventDto> getEventsByUserId(int userId) {
+//        List<EventDto> events = new ArrayList<>();
+//        String sql = "SELECT event_id, start_time, date, end_time, event_title, content, user_id FROM events WHERE user_id = ?"; // ORDER BY date DESC;
+//        try {
+//            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
+//            while (results.next()) {
+//                EventDto event = mapRowToEventDto(results);
+//                events.add(event);
+//            }
+//        } catch (CannotGetJdbcConnectionException e) {
+//            throw new DaoException("Unable to connect to server or database", e);
+//        }
+//        return events;
+//    }
     @Override
     public List<EventDto> getEventsByUserId(int userId) {
         List<EventDto> events = new ArrayList<>();
-        String sql = "SELECT event_id, start_time, date, end_time, event_title, content, user_id FROM events WHERE user_id = ?"; // ORDER BY date DESC;
+        String sql = "SELECT starts, ends, title, content, class FROM events WHERE user_id = ?"; // ORDER BY date DESC;
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
             while (results.next()) {
@@ -53,9 +68,9 @@ public class JdbcEventDao implements EventDao {
     @Override
     public EventDto createEvent(EventDto event) {
         EventDto newEvent = null;
-        String insertEventSql = "INSERT INTO events (start_time, date, end_time, event_title, content, user_id) values (?, ?, ?, ?, ?, ?) RETURNING event_id";
+        String insertEventSql = "INSERT INTO events (starts, ends, title, content, class) values (?, ?, ?, ?, ?) RETURNING event_id";
         try {
-            int newEventId = jdbcTemplate.queryForObject(insertEventSql, int.class, event.getStartTime(), event.getDate(), event.getEndTime(), event.getEventTitle(), event.getContent(), event.getUserId());
+            int newEventId = jdbcTemplate.queryForObject(insertEventSql, int.class, event.getStartTime(), event.getEndTime(), event.getEventTitle(), event.getContent(), event.getClassVarchar());
             newEvent = getEventByEventId(newEventId);
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
@@ -96,15 +111,25 @@ public class JdbcEventDao implements EventDao {
     }
 
 
+//    private EventDto mapRowToEventDto(SqlRowSet results) {
+//        EventDto event = new EventDto();
+//        event.setEventId(results.getInt("event_id"));
+//        event.setDate(results.getDate("date").toLocalDate());
+//        event.setStartTime(results.getTimestamp("start").toLocalDateTime());
+//        event.setEndTime(results.getTimestamp("end").toLocalDateTime());
+//        event.setEventTitle(results.getString("title"));
+//        event.setContent(results.getString("content"));
+//        event.setClassVarchar(results.getString("class"));
+//        event.setUserId(results.getInt("user_id"));
+//        return event;
+//    }
     private EventDto mapRowToEventDto(SqlRowSet results) {
         EventDto event = new EventDto();
-        event.setEventId(results.getInt("event_id"));
-        event.setDate(results.getDate("date").toLocalDate());
-        event.setStartTime(results.getTime("start_time").toLocalTime());
-        event.setEndTime(results.getTime("end_time").toLocalTime());
-        event.setEventTitle(results.getString("event_title"));
+        event.setStartTime(results.getTimestamp("starts").toLocalDateTime());
+        event.setEndTime(results.getTimestamp("ends").toLocalDateTime());
+        event.setEventTitle(results.getString("title"));
         event.setContent(results.getString("content"));
-        event.setUserId(results.getInt("user_id"));
+        event.setClassVarchar(results.getString("class"));
         return event;
     }
 }
