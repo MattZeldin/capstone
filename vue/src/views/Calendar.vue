@@ -42,9 +42,8 @@ export default {
                 title: "",
                 content: "",
                 class: "none",
-                user_id: this.$store.state.user.user_id,
-                date: "null", 
-                
+                user_id: this.$store.state.user.user_id
+
             }
     }
   },
