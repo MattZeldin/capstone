@@ -85,7 +85,7 @@ public class WorkoutController {
 
     // delete a single workout by workout_id
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @RequestMapping(path = "/{username}/workouts/{workoutId}", method = RequestMethod.DELETE)
+    @RequestMapping(path = "/{workoutId}/workouts", method = RequestMethod.DELETE)
     public void deleteWorkout(@PathVariable int workoutId) {
         workoutDao.deleteWorkoutById(workoutId);
     }
