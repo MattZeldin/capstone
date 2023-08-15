@@ -246,55 +246,107 @@ export default {
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap");
 
-html,
-body {
+html, body {
   padding: 0;
   margin: 0;
   width: 100%;
   height: 100%;
 }
+
 #clock > span {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 50vh;
-  font-size: 15vh;
-}
-
-body {
-  background-color: black;
-  font-family: "Share Tech Mono", sans-serif;
-
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-content: stretch;
-  align-items: center;
+  height: 250px;
+  font-size: 150px
 }
 
 #clock {
   order: 0;
   flex: 0 1 auto;
   align-self: center;
-
   color: white;
-  text-shadow: 0px 0px 10px black;
-  -webkit-text-stroke-width: 2px;
-  -webkit-text-stroke-color: black;
 }
 
 #clock.time {
   font-size: 6.5em;
+
+}
+#clock > span {
+  margin: 10px;
+  text-shadow: 0px 0px 10px black;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: black;
+  
 }
 
-.text {
-  margin-top: 30px;
-  font-size: 3vh;
+#clock > form {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  padding: 25px;
+  justify-content: center;
+  align-content: center;
+  border: 10px solid darkblue;
+  border-radius: 25px;
+  background: skyblue;
+}
+
+#clock > div.text > a:hover {
+  color: cyan;
+}
+
+#clock > form > div:nth-child(1) {
+  padding: 10px
+}
+#clock > form > div:nth-child(2) {
+  padding: 10px
+}
+#clock > form > div:nth-child(3) {
+  padding: 10px
+}
+#clock > form > div:nth-child(4) {
+  padding: 10px
+}
+#clock > form > div:nth-child(5) {
+  padding: 10px
+}
+
+
+#field {
+  border-radius: 10px;
+  border: 3px solid darkblue;
+  min-height: 30px;
+}
+
+#field_name {
+  color: black;
+  text-shadow: 0px 0px 0px black;
+}
+
+#button2 {
+  background-color: #1926ef;
+  border: 3px solid #19c2ff;
   color: white;
+  text-shadow: 0px 0px 5px cyan;
+  font-family: "Share Tech Mono", sans-serif;
+  padding: 10px 10px;
+  justify-content: center;
   text-align: center;
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: black
+  text-decoration: none;
+  display: inline-block;
+  font-size: 30px;
+  border-radius: 5px;
+  min-width: 25%;
+  max-width: 25%;
+  margin-left: 125px;
+  margin-top: 10px
+}
+
+#button2:hover {
+  background-color: cyan;
+  color: #1926ef;
+  text-shadow: 0px 0px 10px #1926ef;
 }
 
 .text > a {
@@ -310,26 +362,22 @@ body {
 
 .btn-container {
   display: flex;
-  margin-top: 15px;
   font-size: 4vh;
+  text-shadow: 0px 0px 10px black;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: black;
 }
 
 .btn-container > a {
   text-align: center;
   font-family: "Share Tech Mono", sans-serif;
   background: transparent;
-  border: 3px solid black;
   border: none;
   color: white;
-  padding: 10px 15px;
-  margin: 0 10px;
   text-transform: uppercase;
   font-size: 10vh;
   cursor: pointer;
-  text-shadow: 0px 0px 10px black;
-
   flex-grow: 1;
-
   transition: color 0.1s ease-out;
 }
 
@@ -337,7 +385,9 @@ body {
   color: cyan;
 }
 
-#clock > div.text > a:hover {
-  color: cyan;
+
+label {
+  color: white;
+  text-shadow: 0px 0px 10px black;
 }
 </style>

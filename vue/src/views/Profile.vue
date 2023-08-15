@@ -41,8 +41,7 @@ export default {
 #app > div:nth-child(2) > div {
   display: grid;
   justify-content: center;
-} 
-
+}
 
 
 </style>

@@ -150,6 +150,29 @@ body {
   border-radius: 10px;
 }
 
+#button {
+  background-color: #1926ef;
+  border: 3px solid #19c2ff;
+  color: white;
+  text-shadow: 0px 0px 5px cyan;
+  font-family: "Share Tech Mono", sans-serif;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 30px;
+  border-radius: 5px;
+  min-width: 100%
+}
+
+#button:hover {
+  background-color: cyan;
+  color: #1926ef;
+  text-shadow: 0px 0px 10px #1926ef;
+}
+
 #password {
   padding: 10px;
   margin-left: 10px;
