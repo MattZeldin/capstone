@@ -138,6 +138,7 @@ export default {
 <style scoped>
 .form-input-group {
   margin-bottom: 1rem;
+  font-size: 25px;
 }
 
 #username {
@@ -145,6 +146,7 @@ export default {
   border: 3px solid darkblue;
   min-height: 30px;
   margin: 10px;
+  font-size: 20px;
 }
 
 #password {
