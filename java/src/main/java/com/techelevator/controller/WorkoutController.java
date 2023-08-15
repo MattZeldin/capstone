@@ -72,8 +72,9 @@ public class WorkoutController {
 
     // handle update workout request
 //    @PreAuthorize("permitAll()")
-    @RequestMapping(path = "/{username}/workouts", method = RequestMethod.PUT)
-    public WorkoutDto updateWorkout(@PathVariable String username, @RequestBody WorkoutDto updatedWorkout){
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(path = "/workouts", method = RequestMethod.PUT)
+    public WorkoutDto updateWorkout(@RequestBody WorkoutDto updatedWorkout){
         WorkoutDto result;
         try {
             result = workoutDao.updateWorkoutDto(updatedWorkout);

@@ -18,8 +18,9 @@ export default {
   },
 
   updateWorkout(workout){
-    return axios.put(`${workout.username}/workouts`, workout)
+    return axios.put(`/workouts`, workout)
   },
+  
   deleteWorkoutById(workoutId){
     return axios.delete(`${workoutId}/workouts`)
   }
