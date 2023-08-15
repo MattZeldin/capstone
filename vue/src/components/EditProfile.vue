@@ -123,7 +123,7 @@ export default {
   align-items: center;
   padding: 10px;
   margin: 10px;
-  font-size: 20px
+  font-size: 25px
 }
 
 #field {
@@ -136,6 +136,7 @@ export default {
   min-width: 50%;
   border-radius: 10px;
   border: 5px solid darkblue;
+  font-size: 20px
 }
 
 </style>

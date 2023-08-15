@@ -1,50 +1,54 @@
 <template>
-<!-- <p> workout table goes here</p> -->
- <table id= 'table' width="100%">
-  <thead>
-    <tr>
-      <th id= 'tableItems'>Type of Workout</th>
-      <th id= 'tableItems'>Excerise</th>
-      <th id= 'tableItems'>Date</th>
-      <th id= 'tableItems'>Duration (minutes)</th>
-      <th id= 'tableItems'>Workout Notes</th>
+  <!-- <p> workout table goes here</p> -->
+  <table id="table" width="100%">
+    <thead>
+      <tr>
+        <th id="tableItems">Type of Workout</th>
+        <th id="tableItems">Excerise</th>
+        <th id="tableItems">Date</th>
+        <th id="tableItems">Duration (minutes)</th>
+        <th id="tableItems">Workout Notes</th>
       </tr>
-  </thead>
-  <tbody>
-    <tr v-for="workout in this.$store.state.workouts" v-bind:key="workout.id" v-bind:value="workout.id">
-      <td id= 'tableItems'> {{workout.workout_type}} </td>
-      <td id= 'tableItems'> {{workout.exercise}} </td> 
-      <td id= 'tableItems'> {{workout.workout_date}} </td>
-      <td id= 'tableItems'> {{workout.workout_duration_minutes}} </td>
-      <td id= 'tableItems'> {{workout.workout_notes}} </td>
-      <td>
-            <button class="btnDelete" v-on:click="handleDelete(workout)">Delete</button>
-          </td>
-    </tr>
-  </tbody> 
- </table>    
+    </thead>
+    <tbody>
+      <tr
+        v-for="workout in this.$store.state.workouts"
+        v-bind:key="workout.id"
+        v-bind:value="workout.id"
+      >
+        <td id="tableItems">{{ workout.workout_type }}</td>
+        <td id="tableItems">{{ workout.exercise }}</td>
+        <td id="tableItems">{{ workout.workout_date }}</td>
+        <td id="tableItems">{{ workout.workout_duration_minutes }}</td>
+        <td id="tableItems">{{ workout.workout_notes }}</td>
+        <td>
+          <button id="delete" class="btnDelete" v-on:click="handleDelete(workout)">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </template>
 
 <script>
-import workoutService from '../services/WorkoutService'
-
+import workoutService from "../services/WorkoutService";
 
 export default {
-  name: "display-workout" , 
-   data(){
-      return {
+  name: "display-workout",
+  data() {
+    return {
       workouts: this.$store.state.workouts,
-      fakeVar : ""
-     }
-   },
+      fakeVar: "",
+    };
+  },
 
-
-   methods: {
-    handleDelete(workout){
+  methods: {
+    handleDelete(workout) {
       workoutService
-          .deleteWorkoutById(workout.id)
-          .then((response) => {
-           if (response.status == 204) {
+        .deleteWorkoutById(workout.id)
+        .then((response) => {
+          if (response.status == 204) {
             //  this.updateWorkoutLog();
             //  this.$router.push("/my-workout");
             this.fakeVar = "nothing";
@@ -57,17 +61,15 @@ export default {
             this.invalidCredentials = true;
           }
         });
-        
-        this.updateWorkoutLog();
 
-
+      this.updateWorkoutLog();
     },
     updateWorkoutLog() {
       workoutService
-          .getWorkoutsByUsername(this.$store.state.user.username)
-          .then((response) => {
-           if (response.status == 200) {
-             this.$store.commit("SET_WORKOUTS", response.data);
+        .getWorkoutsByUsername(this.$store.state.user.username)
+        .then((response) => {
+          if (response.status == 200) {
+            this.$store.commit("SET_WORKOUTS", response.data);
             //  this.$router.push("my-workout");
             this.$router.go(0);
           }
@@ -79,14 +81,13 @@ export default {
             this.invalidCredentials = true;
           }
         });
-   },
+    },
     getWorkouts() {
-    
       workoutService
-          .getWorkoutsByUsername(this.$store.user.username)
-          .then((response) => {
-           if (response.status == 200) {
-             this.$store.commit("SET_WORKOUTS", response.data);
+        .getWorkoutsByUsername(this.$store.user.username)
+        .then((response) => {
+          if (response.status == 200) {
+            this.$store.commit("SET_WORKOUTS", response.data);
             //  this.$router.push("/");
           }
         })
@@ -97,14 +98,33 @@ export default {
             this.invalidCredentials = true;
           }
         });
-   }
-   }
-
-
-}
+    },
+  },
+};
 </script>
 
 <style scoped>
+
+#delete {
+  background-color: red;
+  border: 3px solid orange;
+  color: white;
+  font-family: "Share Tech Mono", sans-serif;
+  padding: 10px 10px;
+  justify-content: center;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 30px;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+
+#delete:hover {
+  background-color: red;
+  color: yellow;
+  text-shadow: 0px 0px 10px yellow;
+}
 
 #table {
   justify-content: space-around;
@@ -123,5 +143,4 @@ export default {
   font-size: 25px;
   color: darkblue;
 }
-
 </style>
