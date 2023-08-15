@@ -10,7 +10,6 @@ import java.time.LocalTime;
 public class EventDto {
 
     private int eventId;
-    private LocalDate date;
     @JsonProperty("start")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd' 'HH:mm")
     private LocalDateTime startTime;
@@ -25,9 +24,8 @@ public class EventDto {
     private String classVarchar;
     private int userId;
 
-//    public EventDto(int eventId, LocalDate date, LocalDateTime startTime, LocalDateTime endTime, String eventTitle, String content, int userId, String classVarchar) {
+//    public EventDto(int eventId, LocalDateTime startTime, LocalDateTime endTime, String eventTitle, String content, int userId, String classVarchar) {
 //        this.eventId = eventId;
-//        this.date = date;
 //        this.startTime = startTime;
 //        this.endTime = endTime;
 //        this.eventTitle = eventTitle;
@@ -35,12 +33,13 @@ public class EventDto {
 //        this.classVarchar = classVarchar;
 //        this.userId = userId;
 //    }
-    public EventDto(LocalDateTime startTime, LocalDateTime endTime, String eventTitle, String content, String classVarchar) {
+    public EventDto(LocalDateTime startTime, LocalDateTime endTime, String eventTitle, String content, String classVarchar, int userId) {
         this.startTime = startTime;
         this.endTime = endTime;
         this.eventTitle = eventTitle;
         this.content = content;
         this.classVarchar = classVarchar;
+        this.userId = userId;
     }
     public EventDto() {
     }
@@ -59,14 +58,6 @@ public class EventDto {
 
     public void setEventId(int eventId) {
         this.eventId = eventId;
-    }
-
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDate date) {
-        this.date = date;
     }
 
     public LocalDateTime getStartTime() {
@@ -114,7 +105,6 @@ public class EventDto {
 //        return "EventDto{" +
 //                "eventId=" + eventId +
 //                ", startTime=" + startTime +
-//                ", date=" + date +
 //                ", endTime=" + endTime +
 //                ", eventTitle='" + eventTitle +
 //                ", content='" + content +
@@ -130,6 +120,7 @@ public class EventDto {
                 ", title='" + eventTitle +
                 ", content='" + content +
                 ", class='" + classVarchar +
+                ", userId='" + userId +
                 '}';
     }
 }

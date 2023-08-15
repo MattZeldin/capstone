@@ -11,11 +11,11 @@ export default {
   }, 
 
   createEvent(event){
-      return axios.post(`/${event.userId}/events` , event)
+      return axios.post(`/${event.user_id}/events` , event)
   }, 
 
   updateEvent(event){
-    return axios.put(`/${event.userId}/events` , event)
+    return axios.put(`/${event.user_id}/events` , event)
 }, 
 
   delete(event){

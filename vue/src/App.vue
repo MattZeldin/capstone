@@ -46,7 +46,6 @@ body {
   background-color: #1926ef;
   font-family: "Share Tech Mono", sans-serif;
   font-size: 20px;
-  border-radius: 10px;
 }
 
 h1 {
@@ -67,13 +66,11 @@ h1 {
   padding-left: 10px;
   padding-right: 10px;
   outline: 3px solid darkblue;
-  border-radius: 10px;
 }
 
 #app {
   background-color: skyblue;
   color: black;
-  border-radius: 10px;
   outline: 3px solid darkblue;
 }
 

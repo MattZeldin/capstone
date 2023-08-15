@@ -3,7 +3,7 @@
       <h1>My Workouts</h1>
       <button id="button2" v-on:click="addWorkout=true">Add workout</button>
       <!-- <router-link v-bind:to="{name:}"> -->
-      <form v-show="addWorkout === true">
+      <form id="form" v-show="addWorkout === true">
       <div class="form-element">
         <label id="field_name" for="workoutType">Workout type:</label>
         <input id="field" type="text" v-model="workout.workout_type" required="false" />
@@ -132,6 +132,21 @@ h1 {
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: black;
   text-shadow: 0px 0px 5px black;
+}
+
+#field {
+  border-radius: 10px;
+  border: 3px solid darkblue;
+  min-height: 30px;
+  margin-left: 10px;
+  margin-top: 10px;
+  padding: 10px
+}
+
+#field_name {
+  color: black;
+  text-shadow: 0px 0px 0px black;
+  font-size: 25px
 }
 
 #button2 {
