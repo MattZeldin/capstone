@@ -38,7 +38,7 @@ public class JdbcEventDao implements EventDao {
     @Override
     public List<EventDto> getEventsByUserId(int userId) {
         List<EventDto> events = new ArrayList<>();
-        String sql = "SELECT start, end, title, content, class FROM events WHERE user_id = ?"; // ORDER BY date DESC;
+        String sql = "SELECT starts, ends, title, content, class FROM events WHERE user_id = ?"; // ORDER BY date DESC;
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
             while (results.next()) {
@@ -68,9 +68,9 @@ public class JdbcEventDao implements EventDao {
     @Override
     public EventDto createEvent(EventDto event) {
         EventDto newEvent = null;
-        String insertEventSql = "INSERT INTO events (start_time, date, end_time, event_title, content, user_id) values (?, ?, ?, ?, ?, ?) RETURNING event_id";
+        String insertEventSql = "INSERT INTO events (starts, ends, title, content, class) values (?, ?, ?, ?, ?) RETURNING event_id";
         try {
-            int newEventId = jdbcTemplate.queryForObject(insertEventSql, int.class, event.getStartTime(), event.getDate(), event.getEndTime(), event.getEventTitle(), event.getContent(), event.getUserId());
+            int newEventId = jdbcTemplate.queryForObject(insertEventSql, int.class, event.getStartTime(), event.getEndTime(), event.getEventTitle(), event.getContent(), event.getClassVarchar());
             newEvent = getEventByEventId(newEventId);
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
@@ -125,8 +125,8 @@ public class JdbcEventDao implements EventDao {
 //    }
     private EventDto mapRowToEventDto(SqlRowSet results) {
         EventDto event = new EventDto();
-        event.setStartTime(results.getTimestamp("start").toLocalDateTime());
-        event.setEndTime(results.getTimestamp("end").toLocalDateTime());
+        event.setStartTime(results.getTimestamp("starts").toLocalDateTime());
+        event.setEndTime(results.getTimestamp("ends").toLocalDateTime());
         event.setEventTitle(results.getString("title"));
         event.setContent(results.getString("content"));
         event.setClassVarchar(results.getString("class"));
