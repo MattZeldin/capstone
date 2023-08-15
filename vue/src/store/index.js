@@ -55,6 +55,9 @@ export default new Vuex.Store({
       state.workouts = workouts;
       // localStorage.setItem('workouts',JSON.stringify(workouts));
     }, 
+    DELETE_WORKOUT(state, workout){
+      state.workouts.removeItem(workout);
+    },
 
     SET_EVENTS(state, events) {
       state.events = events; 
