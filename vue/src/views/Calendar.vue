@@ -59,17 +59,6 @@ export default {
     return {
       eventToAdd: false,
       event: {
-<<<<<<< HEAD
-                start: "",
-                end: "",
-                title: "",
-                content: "",
-                class: "none",
-                user_id: this.$store.state.user.user_id
-
-            }
-    }
-=======
         start: "",
         end: "",
         title: "",
@@ -78,7 +67,6 @@ export default {
         user_id: this.$store.state.user.id,
       },
     };
->>>>>>> 6a085cce8341c8330677ac0fde5fc67f858b8179
   },
   beforeMount() {
     calendarService
