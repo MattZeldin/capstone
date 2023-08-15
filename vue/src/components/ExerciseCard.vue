@@ -1,6 +1,6 @@
 <template>
   <div id="flashcard-app" class="container">
-    <h1>Exercise Assistance!</h1>
+    <h1>Exercise Assistance</h1>
 
     <div class="flashcard-form">
       <label for="front"
@@ -16,7 +16,9 @@
           id="back"
         />
       </label>
-      <button v-on:click="addNew">Add a New Card</button>
+
+      <button id='button' v-on:click="addNew">Add a New Card</button>
+
       <span v-show="error" class="error">Oops! Flashcards need a front and a back.</span>
     </div>
 
@@ -139,13 +141,14 @@ li {
   height: 175px;
   padding: 80px 50px;
   background-color: #51aae5;
-  border-radius: 7px;
+  border: 5px solid #19c2ff;
+  border-radius: 10px;
   margin: 5px;
   text-align: center;
   line-height: 27px;
   cursor: pointer;
   position: relative;
-  color: rgb(255, 255, 255);
+  color: white;
   font-weight: 600;
   font-size: 20px;
   -webkit-box-shadow: 9px 10px 22px -8px rgba(209, 193, 209, 0.5);
@@ -217,33 +220,47 @@ li:nth-child(-7n + 7) .card {
 }
 
 label {
-  font-weight: 400;
-  color: #333;
+  font-size: 25px;
+  color: black;
   margin-right: 10px;
+}
+
+#flashcard-app > div {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
 }
 
 input {
   border-radius: 5px;
-  border: 2px solid #eaeaea;
-  padding: 10px;
-  outline: none;
-}
-
-button {
+  padding: 20px;
   border-radius: 5px;
-  border: 1px solid #87cb84;
-  background-color: #87cb84;
-  padding: 8px 15px;
-  outline: none;
-  font-size: 14px;
-  font-weight: 700;
-  color: #fff;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  border: 3px solid darkblue;
+  min-height: 30px;
+  color: black;
 }
 
-button:hover {
-  background-color: #70a66f;
+#button {
+  background-color: #1926ef;
+  border: 3px solid #19c2ff;
+  color: white;
+  text-shadow: 0px 0px 5px cyan;
+  font-family: "Share Tech Mono", sans-serif;
+  padding: 10px;
+  justify-content: center;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 30px;
+  border-radius: 10px;
+  min-height: 30px
+}
+
+#button:hover {
+  background-color: cyan;
+  color: #1926ef;
+  text-shadow: 0px 0px 10px #1926ef;
 }
 
 .error {
