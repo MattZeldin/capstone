@@ -1,5 +1,6 @@
 package com.techelevator.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.time.LocalDate;
@@ -11,8 +12,10 @@ public class EventDto {
     private int eventId;
     private LocalDate date;
     @JsonProperty("start")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd' 'HH:mm")
     private LocalDateTime startTime;
     @JsonProperty("end")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd' 'HH:mm")
     private LocalDateTime endTime;
     @JsonProperty("title")
     private String eventTitle;
