@@ -45,6 +45,7 @@
       />
       <input id="button2" type="button" value="Cancel" v-on:click="resetForm" />
     </form>
+    
     <calendar-events />
   </div>
 </template>
@@ -68,6 +69,7 @@ export default {
       },
     };
   },
+
   beforeMount() {
     calendarService
       .events(this.$store.state.user)
