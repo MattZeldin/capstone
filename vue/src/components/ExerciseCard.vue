@@ -31,7 +31,8 @@
       >
         <transition name="flip">
           <p v-bind:key="card.flipped" class="card" v-bind:class="{'back-of-card' : card.flipped}">
-            {{ card.flipped ? card.back : card.front }}
+            <img id="image" v-if="card.flipped" :src="card.front" alt="Front of card" />
+            <span v-else>{{ card.back }}</span>
             <span v-on:click="cards.splice(index, 1)" class="delete-card"
               >X</span
             >
@@ -44,50 +45,47 @@
 
 <script>
 export default {
-    name: "exercise-card",
-// new Vue ({
-//   el: '#flashcard-app',
-     data() {
-      return {
-          cards: [
-            {
-                front: 'Warming up',
-                back: 'Start with some light cardio for 5-10 minutes to warm up before stretching.',
-                flipped: false
-            },
-            {
-                front: 'Running',
-                back: 'Keep your head up, relax your hands at your waist, and keep your back straight with shoulders back.',
-                flipped: false
-            },
-            {
-                front: 'Body weight exercise',
-                back: 'For maximum effectiveness, increase reps, decrease rest time, keep a steady variety, and incrase time under tension.',
-                flipped: false
-            },
-            {
-                front: 'Dead lifts',
-                back: 'Push through the floor, drive your chest up and hips forward, and lockout by extending your knees and hips and pulling your shoulders tight.',
-                flipped: false
-            },
-            {
-                front: 'Push-ups',
-                back: 'Start angled against a wall or lower surface, and then go to your knees on the floor.',
-                //  Once this is easy, you can do a full push-up. For all options, keep your hands slightly wider than your shoulders, and keep a straight backside and head up.
-                flipped: false
-            }
-        ],
-        newFront: '',
-        newBack: '',
-        error: false
-      }
+  name: "exercise-card",
+  data() {
+    return {
+      cards: [
+        {
+          front: require('../../../images/warmup.png'), 
+          back: 'Start with some light cardio for 5-10 minutes to warm up before stretching.',
+          flipped: false
+        },
+        {
+          front: require('../../../images/running.jpg'), 
+          back: 'Keep your head up, relax your hands at your waist, and keep your back straight with shoulders back.',
+          flipped: false
+        },
+        {
+          front: require('../../../images/pullup.jpg'), 
+          back: 'Start angled against a wall or lower surface, and then go to your knees on the floor.',
+          flipped: false
+        },
+        {
+          front: require('../../../images/deadlift.png'), 
+          back: 'Push through the floor, drive your chest up and hips forward, and lockout by extending your knees and hips and pulling your shoulders tight.',
+          flipped: false
+        },
+        {
+          front: require('../../../images/pushup.png'), 
+          back: 'Use an overhand grip and pull yourself up until your chin clears the bar, then lower yourself down in a controlled manner.',
+          flipped: false
+        }
+      ],
+      newFront: '',
+      newBack: '',
+      error: false
+    };
   },
   methods: {
     toggleCard: function(card) {
       card.flipped = !card.flipped;
     },
     addNew: function() {
-      if(!this.newFront || !this.newBack) {
+      if (!this.newFront || !this.newBack) {
         this.error = true;
       } else {
         this.cards.push({
@@ -99,12 +97,11 @@ export default {
         this.newFront = '';
         this.newBack = '';
         // Make the warning go away
-        this.error= false;
+        this.error = false;
       }
     }
   }
-// });
-}
+};
 </script>
 
 <style scoped>
@@ -137,10 +134,10 @@ li {
 
 .card {
   display: block;
-  width: 150px;
-  height: 175px;
-  padding: 80px 50px;
-  background-color: #51aae5;
+  width: 250px;
+  height: 400px;
+  padding: 50px;
+  background-color: darkblue;
   border: 5px solid #19c2ff;
   border-radius: 10px;
   margin: 5px;
@@ -151,38 +148,17 @@ li {
   color: white;
   font-weight: 600;
   font-size: 20px;
-  -webkit-box-shadow: 9px 10px 22px -8px rgba(209, 193, 209, 0.5);
-  -moz-box-shadow: 9px 10px 22px -8px rgba(209, 193, 209, 0.5);
-  box-shadow: 9px 10px 22px -8px rgba(209, 193, 209, 0.5);
   will-change: transform;
+}
+
+#image {
+  width: 250px;
+  height: 400px;
+  border-radius: 10px;
 }
 
 li:hover {
   transform: scale(1.1);
-}
-
-li:nth-child(-n + 3) .card {
-  background-color: #0d1364;
-}
-
-li:nth-child(2n + 1) .card {
-  background-color: #0d1364;
-}
-
-li:nth-child(4n) .card {
-  background-color: #0d1364;
-}
-
-li:nth-child(5n-2) .card {
-  background-color: #0d1364;
-}
-
-li:nth-child(4n + 4) .card {
-  background-color: #0d1364;
-}
-
-li:nth-child(-7n + 7) .card {
-  background-color: #0d1364;
 }
 
 .delete-card {

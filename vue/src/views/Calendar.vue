@@ -1,14 +1,24 @@
 <template>
   <div>
-   <button id="button2" v-on:click="eventToAdd=true">Add event</button>
-      <form v-show="eventToAdd === true">
+    <button id="button2" v-on:click="eventToAdd = true">Add event</button>
+    <form v-show="eventToAdd === true">
       <div class="form-element">
         <label id="field_name" for="start">Start date and time:</label>
-        <input id="field" type="datetime-local" v-model="event.start" required="true" />
+        <input
+          id="field"
+          type="datetime-local"
+          v-model="event.start"
+          required="true"
+        />
       </div>
       <div class="form-element">
-       <label id="field_name" for="end">End date and time:</label>
-        <input id="field" type="datetime-local" v-model="event.end" required="true" />
+        <label id="field_name" for="end">End date and time:</label>
+        <input
+          id="field"
+          type="datetime-local"
+          v-model="event.end"
+          required="true"
+        />
       </div>
       <div class="form-element">
         <label id="field_name" for="title">Title:</label>
@@ -16,49 +26,81 @@
       </div>
       <div class="form-element">
         <label id="field_name" for="content">Description:</label>
-        <input id="field" type="text" v-model="event.content" required="false" />
+        <input
+          id="field"
+          type="text"
+          v-model="event.content"
+          required="false"
+        />
       </div>
       <!-- <div class="form-element">
         <label id="field_name" for="class">Class:</label>
         <input id="field" type="text" v-model="event.class" required="false" />
       </div> -->
-      <input id="button2" type="submit" value="Save" v-on:click="addEvent" />
+      <input
+        id="button2"
+        type="submit"
+        value="Save"
+        v-on:click.prevent="addEvent"
+      />
       <input id="button2" type="button" value="Cancel" v-on:click="resetForm" />
     </form>
-  <calendar-events/>
+    <calendar-events />
   </div>
 </template>
 
 <script>
-import CalendarEvents from '../components/CalendarEvents.vue'
-import calendarService from '../services/CalendarService.js'
+import CalendarEvents from "../components/CalendarEvents.vue";
+import calendarService from "../services/CalendarService.js";
+import moment from "moment"
 export default {
-  data(){
+  components: { CalendarEvents },
+  data() {
     return {
-      eventToAdd: false, 
+      eventToAdd: false,
       event: {
-                start: "",
-                end: "",
-                title: "",
-                content: "",
-                class: "none",
-                user_id: this.$store.state.user.user_id
-
-            }
-    }
+        start: "",
+        end: "",
+        title: "",
+        content: "",
+        class: "none",
+        user_id: this.$store.state.user.id,
+      },
+    };
   },
-  components: { CalendarEvents } ,
-  
-
-
   beforeMount() {
+    calendarService
+      .events(this.$store.state.user)
+      .then((response) => {
+        if (response.status == 200) {
+          this.$store.commit("SET_EVENTS", response.data);
+          //  this.addWorkout = false;
+          // this.$router.push("/calendar");
+        }
+      })
+      .catch((error) => {
+        const response = error.response;
+
+        if (response.status === 401) {
+          this.invalidCredentials = true;
+        }
+      });
+  },
+
+  methods: {
+    addEvent() {
+      this.event.start = this.format(this.event.start);
+            this.event.end = this.format(this.event.end);
+  this.event.userId = this.event.user_id;
+      console.log(this.event);
+
       calendarService
-          .events(this.$store.state.user)
-          .then((response) => {
-           if (response.status == 200) {
-             this.$store.commit("SET_EVENTS", response.data);
-            //  this.addWorkout = false;
-             this.$router.push("/calendar");
+        .createEvent(this.event)
+        .then((response) => {
+          if (response.status == 201) {
+            this.$store.commit("SET_EVENTS", response.data);
+            this.$store.push("/calendar");
+            console.log(this.event);
           }
         })
         .catch((error) => {
@@ -68,34 +110,20 @@ export default {
             this.invalidCredentials = true;
           }
         });
-    }, 
+    },
 
-    methods: {
-      
-        addEvent(){
-          calendarService.createEvent(this.event)
-          .then((response)=>{
-            if (response.status == 201){
-              this.$store.commit("SET_EVENTS" , response.data);
-              this.$store.push("/calendar")
-            }
-          })
-          .catch((error) =>{
-              const response = error.response;
-
-          if (response.status === 401) {
-            this.invalidCredentials = true;
-          }
-          });
-        }, 
-        
-         resetForm(){
-            this.eventToAdd = false;
-        }
-    }
-}
+    resetForm() {
+      this.eventToAdd = false;
+    },
+    log_console(event) {
+      console.log(event);
+    },
+    format(value) {
+      return moment(value).format("YYYY-MM-DD HH:mm");
+    },
+  },
+};
 </script>
 
 <style scoped>
-
 </style>

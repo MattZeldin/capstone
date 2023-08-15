@@ -8,6 +8,7 @@ import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +39,7 @@ public class JdbcEventDao implements EventDao {
     @Override
     public List<EventDto> getEventsByUserId(int userId) {
         List<EventDto> events = new ArrayList<>();
-        String sql = "SELECT starts, ends, title, content, class FROM events WHERE user_id = ?"; // ORDER BY date DESC;
+        String sql = "SELECT starts, ends, title, content, class, user_id FROM events WHERE user_id = ?"; // ORDER BY date DESC;
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
             while (results.next()) {
@@ -54,7 +55,7 @@ public class JdbcEventDao implements EventDao {
     @Override
     public EventDto getEventByEventId(int eventId) {
         EventDto event = null;
-        String sql = "SELECT event_id, start_time, date, end_time, event_title, content, user_id FROM events WHERE event_id = ?"; // ORDER BY date DESC;
+        String sql = "SELECT starts, ends, title, content, class, user_id FROM events WHERE event_id = ?"; // ORDER BY date DESC;
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, eventId);
             while (results.next()) {
@@ -63,14 +64,15 @@ public class JdbcEventDao implements EventDao {
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
         }
-        return event;    }
+        return event;
+    }
 
     @Override
     public EventDto createEvent(EventDto event) {
         EventDto newEvent = null;
-        String insertEventSql = "INSERT INTO events (starts, ends, title, content, class) values (?, ?, ?, ?, ?) RETURNING event_id";
+        String insertEventSql = "INSERT INTO events (starts, ends, title, content, class, user_id) values (?, ?, ?, ?, ?, ?) RETURNING event_id";
         try {
-            int newEventId = jdbcTemplate.queryForObject(insertEventSql, int.class, event.getStartTime(), event.getEndTime(), event.getEventTitle(), event.getContent(), event.getClassVarchar());
+            int newEventId = jdbcTemplate.queryForObject(insertEventSql, int.class, event.getStartTime(), event.getEndTime(), event.getEventTitle(), event.getContent(), event.getClassVarchar(), event.getUserId());
             newEvent = getEventByEventId(newEventId);
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
@@ -83,9 +85,9 @@ public class JdbcEventDao implements EventDao {
     @Override
     public EventDto updateEvent(EventDto updatedEvent) {
         EventDto result;
-        String sql = "UPDATE events SET start_time = ?, date = ?, end_time = ?, event_title = ?, content = ?, user_id = ? WHERE event_id = ? RETURNING event_id;";
+        String sql = "UPDATE events SET starts = ?, ends = ?, title = ?, content = ?, class = ?, user_id = ? WHERE event_id = ? RETURNING event_id;";
         try {
-            int newId = jdbcTemplate.queryForObject(sql, int.class, updatedEvent.getStartTime(), updatedEvent.getDate(), updatedEvent.getEndTime(), updatedEvent.getEventTitle(), updatedEvent.getContent(), updatedEvent.getUserId(), updatedEvent.getEventId());
+            int newId = jdbcTemplate.queryForObject(sql, int.class, updatedEvent.getStartTime(), updatedEvent.getEndTime(), updatedEvent.getEventTitle(), updatedEvent.getContent(), updatedEvent.getClassVarchar(), updatedEvent.getUserId(), updatedEvent.getEventId());
             result = getEventByEventId(newId);
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
@@ -130,6 +132,7 @@ public class JdbcEventDao implements EventDao {
         event.setEventTitle(results.getString("title"));
         event.setContent(results.getString("content"));
         event.setClassVarchar(results.getString("class"));
+        event.setUserId(results.getInt("user_id"));
         return event;
     }
 }
