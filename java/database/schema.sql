@@ -34,21 +34,10 @@ CREATE TABLE events (
 	title varchar(50),
 	content varchar(500),
 	class varchar(50),
-<<<<<<< HEAD
-<<<<<<< HEAD
 	user_id int,
 	CONSTRAINT PK_events PRIMARY KEY (event_id),
 	CONSTRAINT FK_user FOREIGN KEY(user_id) REFERENCES users(user_id)
-	
-=======
-	user_id int, 
-	CONSTRAINT PK_events PRIMARY KEY (event_id),
-	CONSTRAINT FK_user FOREIGN KEY(user_id) REFERENCES users(user_id)
->>>>>>> 7dcbac2452b717d76ae19b7da76342dbd909d22a
-=======
-	user_id int, 
-	CONSTRAINT PK_events PRIMARY KEY (event_id),
-	CONSTRAINT FK_user FOREIGN KEY(user_id) REFERENCES users(user_id)
->>>>>>> d1c9d17164e5d4e7971ea2d6432a3411e50fad9a
+
+
 );
 COMMIT TRANSACTION;

@@ -1,6 +1,5 @@
 <template>
 <div>
-  <button>Add Event</button>
   <vue-cal v-bind:events="events" :twelveHour="true"/>
 </div>
 </template>
@@ -13,6 +12,7 @@ export default {
 components: {VueCal},
 data() {
   return {
+
   //   events: [
   //     {
   //       start: '2023-08-14 10:30',
