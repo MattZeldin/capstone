@@ -23,15 +23,16 @@
         <td id="tableItems">{{ workout.workout_duration_minutes }}</td>
         <td id="tableItems">{{ workout.workout_notes }}</td>
         <td>
-          <button id="delete" class="btnDelete" v-on:click="handleDelete(workout)">
-            Delete
-          </button>
-        </td>
-        <td>
           <button id="update" class="btnUpdate" v-on:click.prevent="handleUpdateClick(workout)">
             Update
           </button>
         </td>
+        <td>
+          <button id="delete" class="btnDelete" v-on:click="handleDelete(workout)">
+            Delete
+          </button>
+        </td>
+        
       </tr>
     </tbody>
   </table>
@@ -202,11 +203,35 @@ export default {
   margin-left: 10px;
 }
 
+#update:hover {
+  background-color: red;
+  color: yellow;
+  text-shadow: 0px 0px 10px yellow;
+}
+
+#update {
+  background-color: red;
+  border: 3px solid orange;
+  color: white;
+  font-family: "Share Tech Mono", sans-serif;
+  padding: 10px 10px;
+  justify-content: center;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 30px;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+
 #delete:hover {
   background-color: red;
   color: yellow;
   text-shadow: 0px 0px 10px yellow;
 }
+
+
+
 
 #table {
   justify-content: space-around;
