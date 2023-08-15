@@ -40,6 +40,8 @@
 /*
   blue logo: #1926ef
   light blue logo: #19c2ff 
+  skyblue
+  darkblue
   */
 
 body {

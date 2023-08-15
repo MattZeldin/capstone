@@ -1,6 +1,6 @@
 <template>
   <div>
- <button id="button" v-on:click="edit=true">Edit Profile</button>
+    <button id="button" v-on:click="edit = true">Edit Profile</button>
     <form id="form" v-show="edit === true">
       <div class="form-element">
         <label id="field_name" for="name">Name:</label>
@@ -26,9 +26,20 @@
       </div>
       <div class="form-element">
         <label id="field_name" for="minutes">Minutes per workout:</label>
-        <input id="field" placeholder="" type="text" v-model="user.minutes" required="false" />
+        <input
+          id="field"
+          placeholder=""
+          type="text"
+          v-model="user.minutes"
+          required="false"
+        />
       </div>
-      <input id="button" type="submit" value="Save" v-on:click.prevent="updateUser" />
+      <input
+        id="button"
+        type="submit"
+        value="Save"
+        v-on:click.prevent="updateUser"
+      />
       <input id="button" type="button" value="Cancel" v-on:click="resetForm" />
     </form>
   </div>
@@ -49,8 +60,8 @@ export default {
         id: this.$store.state.user.id,
         days: this.$store.state.user.days,
         minutes: this.$store.state.user.minutes,
-        password: this.$store.state.user.password
-      }
+        password: this.$store.state.user.password,
+      },
     };
   },
   methods: {
@@ -77,18 +88,14 @@ export default {
           }
         });
     },
-    resetForm(){
-    
+    resetForm() {
       this.edit = false;
-      
-
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style scoped>
-
 #button {
   background-color: #1926ef;
   border: 3px solid #19c2ff;
@@ -103,7 +110,7 @@ export default {
   display: inline-block;
   font-size: 30px;
   border-radius: 5px;
-  min-width: 100%
+  min-width: 100%;
 }
 
 #button:hover {
@@ -114,7 +121,6 @@ export default {
 #app > div:nth-child(2) > div {
   background: skyblue;
   border-radius: 25px;
-  border: 10px solid darkblue;
 }
 
 #field_name {
@@ -123,7 +129,7 @@ export default {
   align-items: center;
   padding: 10px;
   margin: 10px;
-  font-size: 25px
+  font-size: 25px;
 }
 
 #field {
@@ -136,7 +142,6 @@ export default {
   min-width: 50%;
   border-radius: 10px;
   border: 5px solid darkblue;
-  font-size: 20px
+  font-size: 20px;
 }
-
 </style>
