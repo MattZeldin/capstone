@@ -11,12 +11,15 @@
       </tr>
   </thead>
   <tbody>
-    <tr v-for="workout in this.$store.state.workouts" v-bind:key="workout.id">
+    <tr v-for="workout in this.$store.state.workouts" v-bind:key="workout.id" v-bind:value="workout.id">
       <td id= 'tableItems'> {{workout.workout_type}} </td>
       <td id= 'tableItems'> {{workout.exercise}} </td> 
       <td id= 'tableItems'> {{workout.workout_date}} </td>
       <td id= 'tableItems'> {{workout.workout_duration_minutes}} </td>
       <td id= 'tableItems'> {{workout.workout_notes}} </td>
+      <td>
+            <button class="btnDelete" v-on:click="handleDelete(workout)">Delete</button>
+          </td>
     </tr>
   </tbody> 
  </table>    
@@ -30,20 +33,43 @@ export default {
   name: "display-workout" , 
    data(){
       return {
-      workouts: this.$store.state.workouts
+      workouts: this.$store.state.workouts,
+      fakeVar : ""
      }
-   }, 
+   },
+
 
    methods: {
-    updateWorkoutLog() {
-
-    
+    handleDelete(workout){
       workoutService
-          .getWorkoutsByUsername(this.$store.user.username)
+          .deleteWorkoutById(workout.id)
+          .then((response) => {
+           if (response.status == 204) {
+            //  this.updateWorkoutLog();
+            //  this.$router.push("/my-workout");
+            this.fakeVar = "nothing";
+          }
+        })
+        .catch((error) => {
+          const response = error.response;
+
+          if (response.status === 401) {
+            this.invalidCredentials = true;
+          }
+        });
+        
+        this.updateWorkoutLog();
+
+
+    },
+    updateWorkoutLog() {
+      workoutService
+          .getWorkoutsByUsername(this.$store.state.user.username)
           .then((response) => {
            if (response.status == 200) {
              this.$store.commit("SET_WORKOUTS", response.data);
-            //  this.$router.push("/");
+            //  this.$router.push("my-workout");
+            this.$router.go(0);
           }
         })
         .catch((error) => {
@@ -72,9 +98,7 @@ export default {
           }
         });
    }
-
-
-   } 
+   }
 
 
 }
