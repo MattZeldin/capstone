@@ -12,6 +12,7 @@
     "@syncfusion/ej2-vue-notifications": "^22.2.5",
     "axios": "^0.21.1",
     "core-js": "^3.9.1",
+    "moment": "^2.29.4",
     "vue": "^2.6.12",
     "vue-cal": "^3.11.0",
     "vue-router": "^3.5.1",
