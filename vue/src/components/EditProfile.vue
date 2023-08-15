@@ -86,7 +86,8 @@ export default {
   }
 };
 </script>
-<style>
+
+<style scoped>
 
 #button {
   background-color: #1926ef;
@@ -110,6 +111,11 @@ export default {
   color: #1926ef;
   text-shadow: 0px 0px 10px #1926ef;
 }
+#app > div:nth-child(2) > div {
+  background: skyblue;
+  border-radius: 25px;
+  border: 10px solid darkblue;
+}
 
 #field_name {
   display: flex;
@@ -128,6 +134,8 @@ export default {
   margin: auto;
   margin-bottom: 10px;
   min-width: 50%;
+  border-radius: 10px;
+  border: 5px solid darkblue;
 }
 
 </style>

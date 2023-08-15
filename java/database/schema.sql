@@ -33,8 +33,10 @@ CREATE TABLE events (
 	title varchar(50),
 	content varchar(500),
 	class varchar(50),
-	user_id int, 
+	user_id int,
 	CONSTRAINT PK_events PRIMARY KEY (event_id),
 	CONSTRAINT FK_user FOREIGN KEY(user_id) REFERENCES users(user_id)
+
+
 );
 COMMIT TRANSACTION;
