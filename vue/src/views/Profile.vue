@@ -9,7 +9,6 @@
       <li>Target days per week: {{ this.$store.state.user.days }}</li>
       <li>Target minutes per week: {{ this.$store.state.user.minutes }}</li>
     </ul>
-    <p>Click "Edit Profile" to modify user information and goals</p>
     <edit-profile />
   </div>
 </template>

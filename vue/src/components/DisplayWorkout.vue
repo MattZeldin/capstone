@@ -188,6 +188,27 @@ export default {
 
 <style scoped>
 
+#update {
+  background-color: green;
+  border: 3px solid rgb(0, 255, 0);
+  color: white;
+  font-family: "Share Tech Mono", sans-serif;
+  padding: 10px 10px;
+  justify-content: center;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 30px;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+
+#update:hover {
+  background-color: yellow;
+  color: green;
+  text-shadow: 0px 0px 10px rgb(0, 255, 0);
+}
+
 #delete {
   background-color: red;
   border: 3px solid orange;
@@ -203,35 +224,11 @@ export default {
   margin-left: 10px;
 }
 
-#update:hover {
-  background-color: red;
-  color: yellow;
-  text-shadow: 0px 0px 10px yellow;
-}
-
-#update {
-  background-color: red;
-  border: 3px solid orange;
-  color: white;
-  font-family: "Share Tech Mono", sans-serif;
-  padding: 10px 10px;
-  justify-content: center;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 30px;
-  border-radius: 5px;
-  margin-left: 10px;
-}
-
 #delete:hover {
-  background-color: red;
-  color: yellow;
-  text-shadow: 0px 0px 10px yellow;
+  background-color: yellow;
+  color: red;
+  text-shadow: 0px 0px 10px red;
 }
-
-
-
 
 #table {
   justify-content: space-around;
@@ -250,4 +247,52 @@ export default {
   font-size: 25px;
   color: darkblue;
 }
+
+#field_name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  margin: 10px;
+  font-size: 25px
+}
+
+#field {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding: 10px;
+  margin: auto;
+  margin-bottom: 10px;
+  min-width: 50%;
+  border-radius: 10px;
+  border: 5px solid darkblue;
+  font-size: 20px
+}
+
+#button2 {
+  background-color: #1926ef;
+  border: 3px solid #19c2ff;
+  color: white;
+  text-shadow: 0px 0px 5px cyan;
+  font-family: "Share Tech Mono", sans-serif;
+  margin-left: 38%;
+  margin-right: 38%;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  padding: 5px 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 30px;
+  border-radius: 5px;
+  min-width: 25%;
+}
+
+#button2:hover {
+  background-color: cyan;
+  color: #1926ef;
+  text-shadow: 0px 0px 10px #1926ef;
+}
+
 </style>
