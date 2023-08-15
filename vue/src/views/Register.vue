@@ -1,10 +1,13 @@
 <template>
   <div id="register" class="text-center">
     <form @submit.prevent="register" class="container">
+
       <h1>Create Account</h1>
+
       <div role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
+
       <div id="username-password-submit">
         <div class="form-input-group">
           <label for="username">Username</label>
@@ -34,7 +37,7 @@
             required
           />
         </div>
-        <div class="form-input-group" id="username">
+        <div class="form-input-group">
           <label for="email">Email</label>
           <input
             type="text"
@@ -44,11 +47,13 @@
             autofocus
           />
         </div>
-        <div class="form-input-group" id="name">
+        <div class="form-input-group">
           <label for="name">Name</label>
           <input type="text" id="name" v-model="user.name" required autofocus />
         </div>
-          <h2>Goals</h2>  
+
+
+        <h2>Goals</h2>
         <div class="form-input-group">
           <label for="goals-days">Target days per week</label>
           <input
@@ -59,7 +64,6 @@
             autofocus
           />
         </div>
-
         <div class="form-input-group">
           <label for="goals-minutes">Target minutes per workout</label>
           <input
@@ -72,7 +76,6 @@
         </div>
 
         <button id="button4" type="submit">Create Account</button>
-        <router-link id="button4" :to="{ name: 'login' }">Log In</router-link>
       </div>
     </form>
   </div>
@@ -92,8 +95,8 @@ export default {
         role: "user",
         name: "",
         email: "",
-        days: "", 
-        minutes: ""
+        days: "",
+        minutes: "",
       },
       registrationErrors: false,
       registrationErrorMsg: "There were problems registering this user.",
@@ -133,18 +136,62 @@ export default {
 </script>
 
 <style scoped>
-
 .form-input-group {
   margin-bottom: 1rem;
 }
 
+#username {
+  border-radius: 5px;
+  border: 3px solid darkblue;
+  min-height: 30px;
+  margin: 10px;
+}
 
+#password {
+  border-radius: 5px;
+  border: 3px solid darkblue;
+  min-height: 30px;
+  margin: 10px;
+}
+
+#confirmPassword {
+  border-radius: 5px;
+  border: 3px solid darkblue;
+  min-height: 30px;
+  margin: 10px;
+}
+
+#email {
+  border-radius: 5px;
+  border: 3px solid darkblue;
+  min-height: 30px;
+  margin: 10px;
+}
+
+#name {
+  border-radius: 5px;
+  border: 3px solid darkblue;
+  min-height: 30px;
+  margin: 10px;
+}
+
+#goals-days {
+  border-radius: 5px;
+  border: 3px solid darkblue;
+  min-height: 30px;
+  margin: 10px;
+}
+
+#goals-minutes {
+  border-radius: 5px;
+  border: 3px solid darkblue;
+  min-height: 30px;
+  margin: 10px;
+}
 
 label {
   margin-right: 0.5rem;
 }
-
-
 
 #button4 {
   background-color: #1926ef;
@@ -160,7 +207,7 @@ label {
   border-radius: 5px;
   min-width: 25%;
   max-width: 25%;
-  margin: 10px
+  margin: 10px;
 }
 
 #button4:hover {

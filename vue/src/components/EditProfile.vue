@@ -112,7 +112,7 @@ export default {
   text-shadow: 0px 0px 10px #1926ef;
 }
 #app > div:nth-child(2) > div {
-  background: white;
+  background: skyblue;
   border-radius: 25px;
   border: 10px solid darkblue;
 }
@@ -134,7 +134,8 @@ export default {
   margin: auto;
   margin-bottom: 10px;
   min-width: 50%;
-  border-radius: 10px
+  border-radius: 10px;
+  border: 5px solid darkblue;
 }
 
 </style>

@@ -257,8 +257,8 @@ html, body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 50vh;
-  font-size: 15vh;
+  height: 250px;
+  font-size: 150px
 }
 
 #clock {
@@ -281,7 +281,12 @@ html, body {
 }
 
 #clock > form {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  padding: 25px;
+  justify-content: center;
+  align-content: center;
   border: 10px solid darkblue;
   border-radius: 25px;
   background: skyblue;
@@ -291,10 +296,32 @@ html, body {
   color: cyan;
 }
 
+#clock > form > div:nth-child(1) {
+  padding: 10px
+}
+#clock > form > div:nth-child(2) {
+  padding: 10px
+}
+#clock > form > div:nth-child(3) {
+  padding: 10px
+}
+#clock > form > div:nth-child(4) {
+  padding: 10px
+}
+#clock > form > div:nth-child(5) {
+  padding: 10px
+}
+
 
 #field {
   border-radius: 10px;
-  border: 5px solid darkblue;
+  border: 3px solid darkblue;
+  min-height: 30px;
+}
+
+#field_name {
+  color: black;
+  text-shadow: 0px 0px 0px black;
 }
 
 #button2 {
@@ -304,6 +331,7 @@ html, body {
   text-shadow: 0px 0px 5px cyan;
   font-family: "Share Tech Mono", sans-serif;
   padding: 10px 10px;
+  justify-content: center;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -311,7 +339,8 @@ html, body {
   border-radius: 5px;
   min-width: 25%;
   max-width: 25%;
-  margin: 10px
+  margin-left: 125px;
+  margin-top: 10px
 }
 
 #button2:hover {
