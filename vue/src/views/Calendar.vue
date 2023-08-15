@@ -33,6 +33,7 @@
 import CalendarEvents from '../components/CalendarEvents.vue'
 import calendarService from '../services/CalendarService.js'
 export default {
+  components: { CalendarEvents },
   data(){
     return {
       eventToAdd: false, 
@@ -42,17 +43,11 @@ export default {
                 title: "",
                 content: "",
                 class: "none",
-                user_id: this.$store.state.user.user_id,
-                date: "null", 
-                
+                user_id: this.$store.state.user.user_id,                
             }
     }
   },
-  components: { CalendarEvents } ,
-  
-
-
-  beforeMount() {
+    beforeMount() {
       calendarService
           .events(this.$store.state.user)
           .then((response) => {
