@@ -3,6 +3,7 @@
     <h1>Home</h1>
     <track-goals/>
     <progress-bar/>
+    <goal-toast msg = "Hello world"/>
     <quotes/>
   </div>
 </template>
@@ -11,6 +12,7 @@
 import TrackGoals from "../components/TrackGoals.vue";
 import Quotes from "../components/Quotes.vue";
 import ProgressBar from "../components/ProgressBar.vue";
+
 
 export default {
   name: "home",
