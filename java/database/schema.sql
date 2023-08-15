@@ -29,7 +29,6 @@ CREATE TABLE workouts (
 CREATE TABLE events (
 	event_id SERIAL, 
 	starts timestamp, 
-	date date, 
 	ends timestamp,   
 	title varchar(50),
 	content varchar(500),

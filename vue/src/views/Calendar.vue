@@ -6,10 +6,7 @@
 import CalendarEvents from '../components/CalendarEvents.vue'
 import calendarService from '../services/CalendarService.js'
 export default {
-  components: { CalendarEvents } ,
-  
-
-
+  components: { CalendarEvents },
   beforeMount() {
       calendarService
           .events(this.$store.state.user)
