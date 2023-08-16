@@ -32,11 +32,7 @@ export default {
 };
 </script>
 
-<style>
-
-#flashcard-app > ul {
-  padding: 50px;
-}
+<style scoped>
 
 #flashcard-app {
   display: grid;

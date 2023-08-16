@@ -116,6 +116,12 @@ ul {
   flex-flow: row wrap;
 }
 
+#flashcard-app > ul {
+  padding: 50px;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
 li {
   list-style-type: none;
   padding: 10px 10px;

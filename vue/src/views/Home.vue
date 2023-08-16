@@ -39,7 +39,12 @@ export default {
   justify-items: center;
 }
 
-#app > div.home > div:nth-child(4) {
+#app > div.home > div:nth-child(5) {
+  display: grid;
+  justify-items: center;
+}
+
+#app > div.home {
   display: grid;
   justify-items: center;
 }
@@ -51,4 +56,9 @@ export default {
   padding: 10px;
 }
 
+h2 {
+    color: #1926ef;
+    text-shadow: 0px 0px 10px white;
+    font-size: 35px;
+}
 </style>

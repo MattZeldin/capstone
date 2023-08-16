@@ -51,10 +51,7 @@ export default {
       isLoading: true,
     };
   },
-
-  
-
-   mounted() {
+  mounted() {
        console.log("Loading")
      setTimeout(() => {
        this.isLoading = false;
@@ -64,12 +61,14 @@ export default {
 </script>
 
 <style>
+
 /*
   blue logo: #1926ef
   light blue logo: #19c2ff 
   skyblue
   darkblue
   */
+
 #loading {
   display: grid;
   justify-items: center;

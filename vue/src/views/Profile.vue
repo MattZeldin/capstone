@@ -29,11 +29,13 @@ export default {
   display: grid;
   justify-content: center;
   justify-items: center;
+  padding-bottom: 5%;
 }
 
 #app > div:nth-child(3) > ul {
   font-size: 4vh;
-  list-style-type: none
+  list-style-type: none;
+  margin-top: 0px;
 }
 
 #app > div:nth-child(3) > div {

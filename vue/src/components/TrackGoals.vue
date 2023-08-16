@@ -82,4 +82,10 @@ export default {
 }
 
 
+h2 {
+    color: #1926ef;
+    text-shadow: 0px 0px 10px white;
+    font-size: 35px;
+}
+
 </style>
