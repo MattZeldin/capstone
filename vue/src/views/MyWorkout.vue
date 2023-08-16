@@ -134,19 +134,31 @@ h1 {
   text-shadow: 0px 0px 5px black;
 }
 
-#field {
-  border-radius: 10px;
-  border: 3px solid darkblue;
-  min-height: 30px;
-  margin-left: 10px;
-  margin-top: 10px;
-  padding: 10px
+#form {
+  margin: auto;
+  width: 50%;
 }
 
 #field_name {
-  color: black;
-  text-shadow: 0px 0px 0px black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  margin: 10px;
   font-size: 25px
+}
+
+#field {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding: 10px;
+  margin: auto;
+  margin-bottom: 10px;
+  min-width: 50%;
+  border-radius: 10px;
+  border: 5px solid darkblue;
+  font-size: 20px
 }
 
 #button2 {

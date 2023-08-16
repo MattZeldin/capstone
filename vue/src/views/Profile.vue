@@ -9,7 +9,6 @@
       <li>Target days per week: {{ this.$store.state.user.days }}</li>
       <li>Target minutes per week: {{ this.$store.state.user.minutes }}</li>
     </ul>
-    <p>Click "Edit Profile" to modify user information and goals</p>
     <edit-profile />
   </div>
 </template>
@@ -26,8 +25,6 @@ export default {
 </script>
 
 <style scoped>
-
-
 #app > div:nth-child(2) > p {
   color: #1926ef;
   text-shadow: 0px 0px 10px white;
@@ -42,6 +39,4 @@ export default {
   display: grid;
   justify-content: center;
 }
-
-
 </style>

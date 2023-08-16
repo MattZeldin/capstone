@@ -41,7 +41,7 @@
         id="button2"
         type="submit"
         value="Save"
-        v-on:click.prevent="addEvent"
+        v-on:click="addEvent"
       />
       <input id="button2" type="button" value="Cancel" v-on:click="resetForm" />
     </form>
@@ -101,7 +101,7 @@ export default {
         .then((response) => {
           if (response.status == 201) {
             this.$store.commit("SET_EVENTS", response.data);
-            this.$store.push("/calendar");
+            this.$router.go(0);
             console.log(this.event);
           }
         })
