@@ -7,7 +7,6 @@
   :time-from="9 * 60"
   :time-to="19 * 60"
   :disable-views="['years', 'year']"
-  hide-weekends
   :events="events"
   :on-event-click="onEventClick"
   :twelveHour="true">
@@ -19,7 +18,7 @@
       <!-- <v-icon>{{ selectedEvent.icon }}</v-icon> -->
       <span>{{ selectedEvent.title }}</span>
       <v-spacer/>
-      <strong>{{ selectedEvent.start && selectedEvent.start }}</strong>
+      <strong>{{ selectedEvent.start && selectedEvent.start.formatTime()  }}</strong>
     </v-card-title>
     <v-card-text>
       <p v-html="selectedEvent.contentFull"/>
@@ -27,6 +26,7 @@
       <ul>
         <li>Event starts at: {{ selectedEvent.start && selectedEvent.start.formatTime() }}</li>
         <li>Event ends at: {{ selectedEvent.end && selectedEvent.end.formatTime() }}</li>
+        <!-- <li>{{selectedEvent.details}}</li> -->
       </ul>
     </v-card-text>
   </v-card>
