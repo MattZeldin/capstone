@@ -6,7 +6,13 @@
       <form id="form" v-show="addWorkout === true">
       <div class="form-element">
         <label id="field_name" for="workoutType">Workout type:</label>
-        <input id="field" type="text" v-model="workout.workout_type" required="false" />
+        <!-- <input id="field" type="text" v-model="workout.workout_type" required="false" /> -->
+        <select id="field" 
+          v-model="workout.workout_type" required="true">
+          <option value="Weightlifting">Weightlifting</option>
+          <option value="Cardio">Cardio</option>
+          <option value="Other">Other</option>
+        </select>
       </div>
       <div class="form-element">
         <label id="field_name" for="exercise">Exercise:</label>
@@ -126,6 +132,12 @@ export default {
 
 <style scoped>
 
+#app > div:nth-child(3) {
+  display: grid;
+  justify-items: center;
+  padding-bottom: 5%;
+}
+
 h1 {
   font-size: 10vh;
   color: white;
@@ -134,19 +146,31 @@ h1 {
   text-shadow: 0px 0px 5px black;
 }
 
-#field {
-  border-radius: 10px;
-  border: 3px solid darkblue;
-  min-height: 30px;
-  margin-left: 10px;
-  margin-top: 10px;
-  padding: 10px
+#form {
+  margin: auto;
+  width: 50%;
 }
 
 #field_name {
-  color: black;
-  text-shadow: 0px 0px 0px black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  margin: 10px;
   font-size: 25px
+}
+
+#field {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding: 10px;
+  margin: auto;
+  margin-bottom: 10px;
+  min-width: 50%;
+  border-radius: 10px;
+  border: 5px solid darkblue;
+  font-size: 20px
 }
 
 #button2 {

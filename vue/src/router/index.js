@@ -9,6 +9,7 @@ import MyWorkout from '../views/MyWorkout.vue'
 import WorkoutTimer from '../views/WorkoutTimer.vue'
 import ExerciseAssistance from '../views/ExerciseAssistance.vue'
 import Calendar from '../views/Calendar.vue'
+// import LoadingScreen from '../views/LoadingScreen.vue'
 
 import store from '../store/index'
 

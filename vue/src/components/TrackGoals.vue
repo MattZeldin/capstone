@@ -7,7 +7,7 @@
         <router-link id="button3" v-bind:to="{ name: 'profile' }" v-if="$store.state.token != ''">Edit Profile and Goals</router-link>
         <h2>Progress: </h2>
         <h3>Days so far this week: {{ this.$store.state.userData.numberOfWorkouts }} </h3>
-        <h3>Average minutes per workout: {{ this.userData.averageMinutes }} </h3>
+        <h3>Average minutes per workout: {{ this.userData.averageMinutes.toFixed(0) }} </h3>
         <!-- <button v-on:click="getUserData">data</button> -->
     </div>
 </template>
@@ -72,7 +72,7 @@ export default {
   display: inline-block;
   font-size: 20px;
   border-radius: 5px;
-  min-width: 25%
+  width: 250px;
 }
 
 #button3:hover {

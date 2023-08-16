@@ -13,7 +13,7 @@
           <label for="username">Username</label>
           <input
             type="text"
-            id="username"
+            id="field"
             v-model="user.username"
             required
             autofocus
@@ -23,7 +23,7 @@
           <label for="password">Password</label>
           <input
             type="password"
-            id="password"
+            id="field"
             v-model="user.password"
             required
           />
@@ -32,7 +32,7 @@
           <label for="confirmPassword">Confirm Password</label>
           <input
             type="password"
-            id="confirmPassword"
+            id="field"
             v-model="user.confirmPassword"
             required
           />
@@ -41,7 +41,7 @@
           <label for="email">Email</label>
           <input
             type="text"
-            id="email"
+            id="field"
             v-model="user.email"
             required
             autofocus
@@ -49,7 +49,7 @@
         </div>
         <div class="form-input-group">
           <label for="name">Name</label>
-          <input type="text" id="name" v-model="user.name" required autofocus />
+          <input type="text" id="field" v-model="user.name" required autofocus />
         </div>
 
 
@@ -58,7 +58,7 @@
           <label for="goals-days">Target days per week</label>
           <input
             type="text"
-            id="goals-days"
+            id="field"
             v-model="user.days"
             required
             autofocus
@@ -68,13 +68,12 @@
           <label for="goals-minutes">Target minutes per workout</label>
           <input
             type="text"
-            id="goals-minutes"
+            id="field"
             v-model="user.minutes"
             required
             autofocus
           />
         </div>
-
         <button id="button4" type="submit">Create Account</button>
       </div>
     </form>
@@ -136,63 +135,51 @@ export default {
 </script>
 
 <style scoped>
-.form-input-group {
-  margin-bottom: 1rem;
+
+#register {
+  display: grid;
+  justify-items: center;
+  padding-bottom: 5%;
+}
+
+#username-password-submit {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 25px;
 }
 
-#username {
-  border-radius: 5px;
-  border: 3px solid darkblue;
-  min-height: 30px;
-  margin: 10px;
-  font-size: 20px;
+#field {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  height: 30px;
+  padding: 10px;
+  margin: 20px;
+  min-width: 50%;
+  border-radius: 10px;
+  border: 5px solid darkblue;
+  font-size: 20px
 }
 
-#password {
-  border-radius: 5px;
-  border: 3px solid darkblue;
-  min-height: 30px;
-  margin: 10px;
+.form-input-group {
+  font-size: 25px;
+  display: flex;
+  flex-direction: column;
+  max-width: 50%;
+  margin: auto;
+  align-items: center;
 }
 
-#confirmPassword {
-  border-radius: 5px;
-  border: 3px solid darkblue;
-  min-height: 30px;
-  margin: 10px;
-}
-
-#email {
-  border-radius: 5px;
-  border: 3px solid darkblue;
-  min-height: 30px;
-  margin: 10px;
-}
-
-#name {
-  border-radius: 5px;
-  border: 3px solid darkblue;
-  min-height: 30px;
-  margin: 10px;
-}
-
-#goals-days {
-  border-radius: 5px;
-  border: 3px solid darkblue;
-  min-height: 30px;
-  margin: 10px;
-}
-
-#goals-minutes {
-  border-radius: 5px;
-  border: 3px solid darkblue;
-  min-height: 30px;
-  margin: 10px;
-}
-
-label {
-  margin-right: 0.5rem;
+#username-password-submit > h2 {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 #button4 {
@@ -204,12 +191,10 @@ label {
   padding: 10px 10px;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
   font-size: 30px;
   border-radius: 5px;
-  min-width: 25%;
-  max-width: 25%;
-  margin: 10px;
+  align-self: center;
+  width: 250px;
 }
 
 #button4:hover {

@@ -41,18 +41,20 @@
         id="button2"
         type="submit"
         value="Save"
-        v-on:click.prevent="addEvent"
+        v-on:click="addEvent"
       />
       <input id="button2" type="button" value="Cancel" v-on:click="resetForm" />
     </form>
     <calendar-events />
+
+ 
   </div>
 </template>
 
 <script>
 import CalendarEvents from "../components/CalendarEvents.vue";
 import calendarService from "../services/CalendarService.js";
-import moment from "moment"
+import moment from "moment";
 export default {
   components: { CalendarEvents },
   data() {
@@ -64,10 +66,12 @@ export default {
         title: "",
         content: "",
         class: "none",
+        // contentFull: this.content,
         user_id: this.$store.state.user.id,
       },
     };
   },
+
   beforeMount() {
     calendarService
       .events(this.$store.state.user)
@@ -90,8 +94,8 @@ export default {
   methods: {
     addEvent() {
       this.event.start = this.format(this.event.start);
-            this.event.end = this.format(this.event.end);
-  this.event.userId = this.event.user_id;
+      this.event.end = this.format(this.event.end);
+      this.event.userId = this.event.user_id;
       console.log(this.event);
 
       calendarService
@@ -99,7 +103,7 @@ export default {
         .then((response) => {
           if (response.status == 201) {
             this.$store.commit("SET_EVENTS", response.data);
-            this.$store.push("/calendar");
+            this.$router.go(0);
             console.log(this.event);
           }
         })
@@ -121,9 +125,73 @@ export default {
     format(value) {
       return moment(value).format("YYYY-MM-DD HH:mm");
     },
+   
   },
 };
 </script>
 
 <style scoped>
+
+#button2 {
+  background-color: #1926ef;
+  border: 3px solid #19c2ff;
+  color: white;
+  text-shadow: 0px 0px 5px cyan;
+  font-family: "Share Tech Mono", sans-serif;
+  margin-left: 38%;
+  margin-right: 38%;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  padding: 5px 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  border-radius: 5px;
+  min-width: 25%;
+}
+
+#app > div:nth-child(2) > form {
+  display: grid;
+  justify-items: center;
+}
+
+#button2:hover {
+  background-color: cyan;
+  color: #1926ef;
+  text-shadow: 0px 0px 10px #1926ef;
+}
+
+#app > div:nth-child(2) {
+  display: grid;
+  justify-items: stretch;
+}
+
+#field {
+  border-radius: 10px;
+  border: 3px solid darkblue;
+  min-height: 30px;
+  margin-left: 10px;
+  margin-top: 10px;
+  padding: 10px
+}
+
+/* .vuecal__event {cursor: pointer;}
+
+.vuecal__event-title {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin: 4px 0 8px;
+}
+
+.vuecal__event-time {
+  display: inline-block;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.vuecal__event-content {
+  font-style: italic;
+} */
 </style>

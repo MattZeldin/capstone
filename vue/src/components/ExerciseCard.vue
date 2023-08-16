@@ -32,7 +32,7 @@
         <transition name="flip">
           <p v-bind:key="card.flipped" class="card" v-bind:class="{'back-of-card' : card.flipped}">
             <img id="image" v-if="!card.flipped" :src="card.front" alt="Front of card" />
-            <span v-else>{{ card.back }}</span>
+            <span id="back-card-text" v-else>{{ card.back }}</span>
             <span v-on:click="cards.splice(index, 1)" class="delete-card"
               >X</span
             >
@@ -124,12 +124,15 @@ li {
 
 .container {
   max-width: 100%;
-  padding: 2em;
 }
 
 .card.back-of-card {
   font-weight: 400;
   font-size: 12.5px;
+}
+
+#back-card-text {
+  font-size: 30px;
 }
 
 .card {
@@ -207,6 +210,8 @@ label {
   flex-direction: row;
   justify-content: center;
 }
+
+/* #flashcard-app > ul > li:nth-child(1) > p {} */
 
 input {
   border-radius: 5px;

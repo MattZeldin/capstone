@@ -14,7 +14,12 @@
     <form v-if="addWorkout === true">
       <div class="form-element">
         <label id="field_name" for="workoutType">Workout type:</label>
-        <input id="field" type="text" v-model="workout.workout_type" required="false" />
+        <select id="field" 
+          v-model="workout.workout_type" required="true">
+          <option value="Weightlifting">Weightlifting</option>
+          <option value="Cardio">Cardio</option>
+          <option value="Other">Other</option>
+        </select>
       </div>
       <div class="form-element">
         <label id="field_name" for="exercise">Exercise:</label>
@@ -266,6 +271,7 @@ html, body {
   flex: 0 1 auto;
   align-self: center;
   color: white;
+  padding-bottom: 30px;
 }
 
 #clock.time {
@@ -292,6 +298,12 @@ html, body {
   background: skyblue;
 }
 
+#clock > div.text {
+  display: grid;
+  justify-items: center;
+  padding-top: 10px;
+}
+
 #clock > div.text > a:hover {
   color: cyan;
 }
@@ -313,15 +325,28 @@ html, body {
 }
 
 
-#field {
-  border-radius: 10px;
-  border: 3px solid darkblue;
-  min-height: 30px;
+#field_name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  margin: 10px;
+  font-size: 25px;
+  color: black;
+  text-shadow: 0px 0px 0px;
 }
 
-#field_name {
-  color: black;
-  text-shadow: 0px 0px 0px black;
+#field {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding: 10px;
+  margin: auto;
+  margin-bottom: 10px;
+  min-width: 50%;
+  border-radius: 10px;
+  border: 5px solid darkblue;
+  font-size: 20px
 }
 
 #button2 {
@@ -352,7 +377,6 @@ html, body {
 .text > a {
   text-decoration: none;
   color: inherit;
-
   transition: color 0.1s ease-out;
 }
 
