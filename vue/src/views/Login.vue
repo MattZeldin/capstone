@@ -2,8 +2,8 @@
   <body>
     <div id="login">
       <form @submit.prevent="login" class="container">
-        <img src="../../../images/ActivElevate_Logo_3.png" alt="logo" />
         <h1 id="mainhead">ActivElevate</h1>
+        <img src="../../../images/ActivElevate_Logo_3.png" alt="logo" />
         <div role="alert" v-if="invalidCredentials">
           Invalid username and password!
         </div>
@@ -12,23 +12,23 @@
         </div>
         <div id="username-password-submit">
           <div id="username-password">
-            <div class="form-input-group" id="username">
+            <div class="form-input-group" id="field_name">
               <label for="username">Username</label>
               <input
                 type="text"
-                id="username"
+                id="field"
                 v-model="user.username"
                 required
                 autofocus
               />
             </div>
 
-            <div class="form-input-group" id="password">
+            <div class="form-input-group" id="field_name">
               <label for="password">Password</label>
 
               <input
                 type="password"
-                id="password"
+                id="field"
                 v-model="user.password"
                 required
               />
@@ -126,6 +126,7 @@ export default {
   margin-right: auto;
   border: 10px solid black;
   max-height: 300px;
+  margin-bottom: 10px;
 }
 
 body {
@@ -133,21 +134,35 @@ body {
 }
 
 #login {
-  display: flex;
-  flex-direction: column;
-  padding: 10px;
-  align-items: center;
+  display: grid;
+  justify-items: center;
+  margin: 10px;
 }
 
 #username-password-submit {
   display: grid;
 }
 
-#username {
+#field_name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 10px;
-  margin-left: 10px;
-  font-size: 2.5vh;
+  margin: 10px;
+  font-size: 25px
+}
+
+#field {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding: 10px;
+  margin: auto;
+  margin-bottom: 10px;
+  min-width: 50%;
   border-radius: 10px;
+  border: 5px solid darkblue;
+  font-size: 20px
 }
 
 #button {
@@ -171,13 +186,6 @@ body {
   background-color: cyan;
   color: #1926ef;
   text-shadow: 0px 0px 10px #1926ef;
-}
-
-#password {
-  padding: 10px;
-  margin-left: 10px;
-  font-size: 2.5vh;
-  border-radius: 10px;
 }
 
 #submit-button {

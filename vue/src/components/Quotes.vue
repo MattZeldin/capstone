@@ -2,7 +2,7 @@
   <div>
     <h2>Inspirational Quote Generator:</h2>
     <button id="button3" v-on:click="newQuote">New Quote</button>
-    <p id="quoteDisplay">Quote will appear here.</p>
+    <p id="quoteDisplay">{{quote}}</p>
   </div>
 </template>
 
@@ -68,15 +68,24 @@ export default {
   },
   methods: {
     newQuote() {
-      this.quote = Math.floor(Math.random() * 50);
-      document.getElementById("quoteDisplay").innerHTML =
-        this.quotes[this.quote];
+      this.quote = this.quotes[Math.floor(Math.random() * 50)];
+      // document.getElementById("quoteDisplay").innerHTML =
+      //   this.quotes[this.quote];
     },
   },
+  beforeMount(){
+    this.newQuote();
+
+  }
 };
 </script>
 
 <style>
+
+#app > div.home > div:nth-child(4) {
+  display: grid;
+  justify-items: center;
+}
 
 #quoteDisplay {
     background-color: darkblue;
