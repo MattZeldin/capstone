@@ -1,7 +1,39 @@
 <template>
 <div>
-  <vue-cal v-bind:events="events" :twelveHour="true"/>
+  <!-- <vue-cal v-bind:events="events" :twelveHour="true"/> -->
+
+<vue-cal
+  
+  :time-from="9 * 60"
+  :time-to="19 * 60"
+  :disable-views="['years', 'year']"
+  hide-weekends
+  :events="events"
+  :on-event-click="onEventClick"
+  :twelveHour="true">
+</vue-cal>
+
+<v-dialog v-model="showDialog">
+  <v-card>
+    <v-card-title>
+      <!-- <v-icon>{{ selectedEvent.icon }}</v-icon> -->
+      <span>{{ selectedEvent.title }}</span>
+      <v-spacer/>
+      <strong>{{ selectedEvent.start && selectedEvent.start }}</strong>
+    </v-card-title>
+    <v-card-text>
+      <p v-html="selectedEvent.contentFull"/>
+      <strong>Event details:</strong>
+      <ul>
+        <li>Event starts at: {{ selectedEvent.start && selectedEvent.start.formatTime() }}</li>
+        <li>Event ends at: {{ selectedEvent.end && selectedEvent.end.formatTime() }}</li>
+      </ul>
+    </v-card-text>
+  </v-card>
+</v-dialog>
+
 </div>
+
 </template>
 
 <script>
@@ -12,6 +44,8 @@ export default {
 components: {VueCal},
 data() {
   return {
+      selectedEvent: {},
+      showDialog: false
 
   //   events: [
   //     {
@@ -43,6 +77,15 @@ computed: {
     events() {
       return this.$store.state.events
     }
+  },
+
+  methods:  {  
+    onEventClick (event, e) {
+      this.selectedEvent = event
+      this.showDialog = true
+
+      e.stopPropagation()
+  }
   }
 }
 </script>
