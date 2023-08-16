@@ -45,7 +45,7 @@
       />
       <input id="button2" type="button" value="Cancel" v-on:click="resetForm" />
     </form>
-    
+
     <calendar-events />
   </div>
 </template>
@@ -53,7 +53,7 @@
 <script>
 import CalendarEvents from "../components/CalendarEvents.vue";
 import calendarService from "../services/CalendarService.js";
-import moment from "moment"
+import moment from "moment";
 export default {
   components: { CalendarEvents },
   data() {
@@ -92,8 +92,8 @@ export default {
   methods: {
     addEvent() {
       this.event.start = this.format(this.event.start);
-            this.event.end = this.format(this.event.end);
-  this.event.userId = this.event.user_id;
+      this.event.end = this.format(this.event.end);
+      this.event.userId = this.event.user_id;
       console.log(this.event);
 
       calendarService
@@ -128,4 +128,31 @@ export default {
 </script>
 
 <style scoped>
+#button2 {
+  background-color: #1926ef;
+  border: 3px solid #19c2ff;
+  color: white;
+  text-shadow: 0px 0px 5px cyan;
+  font-family: "Share Tech Mono", sans-serif;
+  margin-left: 38%;
+  margin-right: 38%;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  padding: 5px 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  border-radius: 5px;
+  min-width: 25%;
+}
+
+#field {
+  border-radius: 10px;
+  border: 3px solid darkblue;
+  min-height: 30px;
+  margin-left: 10px;
+  margin-top: 10px;
+  padding: 10px
+}
 </style>
