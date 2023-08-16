@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>User Profile</h1>
-    <p>Current User Information:</p>
+    <!-- <p>Current User Information:</p> -->
     <ul>
       <li>Name: {{ this.$store.state.user.name }}</li>
       <li>Email Address: {{ this.$store.state.user.email }}</li>

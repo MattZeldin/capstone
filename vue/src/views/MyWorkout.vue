@@ -6,7 +6,13 @@
       <form id="form" v-show="addWorkout === true">
       <div class="form-element">
         <label id="field_name" for="workoutType">Workout type:</label>
-        <input id="field" type="text" v-model="workout.workout_type" required="false" />
+        <!-- <input id="field" type="text" v-model="workout.workout_type" required="false" /> -->
+        <select id="field" 
+          v-model="workout.workout_type" required="true">
+          <option value="Weightlifting">Weightlifting</option>
+          <option value="Cardio">Cardio</option>
+          <option value="Other">Other</option>
+        </select>
       </div>
       <div class="form-element">
         <label id="field_name" for="exercise">Exercise:</label>
