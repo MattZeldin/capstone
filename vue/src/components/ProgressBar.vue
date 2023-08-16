@@ -16,7 +16,11 @@ export default {
   },
   computed: {
     barIndicator(){
+      if (this.$store.state.user.days == 0 || this.$store.state.user.days == null){
+        return 0;
+      } else {
       return Math.floor((this.$store.state.userData.numberOfWorkouts / this.$store.state.user.days).toFixed(2)*100);
+      }
     }
   }
 };

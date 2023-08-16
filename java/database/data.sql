@@ -16,7 +16,7 @@ INSERT INTO workouts (workout_type, exercise, workout_date, workout_duration_min
 -- dummy data for events table
 INSERT INTO events (starts, ends, title, content, user_id) VALUES ('2023-08-16 09:00:00', '2023-08-16 10:30:00', 'Posing practice', '', 3);
 INSERT INTO events (starts, ends, title, content, user_id) VALUES ('2023-08-19 13:00:00', '2023-08-19 17:00:00', 'Competition', '', 3);
-INSERT INTO events (starts, ends, title, content, user_id) VALUES ('2023-08-14 11:00:00', '2023-08-14 13:00:00', 'Autograph signing', '', 3);
+INSERT INTO events (starts, ends, title, content, user_id) VALUES ('2023-08-14 11:00:00', '2023-08-14 13:00:00', 'Lift with Bob', '', 3);
 
 
 
