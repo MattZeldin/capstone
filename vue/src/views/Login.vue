@@ -2,8 +2,8 @@
   <body>
     <div id="login">
       <form @submit.prevent="login" class="container">
-        <img src="../../../images/ActivElevate_Logo_3.png" alt="logo" />
         <h1 id="mainhead">ActivElevate</h1>
+        <img src="../../../images/ActivElevate_Logo_3.png" alt="logo" />
         <div role="alert" v-if="invalidCredentials">
           Invalid username and password!
         </div>
@@ -126,6 +126,7 @@ export default {
   margin-right: auto;
   border: 10px solid black;
   max-height: 300px;
+  margin-bottom: 10px;
 }
 
 body {
@@ -135,6 +136,7 @@ body {
 #login {
   display: grid;
   justify-items: center;
+  margin: 10px;
 }
 
 #username-password-submit {
