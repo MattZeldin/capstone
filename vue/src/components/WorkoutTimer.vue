@@ -267,11 +267,13 @@ html, body {
 }
 
 #clock {
+  display: grid;
+  justify-items: stretch;
   order: 0;
   flex: 0 1 auto;
   align-self: center;
   color: white;
-  padding-bottom: 30px;
+  padding: 30px;
 }
 
 #clock.time {
@@ -302,6 +304,7 @@ html, body {
   display: grid;
   justify-items: center;
   padding-top: 10px;
+  padding-right: 10px;
 }
 
 #clock > div.text > a:hover {
@@ -326,7 +329,7 @@ html, body {
 
 
 #field_name {
-  display: flex;
+  display: grid;
   justify-content: center;
   align-items: center;
   padding: 10px;

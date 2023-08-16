@@ -14,7 +14,3 @@ export default {
   name: "Loading"
 };
 </script>
-
-<style>
-
-</style>

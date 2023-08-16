@@ -80,7 +80,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 
 #app > div.home > div:nth-child(4) {
   display: grid;
@@ -92,7 +92,8 @@ export default {
     border-radius: 5px;
     border: 3px solid #1926ef;
     padding: 10px;
-    color: white
+    color: white;
+    max-width: 80vh;
 }
 
 h2 {
