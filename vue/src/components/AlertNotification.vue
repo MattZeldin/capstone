@@ -2,8 +2,8 @@
 
 <template>
   <div>
-    <!-- <button @click="timeOutNotify">Hello world</button>
-    <button @click="something">Hello world</button>
+    <!-- <button @click="timeOutNotify">Hello world</button> -->
+    <!--<button @click="something">Hello world</button>
     <button @click="animate">Hello world</button> -->
   </div>
 </template>
@@ -32,14 +32,14 @@ export default {
       this.$swal
         .fire({
           title: "Auto close alert!",
-          html: "I will close in <b></b> milliseconds.",
+          html: "I will close in <b></b> seconds.",
           timer: 2000,
           timerProgressBar: true,
           didOpen: () => {
             this.$swal.showLoading();
             const b = this.$swal.getHtmlContainer().querySelector("b");
             timerInterval = setInterval(() => {
-              b.textContent = this.$swal.getTimerLeft();
+              b.textContent = (this.$swal.getTimerLeft() / 1000).toFixed(0);
             }, 100);
           },
           willClose: () => {
@@ -91,14 +91,14 @@ export default {
       this.$swal
         .fire({
           title: "You need to up the length of your workouts to meet your goal!",
-          html: "I will close in <b></b> milliseconds.",
+          html: "I will close in <b></b> seconds.",
           timer: 3000,
           timerProgressBar: true,
           didOpen: () => {
             this.$swal.showLoading();
             const b = this.$swal.getHtmlContainer().querySelector("b");
             timerInterval = setInterval(() => {
-              b.textContent = this.$swal.getTimerLeft();
+              b.textContent = (this.$swal.getTimerLeft() / 1000).toFixed(0);
             }, 100);
           },
           willClose: () => {
@@ -125,14 +125,14 @@ export default {
       this.$swal
         .fire({
           title: "You may not complete the number of workouts you'd like to this week!",
-          html: "I will close in <b></b> milliseconds.",
+          html: "I will close in <b></b> seconds.",
           timer: 3000,
           timerProgressBar: true,
           didOpen: () => {
             this.$swal.showLoading();
             const b = this.$swal.getHtmlContainer().querySelector("b");
             timerInterval = setInterval(() => {
-              b.textContent = this.$swal.getTimerLeft();
+              b.textContent = (this.$swal.getTimerLeft() / 1000).toFixed(0);
             }, 100);
           },
           willClose: () => {
@@ -159,14 +159,14 @@ export default {
       this.$swal
         .fire({
           title: "You are in danger of meeting neither of your goals this week.",
-          html: "I will close in <b></b> milliseconds.",
+          html: "I will close in <b></b> seconds.",
           timer: 3000,
           timerProgressBar: true,
           didOpen: () => {
             this.$swal.showLoading();
             const b = this.$swal.getHtmlContainer().querySelector("b");
             timerInterval = setInterval(() => {
-              b.textContent = this.$swal.getTimerLeft();
+              b.textContent = (this.$swal.getTimerLeft() / 1000).toFixed(0);
             }, 100);
           },
           willClose: () => {
