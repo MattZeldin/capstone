@@ -39,7 +39,12 @@ export default {
   justify-items: center;
 }
 
-#app > div.home > div:nth-child(5) {
+#app > div.home > div:nth-child(3) {
+  display: grid;
+  justify-items: center;
+}
+
+#app > div.home > div:nth-child(5){
   display: grid;
   justify-items: center;
 }
