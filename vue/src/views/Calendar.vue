@@ -151,7 +151,7 @@ export default {
   min-width: 25%;
 }
 
-#app > div:nth-child(2) > form {
+#app > div:nth-child(3) > form {
   display: grid;
   justify-items: center;
 }

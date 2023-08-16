@@ -204,7 +204,7 @@ export default {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 30px;
+  font-size: 20px;
   border-radius: 5px;
   margin-left: 10px;
 }
@@ -225,7 +225,7 @@ export default {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 30px;
+  font-size: 20px;
   border-radius: 5px;
   margin-left: 10px;
 }
@@ -304,28 +304,28 @@ export default {
 .Weightlifting {
   padding: 20px;
   border: 3px solid #1926ef;
-  background: rgb(248, 139, 139);
+  background: rgb(255, 128, 128);
   border-radius: 10px;
   font-size: 25px;
-  color: darkblue;
+  color: black;
 }
 
 .Cardio {
   padding: 20px;
   border: 3px solid #1926ef;
-  background: rgb(228, 250, 132);
+  background: rgb(128, 255, 128);
   border-radius: 10px;
   font-size: 25px;
-  color: darkblue;
+  color: black;
 }
 
 .Other {
   padding: 20px;
   border: 3px solid #1926ef;
-  background: rgb(168, 168, 168);
+  background: rgb(200, 200, 200);
   border-radius: 10px;
   font-size: 25px;
-  color: darkblue;
+  color: black;
 }
 
 
