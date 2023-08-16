@@ -72,7 +72,7 @@ export default {
   display: inline-block;
   font-size: 20px;
   border-radius: 5px;
-  min-width: 25%
+  width: 250px;
 }
 
 #button3:hover {

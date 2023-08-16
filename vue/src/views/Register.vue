@@ -136,6 +136,11 @@ export default {
 
 <style scoped>
 
+#register {
+  display: grid;
+  justify-items: center;
+}
+
 #username-password-submit {
   display: flex;
   flex-direction: column;

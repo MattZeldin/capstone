@@ -128,6 +128,7 @@ export default {
 </script>
 
 <style scoped>
+
 #button2 {
   background-color: #1926ef;
   border: 3px solid #19c2ff;
@@ -145,6 +146,22 @@ export default {
   font-size: 20px;
   border-radius: 5px;
   min-width: 25%;
+}
+
+#app > div:nth-child(2) > form {
+  display: grid;
+  justify-items: center;
+}
+
+#button2:hover {
+  background-color: cyan;
+  color: #1926ef;
+  text-shadow: 0px 0px 10px #1926ef;
+}
+
+#app > div:nth-child(2) {
+  display: grid;
+  justify-items: stretch;
 }
 
 #field {
