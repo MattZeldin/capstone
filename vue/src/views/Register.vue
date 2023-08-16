@@ -139,6 +139,7 @@ export default {
 #register {
   display: grid;
   justify-items: center;
+  padding-bottom: 5%;
 }
 
 #username-password-submit {

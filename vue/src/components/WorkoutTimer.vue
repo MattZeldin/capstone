@@ -271,6 +271,7 @@ html, body {
   flex: 0 1 auto;
   align-self: center;
   color: white;
+  padding-bottom: 30px;
 }
 
 #clock.time {
@@ -295,6 +296,12 @@ html, body {
   border: 10px solid darkblue;
   border-radius: 25px;
   background: skyblue;
+}
+
+#clock > div.text {
+  display: grid;
+  justify-items: center;
+  padding-top: 10px;
 }
 
 #clock > div.text > a:hover {
@@ -370,7 +377,6 @@ html, body {
 .text > a {
   text-decoration: none;
   color: inherit;
-
   transition: color 0.1s ease-out;
 }
 

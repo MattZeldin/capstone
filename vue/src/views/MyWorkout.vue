@@ -132,9 +132,10 @@ export default {
 
 <style scoped>
 
-#app > div:nth-child(2) {
+#app > div:nth-child(3) {
   display: grid;
   justify-items: center;
+  padding-bottom: 5%;
 }
 
 h1 {

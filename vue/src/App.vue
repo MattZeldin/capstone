@@ -33,9 +33,35 @@
         >Logout</router-link
       >
     </div>
-    <router-view />
+    <loading v-show="isLoading"/>
+    <router-view v-show="!isLoading"/>
   </div>
 </template>
+
+<script>
+import Loading from "./components/Loading";
+
+export default {
+  name: "Inventory",
+  components: {
+    Loading,
+  },
+  data() {
+    return {
+      isLoading: true,
+    };
+  },
+
+  
+
+   mounted() {
+       console.log("Loading")
+     setTimeout(() => {
+       this.isLoading = false;
+     }, 1000);
+   },
+};
+</script>
 
 <style>
 /*
@@ -44,6 +70,17 @@
   skyblue
   darkblue
   */
+#loading {
+  display: grid;
+  justify-items: center;
+  margin-top: 5%;
+}
+.img {
+  position: relative;
+  width: 800px;
+  height: 800px;
+  border-radius: 25px;
+}
 
 body {
   background-color: #1926ef;

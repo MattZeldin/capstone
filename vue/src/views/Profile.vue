@@ -25,18 +25,18 @@ export default {
 
 <style scoped>
 
-#app > div:nth-child(2) {
+#app > div:nth-child(3) {
   display: grid;
   justify-content: center;
   justify-items: center;
 }
 
-#app > div:nth-child(2) > ul {
+#app > div:nth-child(3) > ul {
   font-size: 4vh;
   list-style-type: none
 }
 
-#app > div:nth-child(2) > div {
+#app > div:nth-child(3) > div {
   display: grid;
   justify-content: center;
 }
