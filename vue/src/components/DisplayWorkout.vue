@@ -304,19 +304,19 @@ export default {
 .Weightlifting {
   padding: 20px;
   border: 3px solid #1926ef;
-  background: rgb(255, 128, 128);
+  background: rgb(255, 255, 0);
   border-radius: 10px;
   font-size: 25px;
-  color: black;
+  color: darkblue;
 }
 
 .Cardio {
   padding: 20px;
   border: 3px solid #1926ef;
-  background: rgb(128, 255, 128);
+  background: rgb(255, 0, 255);
   border-radius: 10px;
   font-size: 25px;
-  color: black;
+  color: darkblue;
 }
 
 .Other {
@@ -325,7 +325,7 @@ export default {
   background: rgb(200, 200, 200);
   border-radius: 10px;
   font-size: 25px;
-  color: black;
+  color: darkblue;
 }
 
 
