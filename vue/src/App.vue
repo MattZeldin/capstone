@@ -44,7 +44,6 @@
 </template>
 
 <script>
-<<<<<<< HEAD
 export default {
   methods: {
     reloadPage() {
@@ -55,29 +54,6 @@ export default {
 </script>
 
 
-=======
-import Loading from "./components/Loading";
-
-export default {
-  name: "Inventory",
-  components: {
-    Loading,
-  },
-  data() {
-    return {
-      isLoading: true,
-    };
-  },
-  mounted() {
-       console.log("Loading")
-     setTimeout(() => {
-       this.isLoading = false;
-     }, 1000);
-   },
-};
-</script>
-
->>>>>>> 973605bff3cd3cfb644a750cb38b2b30a0fd315f
 <style>
 
 /*
