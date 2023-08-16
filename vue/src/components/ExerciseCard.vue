@@ -60,7 +60,7 @@ export default {
           flipped: false
         },
         {
-          front: require('../../../images/pullup.jpg'), 
+          front: require('../../../images/pushup.png'), 
           back: 'Start angled against a wall or lower surface, and then go to your knees on the floor.',
           flipped: false
         },
@@ -70,7 +70,7 @@ export default {
           flipped: false
         },
         {
-          front: require('../../../images/pushup.png'), 
+          front: require('../../../images/pullup.jpg'), 
           back: 'Use an overhand grip and pull yourself up until your chin clears the bar, then lower yourself down in a controlled manner.',
           flipped: false
         }
