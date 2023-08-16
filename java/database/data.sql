@@ -11,7 +11,7 @@ INSERT INTO workouts (workout_type, exercise, workout_date, workout_duration_min
 INSERT INTO workouts (workout_type, exercise, workout_date, workout_duration_minutes, workout_notes, username) VALUES ('Weightlifting', 'Back Squat', '2023-08-17', 160, '4 sets of 8 reps at 1000 lbs', 'aschwarz');
 INSERT INTO workouts (workout_type, exercise, workout_date, workout_duration_minutes, workout_notes, username) VALUES ('Cardio', 'Run', '2023-08-18', 100, 'Ran 10 miles', 'aschwarz');
 INSERT INTO workouts (workout_type, exercise, workout_date, workout_duration_minutes, workout_notes, username) VALUES ('Weightlifting', 'Deadlift', '2023-08-19', 100, '2 sets of 4 reps at 1500 lbs', 'aschwarz');
-
+INSERT INTO workouts (workout_type, exercise, workout_date, workout_duration_minutes, workout_notes, username) VALUES ('Other', 'Rock Climbing', '2023-08-19', 45, 'Climbed a rock', 'aschwarz');
 
 -- dummy data for events table
 INSERT INTO events (starts, ends, title, content, user_id) VALUES ('2023-08-16 09:00:00', '2023-08-16 10:30:00', 'Posing practice', '', 3);
