@@ -1,17 +1,8 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link v-bind:to="{ name: 'home' }" v-if="$store.state.token != ''">Home</router-link>&nbsp;|&nbsp;
-      <router-link
-        v-bind:to="{ name: 'logout' }"
-        v-if="$store.state.token != ''"
-        >Logout</router-link
-      >&nbsp;|&nbsp;
-      <router-link
-        v-bind:to="{ name: 'profile' }"
-        v-if="$store.state.token != ''"
-        >My Profile</router-link
-      >&nbsp;|&nbsp;
+      <router-link v-bind:to="{ name: 'home' }" v-if="$store.state.token != ''">Home</router-link>
+      &nbsp;|&nbsp;
       <router-link
         v-bind:to="{ name: 'my-workout' }"
         v-if="$store.state.token != ''"
@@ -30,7 +21,17 @@
       <router-link
         v-bind:to="{ name: 'calendar' }"
         v-if="$store.state.token != ''"
-        >My Calendar</router-link>
+        >My Calendar</router-link>&nbsp;|&nbsp;
+      <router-link
+        v-bind:to="{ name: 'profile' }"
+        v-if="$store.state.token != ''"
+        >My Profile</router-link
+      >&nbsp;|&nbsp;
+      <router-link
+        v-bind:to="{ name: 'logout' }"
+        v-if="$store.state.token != ''"
+        >Logout</router-link
+      >
     </div>
     <router-view />
   </div>
