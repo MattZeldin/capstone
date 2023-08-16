@@ -44,12 +44,31 @@
 </template>
 
 <script>
+import Loading from "./components/Loading";
+
 export default {
+  name: "Inventory",
+  components: {
+    Loading,
+  },
+  data() {
+    return {
+      isLoading: true,
+    };
+  },
+
   methods: {
     reloadPage() {
       this.$router.go(0);
     },
   },
+  mounted() {
+       console.log("Loading")
+     setTimeout(() => {
+       this.isLoading = false;
+     }, 1000);
+   },
+
 };
 </script>
 
