@@ -40,6 +40,7 @@
 import VueCal from 'vue-cal';
 import 'vue-cal/dist/vuecal.css';
 
+
 export default {
 components: {VueCal},
 data() {
@@ -90,6 +91,25 @@ computed: {
 }
 </script>
 
-<style scoped>
+<style scoped src="../../node_modules/vuetify/dist/vuetify.min.css" >
+/* @import "../../node_modules/vuetify/dist/vuetify.min.css"; */
 
+.vuecal__event {cursor: pointer;}
+
+.vuecal__event-title {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin: 4px 0 8px;
+}
+
+.vuecal__event-time {
+  display: inline-block;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.vuecal__event-content {
+  font-style: italic;
+}
 </style>
