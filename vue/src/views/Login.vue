@@ -133,10 +133,8 @@ body {
 }
 
 #login {
-  display: flex;
-  flex-direction: column;
-  padding: 10px;
-  align-items: center;
+  display: grid;
+  justify-items: center;
 }
 
 #username-password-submit {

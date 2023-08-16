@@ -82,6 +82,11 @@ export default {
 
 <style>
 
+#app > div.home > div:nth-child(4) {
+  display: grid;
+  justify-items: center;
+}
+
 #quoteDisplay {
     background-color: darkblue;
     border-radius: 5px;

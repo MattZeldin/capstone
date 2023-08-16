@@ -33,4 +33,8 @@ export default {
 </script>
 
 <style>
+#flashcard-app {
+  display: grid;
+  justify-items: center;
+}
 </style>

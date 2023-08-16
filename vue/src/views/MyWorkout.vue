@@ -132,6 +132,11 @@ export default {
 
 <style scoped>
 
+#app > div:nth-child(2) {
+  display: grid;
+  justify-items: center;
+}
+
 h1 {
   font-size: 10vh;
   color: white;
