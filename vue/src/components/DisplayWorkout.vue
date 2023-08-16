@@ -17,11 +17,11 @@
         v-bind:key="workout.id"
         v-bind:value="workout.id"
       >
-        <td id="tableItems">{{ workout.workout_type }}</td>
-        <td id="tableItems">{{ workout.exercise }}</td>
-        <td id="tableItems">{{ workout.workout_date }}</td>
-        <td id="tableItems">{{ workout.workout_duration_minutes }}</td>
-        <td id="tableItems">{{ workout.workout_notes }}</td>
+        <td :class=workout.workout_type>{{ workout.workout_type }}</td>
+        <td :class=workout.workout_type>{{ workout.exercise }}</td>
+        <td :class=workout.workout_type>{{ workout.workout_date }}</td>
+        <td :class=workout.workout_type>{{ workout.workout_duration_minutes }}</td>
+        <td :class=workout.workout_type>{{ workout.workout_notes }}</td>
         <td>
           <button id="update" class="btnUpdate" v-on:click.prevent="handleUpdateClick(workout)">
             Update
@@ -40,7 +40,13 @@
   <form id="form" v-show="addWorkout === true">
       <div class="form-element">
         <label id="field_name" for="workoutType">Workout type:</label>
-        <input id="field" type="text" v-model="updatedWorkout.workout_type" required="false" />
+        <!-- <input id="field" type="text" v-model="updatedWorkout.workout_type" required="false" /> -->
+        <select id="field" 
+          v-model="updatedWorkout.workout_type" required="true">
+          <option value="Weightlifting">Weightlifting</option>
+          <option value="Cardio">Cardio</option>
+          <option value="Other">Other</option>
+        </select>
       </div>
       <div class="form-element">
         <label id="field_name" for="exercise">Exercise:</label>
@@ -294,5 +300,33 @@ export default {
   color: #1926ef;
   text-shadow: 0px 0px 10px #1926ef;
 }
+
+.Weightlifting {
+  padding: 20px;
+  border: 3px solid #1926ef;
+  background: rgb(248, 139, 139);
+  border-radius: 10px;
+  font-size: 25px;
+  color: darkblue;
+}
+
+.Cardio {
+  padding: 20px;
+  border: 3px solid #1926ef;
+  background: rgb(228, 250, 132);
+  border-radius: 10px;
+  font-size: 25px;
+  color: darkblue;
+}
+
+.Other {
+  padding: 20px;
+  border: 3px solid #1926ef;
+  background: rgb(168, 168, 168);
+  border-radius: 10px;
+  font-size: 25px;
+  color: darkblue;
+}
+
 
 </style>

@@ -45,8 +45,9 @@
       />
       <input id="button2" type="button" value="Cancel" v-on:click="resetForm" />
     </form>
-
     <calendar-events />
+
+ 
   </div>
 </template>
 
@@ -65,6 +66,7 @@ export default {
         title: "",
         content: "",
         class: "none",
+        // contentFull: this.content,
         user_id: this.$store.state.user.id,
       },
     };
@@ -123,6 +125,7 @@ export default {
     format(value) {
       return moment(value).format("YYYY-MM-DD HH:mm");
     },
+   
   },
 };
 </script>
@@ -172,4 +175,23 @@ export default {
   margin-top: 10px;
   padding: 10px
 }
+
+/* .vuecal__event {cursor: pointer;}
+
+.vuecal__event-title {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin: 4px 0 8px;
+}
+
+.vuecal__event-time {
+  display: inline-block;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.vuecal__event-content {
+  font-style: italic;
+} */
 </style>
