@@ -1,7 +1,6 @@
 <template>
   <div>
     <h1>User Profile</h1>
-    <p>Current User Information:</p>
     <ul>
       <li>Name: {{ this.$store.state.user.name }}</li>
       <li>Email Address: {{ this.$store.state.user.email }}</li>
@@ -25,18 +24,21 @@ export default {
 </script>
 
 <style scoped>
-#app > div:nth-child(2) > p {
-  color: #1926ef;
-  text-shadow: 0px 0px 10px white;
-  font-size: 35px;
+
+#app > div:nth-child(2) {
+  display: grid;
+  justify-content: center;
+  justify-items: center;
 }
 
 #app > div:nth-child(2) > ul {
-  font-size: 3vh;
+  font-size: 4vh;
+  list-style-type: none
 }
 
 #app > div:nth-child(2) > div {
   display: grid;
   justify-content: center;
 }
+
 </style>

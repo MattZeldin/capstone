@@ -208,6 +208,8 @@ label {
   justify-content: center;
 }
 
+/* #flashcard-app > ul > li:nth-child(1) > p {} */
+
 input {
   border-radius: 5px;
   padding: 20px;

@@ -57,12 +57,13 @@ h1 {
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: black;
   text-shadow: 0px 0px 10px black;
+  margin: 50px;
 }
 
 #nav {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   background-color: black;
   padding-top: 10px;
   padding-bottom: 10px;
