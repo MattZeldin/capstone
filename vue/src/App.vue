@@ -1,7 +1,12 @@
 <template>
   <div id="app" data-app>
     <div id="nav">
-      <router-link v-bind:to="{ name: 'home' }" v-if="$store.state.token != ''">Home</router-link>
+      <router-link 
+        v-bind:to="{ name: 'home' }" 
+        v-if="$store.state.token != ''"
+        v-on:click.native="reloadPage">
+        Home
+      </router-link>
       &nbsp;|&nbsp;
       <router-link
         v-bind:to="{ name: 'my-workout' }"
@@ -39,6 +44,18 @@
 </template>
 
 <script>
+<<<<<<< HEAD
+export default {
+  methods: {
+    reloadPage() {
+      this.$router.go(0);
+    },
+  },
+};
+</script>
+
+
+=======
 import Loading from "./components/Loading";
 
 export default {
@@ -60,6 +77,7 @@ export default {
 };
 </script>
 
+>>>>>>> 973605bff3cd3cfb644a750cb38b2b30a0fd315f
 <style>
 
 /*
