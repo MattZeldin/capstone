@@ -66,7 +66,6 @@ export default {
         title: "",
         content: "",
         class: "none",
-        // contentFull: this.content,
         user_id: this.$store.state.user.id,
       },
     };

@@ -2,9 +2,6 @@
 <div>
 
 <vue-cal
-  
-  :time-from="9 * 60"
-  :time-to="19 * 60"
   :disable-views="['years', 'year']"
   :events="events"
   :on-event-click="onEventClick"
