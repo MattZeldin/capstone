@@ -2,10 +2,16 @@
 <div>
 
 <vue-cal
+  
+  :time-from="5 * 60"
+  :time-to="22 * 60"
   :disable-views="['years', 'year']"
   :events="events"
   :on-event-click="onEventClick"
-  :twelveHour="true">
+  :twelveHour="true"
+   :editable-events="{ title: true, drag: false, resize: true, delete: true, create: false }"
+   class="vuecal--full-height-delete">
+
 </vue-cal>
 
 <v-dialog v-model="showDialog">
