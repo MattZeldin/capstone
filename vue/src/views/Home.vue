@@ -4,7 +4,6 @@
     <h1>Home</h1>
     <track-goals/>
     <progress-bar/>
-    <!-- <goal-toast msg = "Hello world"/> -->
     <quotes/>
     
   </div>
