@@ -34,7 +34,7 @@
             <img id="image" v-if="!card.flipped" :src="card.front" alt="Front of card" />
             <span id="back-card-text" v-else>{{ card.back }}</span>
             <span v-on:click="cards.splice(index, 1)" class="delete-card"
-              >X</span
+              ></span
             >
           </p>
         </transition>
@@ -163,12 +163,12 @@ li {
 
 .card {
   display: block;
-  width: 250px;
-  height: 400px;
+  width: 300px;
+  height: 350px;
   padding: 50px;
   background-color: darkblue;
   border: 5px solid #19c2ff;
-  border-radius: 10px;
+  border-radius: 50px;
   margin: 5px;
   text-align: center;
   line-height: 27px;
@@ -181,20 +181,20 @@ li {
 }
 
 #image {
-  width: 250px;
-  height: 400px;
-  border-radius: 10px;
+  width: 300px;
+  height: 350px;
+  border-radius: 50px;
 }
 
 li:hover {
   transform: scale(1.1);
 }
 
-.delete-card {
+/* .delete-card {
   position: absolute;
   right: 0;
   top: 0;
-  padding: 10px 15px;
+  padding: 25px 25px;
   opacity: 0.4;
   transition: all 0.5s ease;
 }
@@ -203,7 +203,7 @@ li:hover {
 .error {
   opacity: 1;
   transform: rotate(360deg);
-}
+} */
 
 .flip-enter-active {
   transition: all 0.4s ease;

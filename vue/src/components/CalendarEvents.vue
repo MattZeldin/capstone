@@ -71,6 +71,7 @@ export default {
 </script>
 
 <style scoped src="../../node_modules/vuetify/dist/vuetify.min.css" >
+
 .vuecal__event {
   cursor: pointer;
 }
