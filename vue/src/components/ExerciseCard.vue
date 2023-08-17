@@ -2,7 +2,7 @@
   <div id="flashcard-app" class="container">
     <h1>Exercise Assistance</h1>
 
-    <div class="flashcard-form">
+    <!-- <div class="flashcard-form">
       <label for="front"
         >Front
         <input v-model="newFront" type="text" id="front" />
@@ -20,7 +20,7 @@
       <button id='button' v-on:click="addNew">Add a New Card</button>
 
       <span v-show="error" class="error">Oops! Flashcards need a front and a back.</span>
-    </div>
+    </div> -->
 
     <ul class="flashcard-list">
       <li
@@ -72,6 +72,26 @@ export default {
         {
           front: require('../../../images/pullup.jpg'), 
           back: 'Use an overhand grip and pull yourself up until your chin clears the bar, then lower yourself down in a controlled manner.',
+          flipped: false
+        },
+        {
+          front: require('../../../images/squat.jpg'), 
+          back: 'Start with feet shoulder width apart and the barbell on your traps. Keep your head up and squat down to parallel. Drive through the floor and return to starting position.',
+          flipped: false
+        },
+        {
+          front: require('../../../images/bench.jpg'), 
+          back: 'Start with arms locked and hands slightly wider than shoulder width. Lower the bar and touch your chest. Drive through the floor and extend arms.',
+          flipped: false
+        },
+        {
+          front: require('../../../images/latpull.png'), 
+          back: 'Grip the bar wide and start with arms straight. Pull the bar down to your chin and then return to starting position.',
+          flipped: false
+        },
+        {
+          front: require('../../../images/bicepcurl.jpg'), 
+          back: 'Grip a dumbbell in each hand and start with arms straight down and palms facing forward. Curl the dumbbells to your shoulder and release back down.',
           flipped: false
         }
       ],
