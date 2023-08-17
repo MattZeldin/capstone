@@ -8,9 +8,7 @@
   :disable-views="['years', 'year']"
   :events="events"
   :on-event-click="onEventClick"
-  :twelveHour="true"
-   :editable-events="{ title: true, drag: false, resize: true, delete: true, create: false }"
-   class="vuecal--full-height-delete">
+  :twelveHour="true">
 
 </vue-cal>
 
@@ -27,9 +25,12 @@
       <ul>
         <li>Event starts at: {{ selectedEvent.start && selectedEvent.start.formatTime() }}</li>
         <li>Event ends at: {{ selectedEvent.end && selectedEvent.end.formatTime() }}</li>
-        <!-- <li>{{selectedEvent.details}}</li> -->
+        <li>Event ID {{ selectedEvent.eventId}}</li>
+        
       </ul>
+    
     </v-card-text>
+    <button v-on:click.prevent="deleteEvent(selectedEvent.eventId)" v-bind:style="{'pointer-events': 'auto'}">Delete </button>
   </v-card>
 </v-dialog>
 
@@ -38,8 +39,10 @@
 </template>
 
 <script>
-import VueCal from "vue-cal";
-import "vue-cal/dist/vuecal.css";
+import VueCal from 'vue-cal';
+import 'vue-cal/dist/vuecal.css';
+import CalendarService from '../services/CalendarService';
+
 
 export default {
   components: { VueCal },
@@ -47,26 +50,43 @@ export default {
     return {
       selectedEvent: {},
       showDialog: false,
-    };
-  },
-  computed: {
+
+  }
+},
+computed: {
     events() {
-      return this.$store.state.events;
-    },
+      return this.$store.state.events
+    }
   },
 
-  methods: {
-    onEventClick(event, e) {
-      this.selectedEvent = event;
-      this.showDialog = !this.showDialog;
+  methods:  {  
+    onEventClick (event, e) {
+      this.selectedEvent = event
+      this.showDialog = !this.showDialog
 
-      e.stopPropagation();
-    },
-
-    clickOutside() {
-      this.showDialog = false;
-    },
+      e.stopPropagation()
   },
+
+    deleteEvent(id){
+      CalendarService.delete(id).then((response) =>{
+        if (response.status === 204){
+          alert("Calendar event successfully deleted");
+          this.$router.go(0);
+        }
+      })
+      .catch((error) => {
+        const response = error.response;
+        if (response.status === 401){
+          this.invalidCredentials = true;
+        }
+      })
+    },
+
+
+    clickOutside(){
+      this.showDialog = false
+    }
+  }
 };
 </script>
 
@@ -92,4 +112,5 @@ export default {
 .vuecal__event-content {
   font-style: italic;
 }
+
 </style>
