@@ -30,7 +30,7 @@
       </ul>
     
     </v-card-text>
-    <button v-on:click.prevent="deleteEvent(selectedEvent)" v-bind:style="{'pointer-events': 'auto'}">Delete </button>
+    <button v-on:click.prevent="deleteEvent(selectedEvent.eventId)" v-bind:style="{'pointer-events': 'auto'}">Delete </button>
   </v-card>
 </v-dialog>
 
@@ -62,23 +62,16 @@ computed: {
   methods:  {  
     onEventClick (event, e) {
       this.selectedEvent = event
-      // this.selectedEvent.class = event.class
-      // this.selectedEvent.content = event.content
-      // this.selectedEvent.end = event.end
-      // this.selectedEvent.eventId = event.eventId
-      // this.selectedEvent.start = event.start
-      // this.selectedEvent.title = event.title
-      // this.selectedEvent.userId = event.userId
       this.showDialog = !this.showDialog
 
       e.stopPropagation()
   },
 
-    deleteEvent(event){
-      CalendarService.delete(event.eventId).then((response) =>{
+    deleteEvent(id){
+      CalendarService.delete(id).then((response) =>{
         if (response.status === 204){
           alert("Calendar event successfully deleted");
-          this.$router.push(`/events/${event.eventId}`);
+          this.$router.go(0);
         }
       })
       .catch((error) => {

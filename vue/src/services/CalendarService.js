@@ -18,7 +18,7 @@ export default {
     return axios.put(`/${event.user_id}/events` , event)
 }, 
 
-  delete(event){
-    return axios.delete(`/events/${event.eventId}`)
+  delete(id){
+    return axios.delete(`/events/${id}`)
 }
 }
