@@ -90,7 +90,7 @@ export default {
       let timerInterval;
       this.$swal
         .fire({
-          title: "You need to up the length of your workouts to meet your goal!",
+          title: "You need to increase the length of your workouts to meet your goal!",
           html: "I will close in <b></b> seconds.",
           timer: 3000,
           timerProgressBar: true,
@@ -196,13 +196,13 @@ export default {
     // console.log(now);
     // console.log(lastSunday);
     // console.log(diffDays);
-    console.log(this.$store.state.userData.averageMinutes)
+    console.log(this.$store.state.userData.totalMinutes)
     console.log(this.$store.state.user.minutes)
     console.log(this.$store.state.userData.numberOfWorkouts / diffDays)
     console.log(this.$store.state.user.days / 7)
 
     if (
-      this.$store.state.userData.averageMinutes >=
+      this.$store.state.userData.totalMinutes >=
         this.$store.state.user.minutes &&
       this.$store.state.userData.numberOfWorkouts / diffDays >=
         this.$store.state.user.days / 7
@@ -210,7 +210,7 @@ export default {
       this.goodProgressAlert();
     }
     else if (
-      this.$store.state.userData.averageMinutes <
+      this.$store.state.userData.totalMinutes <
         this.$store.state.user.minutes &&
       this.$store.state.userData.numberOfWorkouts / diffDays <
         this.$store.state.user.days / 7
@@ -218,7 +218,7 @@ export default {
       this.goalsWarningAlert();
     }
     else if (
-      this.$store.state.userData.averageMinutes < this.$store.state.user.minutes
+      this.$store.state.userData.totalMinutes < this.$store.state.user.minutes
     ) {
       //need to up length of workout
       this.minutesWarningAlert();

@@ -1,4 +1,5 @@
 <template>
+<!-- <div> -->
   <div id="progress-bar">
     <div class="shell">
       <div class="bar" :style="{ width: barIndicator + '%' }">
@@ -6,6 +7,14 @@
       </div>
     </div>
   </div>
+  <!-- <div id="progress-bar">
+    <div class="shell">
+      <div class="bar" :style="{ width: barIndicatorMinutes + '%' }">
+        <span>{{ barIndicatorMinutes > 100 ? 100 : barIndicatorMinutes }}%</span>
+      </div>
+    </div>
+  </div>
+</div>  -->
 </template>
 
 <script>
@@ -15,11 +24,25 @@ export default {
     return {};
   },
   computed: {
-    barIndicator(){
+    barIndicatorDays(){
       if (this.$store.state.user.days == 0 || this.$store.state.user.days == null){
         return 0;
       } else {
       return Math.floor((this.$store.state.userData.numberOfWorkouts / this.$store.state.user.days).toFixed(2)*100);
+      }
+    },
+    barIndicatorMinutes(){
+      if (this.$store.state.user.minutes == 0 || this.$store.state.user.minutes == null){
+        return 0;
+      } else {
+      return Math.floor((this.$store.state.userData.totalMinutes / this.$store.state.user.minutes).toFixed(2)*100);
+      }
+    },
+    barIndicator(){
+      if (this.$store.state.user.minutes == 0 || this.$store.state.user.minutes == null){
+        return 0;
+      } else {
+      return Math.floor((this.$store.state.userData.totalMinutes / this.$store.state.user.minutes).toFixed(2)*100);
       }
     }
   }

@@ -2,12 +2,12 @@
     <div>
         <h2>Goals: </h2>
         <h3>Target days per week: {{ this.$store.state.user.days }}</h3>
-        <h3>Target minutes per workout: {{ this.$store.state.user.minutes }} </h3>
+        <h3>Target minutes per week: {{ this.$store.state.user.minutes }} </h3>
         <!-- <p>Visit the profile page to edit your goals. </p><router-link v-bind:to="{ name: 'profile' }" v-if="$store.state.token != ''"><button id="button">My Profile</button></router-link> -->
         <router-link id="button3" v-bind:to="{ name: 'profile' }" v-if="$store.state.token != ''">Edit Profile and Goals</router-link>
         <h2>Progress: </h2>
         <h3>Days so far this week: {{ this.$store.state.userData.numberOfWorkouts }} </h3>
-        <h3>Average minutes per workout: {{ this.userData.averageMinutes.toFixed(0) }} </h3>
+        <h3>Minutes so far this week: {{ this.userData.totalMinutes.toFixed(0) }} </h3>
         <!-- <button v-on:click="getUserData">data</button> -->
     </div>
 </template>
@@ -20,7 +20,7 @@ export default {
         return {
             userData: {
                 numberOfWorkouts: "",
-                averageMinutes: ""
+                totalMinutes: ""
             }
         }
     },
@@ -34,7 +34,7 @@ export default {
                         console.log(response);
                         this.userData.numberOfWorkouts = response.data.numberOfWorkouts;
                         console.log(this.userData.numberOfWorkouts);
-                        this.userData.averageMinutes = response.data.averageMinutes;
+                        this.userData.totalMinutes = response.data.totalMinutes;
                         this.$store.commit("SET_USER_DATA", this.userData);
                     
                     // }
@@ -45,7 +45,7 @@ export default {
                     if (response.status === 401) {
                         this.invalidCredentials = true;
                         this.userData.numberOfWorkouts = 999;
-                        this.userData.averageMinutes = 999;
+                        this.userData.totalMinutes = 999;
                         this.$store.commit("SET_USER_DATA", this.userData)
                     }
                 });
