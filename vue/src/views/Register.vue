@@ -65,7 +65,7 @@
           />
         </div>
         <div class="form-input-group">
-          <label for="goals-minutes">Target minutes per workout</label>
+          <label for="goals-minutes">Target minutes per week</label>
           <input
             type="text"
             id="field"

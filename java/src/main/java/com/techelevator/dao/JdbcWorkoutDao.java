@@ -135,18 +135,18 @@ public class JdbcWorkoutDao implements WorkoutDao{
         return count;
     }
     @Override
-    public double calculateAverageMinutes(String username) {
-        double avgMins = 0;
-        String sql = "SELECT AVG(workout_duration_minutes) FROM workouts WHERE workout_date >= (SELECT CURRENT_DATE - EXTRACT(dow FROM CURRENT_DATE)::integer) AND username = ?;";
+    public double calculateTotalMinutes(String username) {
+        double totalMins = 0;
+        String sql = "SELECT SUM(workout_duration_minutes) FROM workouts WHERE workout_date >= (SELECT CURRENT_DATE - EXTRACT(dow FROM CURRENT_DATE)::integer) AND username = ?;";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, username);
             if (results.next()) {
-                avgMins = results.getDouble("avg");
+                totalMins = results.getDouble("sum");
             }
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
         }
-        return avgMins;
+        return totalMins;
     }
     @Override
     public int deleteWorkoutById(int workoutId) {

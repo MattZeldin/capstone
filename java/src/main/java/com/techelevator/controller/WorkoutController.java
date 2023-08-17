@@ -96,7 +96,7 @@ public class WorkoutController {
     public WorkoutDataDto getData(@PathVariable String username){
         WorkoutDataDto data;
         try {
-            WorkoutDataDto result = new WorkoutDataDto(workoutDao.countWorkouts(username), workoutDao.calculateAverageMinutes(username));
+            WorkoutDataDto result = new WorkoutDataDto(workoutDao.countWorkouts(username), workoutDao.calculateTotalMinutes(username));
             data = result;
         } catch (DaoException e) {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Data posting failed. " + e.getMessage());
