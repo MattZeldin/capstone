@@ -45,7 +45,7 @@
           v-model="updatedWorkout.workout_type" required="true">
           <option value="Weightlifting">Weightlifting</option>
           <option value="Cardio">Cardio</option>
-          <option value="Workout-class">Workout Class</option>
+          <option value="Class">Workout Class</option>
           <option value="Sports">Sports</option>
           <option value="Other">Other</option>
         </select>
@@ -323,7 +323,7 @@ export default {
   color: darkblue;
 }
 
-.Workout-class {
+.Class {
   padding: 20px;
   border: 3px solid #1926ef;
   background: rgb(128, 255, 202);
