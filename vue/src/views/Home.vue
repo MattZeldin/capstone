@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <alert-notification/>
-    <h1>Home</h1>
+    <h1 id="mainhead">Welcome to ActivElevate, {{this.$store.state.user.name}}!</h1>
     <track-goals/>
     <quotes/>
     
@@ -31,6 +31,13 @@ export default {
 </script>
 
 <style scoped>
+
+#mainhead {
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  margin-bottom: 0px;
+}
 
 .home {
   display: grid;
