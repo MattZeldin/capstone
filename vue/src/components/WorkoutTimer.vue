@@ -18,7 +18,7 @@
           v-model="workout.workout_type" required="true">
           <option value="Weightlifting">Weightlifting</option>
           <option value="Cardio">Cardio</option>
-          <option value="Workout-class">Workout Class</option>
+          <option value="Class">Workout Class</option>
           <option value="Sports">Sports</option>
           <option value="Other">Other</option>
         </select>
