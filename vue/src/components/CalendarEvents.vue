@@ -9,7 +9,7 @@
   :events="events"
   :on-event-click="onEventClick"
   :twelveHour="true"
-   :editable-events="{ title: true, drag: false, resize: true, delete: true, create: false }"
+   :editable-events="{ title: true, drag: false, delete: true, create: false }"
    class="vuecal--full-height-delete">
 
 </vue-cal>
@@ -47,7 +47,9 @@ components: {VueCal},
 data() {
   return {
       selectedEvent: {},
-      showDialog: false
+      showDialog: false,
+      deletable: false,
+      draggable: false
 
   }
 },
@@ -95,4 +97,5 @@ computed: {
 .vuecal__event-content {
   font-style: italic;
 }
+
 </style>
