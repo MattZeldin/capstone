@@ -90,7 +90,7 @@ export default {
       let timerInterval;
       this.$swal
         .fire({
-          title: "You need to increase the length of your workouts to meet your goal!",
+          title: "You haven't met your weekly minutes goal yet!",
           html: "I will close in <b></b> seconds.",
           timer: 3000,
           timerProgressBar: true,
