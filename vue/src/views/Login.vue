@@ -120,14 +120,22 @@ export default {
 
 <style scoped>
 
+#mainhead {
+  margin: 20px;
+}
+
+#login > form {
+  display: grid;
+  justify-items: center;
+}
+
 #login > form > img {
   display: block;
-  margin-left: auto;
-  margin-right: auto;
   border: 10px solid white;
   border-radius: 20px;
-  max-height: 300px;
+  max-height: 250px;
   margin-bottom: 10px;
+  margin-right: 10px;
   box-shadow: 0px 0px 20px black;
 }
 
@@ -145,13 +153,21 @@ body {
   display: grid;
 }
 
+#username-password-submit > p {
+  padding-top: 10px;
+}
+
 #field_name {
   display: flex;
-  justify-content: center;
+  flex-direction: column-reverse;
   align-items: center;
   padding: 10px;
   margin: 10px;
   font-size: 25px
+}
+
+#field_name > label {
+  padding-right: 25px;
 }
 
 #field {
@@ -161,6 +177,7 @@ body {
   padding: 10px;
   margin: auto;
   margin-bottom: 10px;
+  margin-right: 10px;
   min-width: 50%;
   border-radius: 10px;
   border: 5px solid darkblue;
