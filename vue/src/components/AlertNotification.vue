@@ -66,13 +66,13 @@ export default {
           showConfirmButton: false,
           timer: 3000,
           timerProgressBar: true,
-          didOpen: () => {
-            this.$swal.showLoading();
-            const b = this.$swal.getHtmlContainer().querySelector("b");
-            timerInterval = setInterval(() => {
-              b.textContent = this.$swal.getTimerLeft();
-            }, 100);
-          },
+          // didOpen: () => {
+          //   this.$swal.showLoading();
+          //   const b = this.$swal.getHtmlContainer().querySelector("b");
+          //   timerInterval = setInterval(() => {
+          //     b.textContent = this.$swal.getTimerLeft();
+          //   }, 100);
+          // },
           willClose: () => {
             clearInterval(timerInterval);
           },

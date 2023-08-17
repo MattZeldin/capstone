@@ -1,9 +1,13 @@
 <template>
-<!-- <div> -->
+  <!-- <div> -->
   <div id="progress-bar">
     <div class="shell">
-      <div class="bar" :style="{ width: barIndicator + '%' }">
-        <span>{{ barIndicator > 100 ? 100 : barIndicator }}%</span>
+      <div class="bar" :style="{ width: barIndicator(progress) + '%' }">
+        <span
+          >{{
+            barIndicator(progress) > 100 ? 100 : barIndicator(progress)
+          }}%</span
+        >
       </div>
     </div>
   </div>
@@ -19,33 +23,76 @@
 
 <script>
 export default {
-  name: 'progress-bar',
+  name: "progress-bar",
+  props: ["progress"],
   data() {
     return {};
   },
   computed: {
-    barIndicatorDays(){
-      if (this.$store.state.user.days == 0 || this.$store.state.user.days == null){
+    barIndicatorDays() {
+      if (
+        this.$store.state.user.days == 0 ||
+        this.$store.state.user.days == null
+      ) {
         return 0;
       } else {
-      return Math.floor((this.$store.state.userData.numberOfWorkouts / this.$store.state.user.days).toFixed(2)*100);
+        return Math.floor(
+          (
+            this.$store.state.userData.numberOfWorkouts /
+            this.$store.state.user.days
+          ).toFixed(2) * 100
+        );
       }
     },
-    barIndicatorMinutes(){
-      if (this.$store.state.user.minutes == 0 || this.$store.state.user.minutes == null){
+    barIndicatorMinutes() {
+      if (
+        this.$store.state.user.minutes == 0 ||
+        this.$store.state.user.minutes == null
+      ) {
         return 0;
       } else {
-      return Math.floor((this.$store.state.userData.totalMinutes / this.$store.state.user.minutes).toFixed(2)*100);
+        return Math.floor(
+          (
+            this.$store.state.userData.totalMinutes /
+            this.$store.state.user.minutes
+          ).toFixed(2) * 100
+        );
       }
     },
-    barIndicator(){
-      if (this.$store.state.user.minutes == 0 || this.$store.state.user.minutes == null){
-        return 0;
+  },
+  methods: {
+    barIndicator(progress) {
+      if (progress === "days") {
+        if (
+          this.$store.state.user.days == 0 ||
+          this.$store.state.user.days == null
+        ) {
+          return 0;
+        } else {
+          return Math.floor(
+            (
+              this.$store.state.userData.numberOfWorkouts /
+              this.$store.state.user.days
+            ).toFixed(2) * 100
+          );
+        }
       } else {
-      return Math.floor((this.$store.state.userData.totalMinutes / this.$store.state.user.minutes).toFixed(2)*100);
+        if (
+          this.$store.state.user.minutes == 0 ||
+          this.$store.state.user.minutes == null
+        ) {
+          return 0;
+        } else {
+          return Math.floor(
+            (
+              this.$store.state.userData.totalMinutes /
+              this.$store.state.user.minutes
+            ).toFixed(2) * 100
+          );
+        }
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -62,7 +109,7 @@ export default {
   width: 500px;
   border: 5px solid darkblue;
   border-radius: 15px;
-  padding: 5px
+  padding: 5px;
 }
 
 .bar {
@@ -74,10 +121,9 @@ export default {
 }
 
 .bar > span {
-    float: right;
-    padding: 10px 10px;
-    color: #fff;
-    font-size: 30px;
-  }
-
+  float: right;
+  padding: 10px 10px;
+  color: #fff;
+  font-size: 30px;
+}
 </style>

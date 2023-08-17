@@ -7,15 +7,22 @@
         <router-link id="button3" v-bind:to="{ name: 'profile' }" v-if="$store.state.token != ''">Edit Profile and Goals</router-link>
         <h2>Progress: </h2>
         <h3>Days so far this week: {{ this.$store.state.userData.numberOfWorkouts }} </h3>
-        <h3>Minutes so far this week: {{ this.userData.totalMinutes.toFixed(0) }} </h3>
+        <progress-bar v-bind:progress="'days'"/>
+        <h3>Minutes so far this week: {{ this.$store.state.userData.totalMinutes.toFixed(0) }} </h3>
+        <progress-bar v-bind:progress="'minutes'"/>
         <!-- <button v-on:click="getUserData">data</button> -->
     </div>
 </template>
 
 <script>
 import userService from "../services/UserService";
+import ProgressBar from "../components/ProgressBar.vue";
+
 export default {
     name: 'track-goals',
+    components: {
+        ProgressBar
+    },
     data() {
         return {
             userData: {
@@ -58,6 +65,12 @@ export default {
 </script>
 
 <style>
+#progress-bar {
+  max-height: 50px;
+  max-width: 500px;
+  justify-content: left;
+  padding: 10px;
+}
 
 #button3 {
   background-color: #1926ef;
