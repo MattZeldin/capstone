@@ -45,6 +45,8 @@
           v-model="updatedWorkout.workout_type" required="true">
           <option value="Weightlifting">Weightlifting</option>
           <option value="Cardio">Cardio</option>
+          <option value="Workout-class">Workout Class</option>
+          <option value="Sports">Sports</option>
           <option value="Other">Other</option>
         </select>
       </div>
@@ -238,7 +240,8 @@ export default {
 
 #table {
   justify-content: space-around;
-  background: #19c2ff;
+  /* background: #19c2ff; */
+  background: #ffffff;
   padding: 20px;
 
   border: 5px solid darkblue;
@@ -248,7 +251,8 @@ export default {
 #tableItems {
   padding: 20px;
   border: 3px solid #1926ef;
-  background: white;
+  /* background: white; */
+  background: #19c2ff;
   border-radius: 10px;
   font-size: 25px;
   color: darkblue;
@@ -304,7 +308,7 @@ export default {
 .Weightlifting {
   padding: 20px;
   border: 3px solid #1926ef;
-  background: rgb(255, 255, 0);
+  background: rgb(252, 220, 115);
   border-radius: 10px;
   font-size: 25px;
   color: darkblue;
@@ -313,7 +317,26 @@ export default {
 .Cardio {
   padding: 20px;
   border: 3px solid #1926ef;
-  background: rgb(255, 0, 255);
+  background: rgb(255, 86, 86);
+  border-radius: 10px;
+  font-size: 25px;
+  color: darkblue;
+}
+
+.Workout-class {
+  padding: 20px;
+  border: 3px solid #1926ef;
+  background: rgb(110, 132, 255);
+  border-radius: 10px;
+  font-size: 25px;
+  color: darkblue;
+}
+
+
+.Sports {
+  padding: 20px;
+  border: 3px solid #1926ef;
+  background: rgb(255, 179, 92);
   border-radius: 10px;
   font-size: 25px;
   color: darkblue;
@@ -322,7 +345,7 @@ export default {
 .Other {
   padding: 20px;
   border: 3px solid #1926ef;
-  background: rgb(200, 200, 200);
+  background: rgb(211, 211, 211);
   border-radius: 10px;
   font-size: 25px;
   color: darkblue;
