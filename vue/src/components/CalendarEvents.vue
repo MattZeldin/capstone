@@ -8,9 +8,7 @@
   :disable-views="['years', 'year']"
   :events="events"
   :on-event-click="onEventClick"
-  :twelveHour="true"
-   :editable-events="{ title: true, drag: false, delete: true, create: false }"
-   class="vuecal--full-height-delete">
+  :twelveHour="true">
 
 </vue-cal>
 
@@ -27,9 +25,12 @@
       <ul>
         <li>Event starts at: {{ selectedEvent.start && selectedEvent.start.formatTime() }}</li>
         <li>Event ends at: {{ selectedEvent.end && selectedEvent.end.formatTime() }}</li>
-        <!-- <li>{{selectedEvent.details}}</li> -->
+        <li>Event ID {{ selectedEvent.eventId}}</li>
+        
       </ul>
+    
     </v-card-text>
+    <button v-on:click.prevent="deleteEvent(selectedEvent)" v-bind:style="{'pointer-events': 'auto'}">Delete </button>
   </v-card>
 </v-dialog>
 
@@ -40,6 +41,7 @@
 <script>
 import VueCal from 'vue-cal';
 import 'vue-cal/dist/vuecal.css';
+import CalendarService from '../services/CalendarService';
 
 
 export default {
@@ -48,8 +50,6 @@ data() {
   return {
       selectedEvent: {},
       showDialog: false,
-      deletable: false,
-      draggable: false
 
   }
 },
@@ -62,10 +62,33 @@ computed: {
   methods:  {  
     onEventClick (event, e) {
       this.selectedEvent = event
+      // this.selectedEvent.class = event.class
+      // this.selectedEvent.content = event.content
+      // this.selectedEvent.end = event.end
+      // this.selectedEvent.eventId = event.eventId
+      // this.selectedEvent.start = event.start
+      // this.selectedEvent.title = event.title
+      // this.selectedEvent.userId = event.userId
       this.showDialog = !this.showDialog
 
       e.stopPropagation()
   },
+
+    deleteEvent(event){
+      CalendarService.delete(event.eventId).then((response) =>{
+        if (response.status === 204){
+          alert("Calendar event successfully deleted");
+          this.$router.push(`/events/${event.eventId}`);
+        }
+      })
+      .catch((error) => {
+        const response = error.response;
+        if (response.status === 401){
+          this.invalidCredentials = true;
+        }
+      })
+    },
+
 
     clickOutside(){
       this.showDialog = false
