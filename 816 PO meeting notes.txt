@@ -1,0 +1,13 @@
+8/16 PO meeting notes
+
+- more calming colors for workout table 
+- adjust aspect ratio of cards on exercise assistance
+- add more exercise assistance cards and remove option to add new one
+- font color for calendar
+- progress bar title should be workouts so far this week
+- progress bar only counts workouts that are at least the minimum minutes per workout
+	- and/or add a second progress bar for minutes
+	- change avg to total on backend 
+- on nav bar add logo far left (no link)
+- round border of logo on login page
+- add delete event functionality to calendar
