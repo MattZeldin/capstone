@@ -1,6 +1,7 @@
 <template>
   <div id="app" data-app>
     <div id="nav">
+      <img id="navLogo" src="./../../images/ActivElevate_Logo_3.png" alt="logo" v-if="$store.state.token != ''"/>
       <router-link 
         v-bind:to="{ name: 'home' }" 
         v-if="$store.state.token != ''"
@@ -44,12 +45,31 @@
 </template>
 
 <script>
+import Loading from "./components/Loading";
+
 export default {
+  name: "Inventory",
+  components: {
+    Loading,
+  },
+  data() {
+    return {
+      isLoading: true,
+    };
+  },
+
   methods: {
     reloadPage() {
       this.$router.go(0);
     },
   },
+  mounted() {
+       console.log("Loading")
+     setTimeout(() => {
+       this.isLoading = false;
+     }, 1000);
+   },
+
 };
 </script>
 
@@ -100,6 +120,14 @@ h1 {
   padding-left: 10px;
   padding-right: 10px;
   outline: 3px solid darkblue;
+}
+
+#navLogo {
+  height: 50px;
+  width: 50px;
+  border-radius: 100px;
+  padding: 10px;
+  margin-right: 50px;
 }
 
 #app {

@@ -8,8 +8,8 @@ INSERT INTO users (username,password_hash,role, email, name, days, minutes) VALU
 -- dummy data for workouts table
 INSERT INTO workouts (workout_type, exercise, workout_date, workout_duration_minutes, workout_notes, username) VALUES ('Cardio', 'Swim', '2023-08-15', 100, 'Swam 20 miles', 'aschwarz');
 INSERT INTO workouts (workout_type, exercise, workout_date, workout_duration_minutes, workout_notes, username) VALUES ('Weightlifting', 'Bench Press', '2023-08-16', 120, '3 sets of 10 reps at 500 lbs', 'aschwarz');
-INSERT INTO workouts (workout_type, exercise, workout_date, workout_duration_minutes, workout_notes, username) VALUES ('Weightlifting', 'Back Squat', '2023-08-17', 160, '4 sets of 8 reps at 1000 lbs', 'aschwarz');
-INSERT INTO workouts (workout_type, exercise, workout_date, workout_duration_minutes, workout_notes, username) VALUES ('Cardio', 'Run', '2023-08-18', 100, 'Ran 10 miles', 'aschwarz');
+INSERT INTO workouts (workout_type, exercise, workout_date, workout_duration_minutes, workout_notes, username) VALUES ('Class', 'Zumba', '2023-08-17', 60, 'Weekly zumba class', 'aschwarz');
+INSERT INTO workouts (workout_type, exercise, workout_date, workout_duration_minutes, workout_notes, username) VALUES ('Sports', 'Basketball', '2023-08-18', 130, 'Pick up basketball games', 'aschwarz');
 INSERT INTO workouts (workout_type, exercise, workout_date, workout_duration_minutes, workout_notes, username) VALUES ('Weightlifting', 'Deadlift', '2023-08-19', 100, '2 sets of 4 reps at 1500 lbs', 'aschwarz');
 INSERT INTO workouts (workout_type, exercise, workout_date, workout_duration_minutes, workout_notes, username) VALUES ('Other', 'Rock Climbing', '2023-08-19', 45, 'Climbed a rock', 'aschwarz');
 

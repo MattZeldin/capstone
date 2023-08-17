@@ -1,0 +1,9 @@
+8/16 PO meeting notes
+
+- adjust aspect ratio of cards on exercise assistance
+- font color for calendar
+- progress bar title should be workouts so far this week
+- progress bar only counts workouts that are at least the minimum minutes per workout
+	- and/or add a second progress bar for minutes
+	- change avg to total on backend 
+- add delete event functionality to calendar

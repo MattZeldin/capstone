@@ -45,9 +45,9 @@ import CalendarService from '../services/CalendarService';
 
 
 export default {
-components: {VueCal},
-data() {
-  return {
+  components: { VueCal },
+  data() {
+    return {
       selectedEvent: {},
       showDialog: false,
 
@@ -93,16 +93,15 @@ computed: {
     clickOutside(){
       this.showDialog = false
     }
-
-
-   }
-}
+  }
+};
 </script>
 
 <style scoped src="../../node_modules/vuetify/dist/vuetify.min.css" >
 
-
-.vuecal__event {cursor: pointer;}
+.vuecal__event {
+  cursor: pointer;
+}
 
 .vuecal__event-title {
   font-size: 1.2em;

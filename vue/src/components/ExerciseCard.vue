@@ -2,7 +2,7 @@
   <div id="flashcard-app" class="container">
     <h1>Exercise Assistance</h1>
 
-    <div class="flashcard-form">
+    <!-- <div class="flashcard-form">
       <label for="front"
         >Front
         <input v-model="newFront" type="text" id="front" />
@@ -20,7 +20,7 @@
       <button id='button' v-on:click="addNew">Add a New Card</button>
 
       <span v-show="error" class="error">Oops! Flashcards need a front and a back.</span>
-    </div>
+    </div> -->
 
     <ul class="flashcard-list">
       <li
@@ -34,7 +34,7 @@
             <img id="image" v-if="!card.flipped" :src="card.front" alt="Front of card" />
             <span id="back-card-text" v-else>{{ card.back }}</span>
             <span v-on:click="cards.splice(index, 1)" class="delete-card"
-              >X</span
+              ></span
             >
           </p>
         </transition>
@@ -72,6 +72,26 @@ export default {
         {
           front: require('../../../images/pullup.jpg'), 
           back: 'Use an overhand grip and pull yourself up until your chin clears the bar, then lower yourself down in a controlled manner.',
+          flipped: false
+        },
+        {
+          front: require('../../../images/squat.jpg'), 
+          back: 'Start with feet shoulder width apart and the barbell on your traps. Keep your head up and squat down to parallel. Drive through the floor and return to starting position.',
+          flipped: false
+        },
+        {
+          front: require('../../../images/bench.jpg'), 
+          back: 'Start with arms locked and hands slightly wider than shoulder width. Lower the bar and touch your chest. Drive through the floor and extend arms.',
+          flipped: false
+        },
+        {
+          front: require('../../../images/latpull.png'), 
+          back: 'Grip the bar wide and start with arms straight. Pull the bar down to your chin and then return to starting position.',
+          flipped: false
+        },
+        {
+          front: require('../../../images/bicepcurl.jpg'), 
+          back: 'Grip a dumbbell in each hand and start with arms straight down and palms facing forward. Curl the dumbbells to your shoulder and release back down.',
           flipped: false
         }
       ],
@@ -143,12 +163,12 @@ li {
 
 .card {
   display: block;
-  width: 250px;
-  height: 400px;
+  width: 300px;
+  height: 350px;
   padding: 50px;
   background-color: darkblue;
   border: 5px solid #19c2ff;
-  border-radius: 10px;
+  border-radius: 50px;
   margin: 5px;
   text-align: center;
   line-height: 27px;
@@ -161,20 +181,20 @@ li {
 }
 
 #image {
-  width: 250px;
-  height: 400px;
-  border-radius: 10px;
+  width: 300px;
+  height: 350px;
+  border-radius: 50px;
 }
 
 li:hover {
   transform: scale(1.1);
 }
 
-.delete-card {
+/* .delete-card {
   position: absolute;
   right: 0;
   top: 0;
-  padding: 10px 15px;
+  padding: 25px 25px;
   opacity: 0.4;
   transition: all 0.5s ease;
 }
@@ -183,7 +203,7 @@ li:hover {
 .error {
   opacity: 1;
   transform: rotate(360deg);
-}
+} */
 
 .flip-enter-active {
   transition: all 0.4s ease;

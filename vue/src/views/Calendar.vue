@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button id="button2" v-on:click="eventToAdd = true">Add event</button>
+    <button id="button3" v-on:click="eventToAdd = true">Add event</button>
     <form v-show="eventToAdd === true">
       <div class="form-element">
         <label id="field_name" for="start">Start date and time:</label>
@@ -150,15 +150,44 @@ export default {
   min-width: 25%;
 }
 
+#button2:hover {
+  background-color: cyan;
+  color: #1926ef;
+  text-shadow: 0px 0px 10px #1926ef;
+}
+
+#button3 {
+  background-color: #1926ef;
+  border: 3px solid #19c2ff;
+  color: white;
+  text-shadow: 0px 0px 5px cyan;
+  font-family: "Share Tech Mono", sans-serif;
+  margin-left: 38%;
+  margin-right: 38%;
+  margin-bottom: 10px;
+  margin-top: 50px;
+  padding: 5px 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  border-radius: 5px;
+  min-width: 25%;
+}
+
+#button3:hover {
+  background-color: cyan;
+  color: #1926ef;
+  text-shadow: 0px 0px 10px #1926ef;
+}
+
 #app > div:nth-child(3) > form {
   display: grid;
   justify-items: center;
 }
 
-#button2:hover {
-  background-color: cyan;
-  color: #1926ef;
-  text-shadow: 0px 0px 10px #1926ef;
+#app > div:nth-child(3) > div {
+  padding: 5%;
 }
 
 #app > div:nth-child(2) {
