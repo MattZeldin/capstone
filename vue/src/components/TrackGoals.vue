@@ -1,12 +1,12 @@
 <template>
     <div>
         <h2>Goals: </h2>
-        <h3>Target days per week: {{ this.$store.state.user.days }}</h3>
+        <h3>Target workouts per week: {{ this.$store.state.user.days }}</h3>
         <h3>Target minutes per week: {{ this.$store.state.user.minutes }} </h3>
         <!-- <p>Visit the profile page to edit your goals. </p><router-link v-bind:to="{ name: 'profile' }" v-if="$store.state.token != ''"><button id="button">My Profile</button></router-link> -->
         <router-link id="button3" v-bind:to="{ name: 'profile' }" v-if="$store.state.token != ''">Edit Profile and Goals</router-link>
         <h2>Progress: </h2>
-        <h3>Days so far this week: {{ this.$store.state.userData.numberOfWorkouts }} </h3>
+        <h3>Workouts so far this week: {{ this.$store.state.userData.numberOfWorkouts }} </h3>
         <progress-bar v-bind:progress="'days'"/>
         <h3>Minutes so far this week: {{ this.$store.state.userData.totalMinutes.toFixed(0) }} </h3>
         <progress-bar v-bind:progress="'minutes'"/>
