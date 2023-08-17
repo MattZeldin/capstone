@@ -55,7 +55,7 @@
 
         <h2>Goals</h2>
         <div class="form-input-group">
-          <label for="goals-days">Target days per week</label>
+          <label for="goals-days">Target workouts per week</label>
           <input
             type="text"
             id="field"

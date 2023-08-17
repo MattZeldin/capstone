@@ -5,7 +5,7 @@
       <li>Name: {{ this.$store.state.user.name }}</li>
       <li>Email Address: {{ this.$store.state.user.email }}</li>
       <li>Username: {{ this.$store.state.user.username }}</li>
-      <li>Target days per week: {{ this.$store.state.user.days }}</li>
+      <li>Target workouts per week: {{ this.$store.state.user.days }}</li>
       <li>Target minutes per week: {{ this.$store.state.user.minutes }}</li>
     </ul>
     <edit-profile />

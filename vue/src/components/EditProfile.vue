@@ -21,7 +21,7 @@
         />
       </div>
       <div class="form-element">
-        <label id="field_name" for="days">Target days per week:</label>
+        <label id="field_name" for="days">Target workouts per week:</label>
         <input id="field" type="text" v-model="user.days" required="false" />
       </div>
       <div class="form-element">
