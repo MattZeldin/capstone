@@ -241,7 +241,7 @@ export default {
 #table {
   justify-content: space-around;
   /* background: #19c2ff; */
-  background: #ffffff;
+  background: skywblue;
   padding: 20px;
 
   border: 5px solid darkblue;
@@ -252,7 +252,7 @@ export default {
   padding: 20px;
   border: 3px solid #1926ef;
   /* background: white; */
-  background: #19c2ff;
+  background: white;
   border-radius: 10px;
   font-size: 25px;
   color: darkblue;
@@ -308,7 +308,7 @@ export default {
 .Weightlifting {
   padding: 20px;
   border: 3px solid #1926ef;
-  background: rgb(252, 220, 115);
+  background: rgb(255, 255, 128);
   border-radius: 10px;
   font-size: 25px;
   color: darkblue;
@@ -317,7 +317,7 @@ export default {
 .Cardio {
   padding: 20px;
   border: 3px solid #1926ef;
-  background: rgb(255, 86, 86);
+  background: rgb(255, 128, 190);
   border-radius: 10px;
   font-size: 25px;
   color: darkblue;
@@ -326,7 +326,7 @@ export default {
 .Workout-class {
   padding: 20px;
   border: 3px solid #1926ef;
-  background: rgb(110, 132, 255);
+  background: rgb(128, 255, 202);
   border-radius: 10px;
   font-size: 25px;
   color: darkblue;
@@ -336,7 +336,7 @@ export default {
 .Sports {
   padding: 20px;
   border: 3px solid #1926ef;
-  background: rgb(255, 179, 92);
+  background: rgb(255, 190, 128);
   border-radius: 10px;
   font-size: 25px;
   color: darkblue;
@@ -345,7 +345,7 @@ export default {
 .Other {
   padding: 20px;
   border: 3px solid #1926ef;
-  background: rgb(211, 211, 211);
+  background: rgb(128, 128, 255);
   border-radius: 10px;
   font-size: 25px;
   color: darkblue;

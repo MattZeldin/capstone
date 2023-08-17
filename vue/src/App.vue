@@ -1,6 +1,7 @@
 <template>
   <div id="app" data-app>
     <div id="nav">
+      <img id="logo" src="./../../images/ActivElevate_Logo_3.png" alt="logo"/>
       <router-link 
         v-bind:to="{ name: 'home' }" 
         v-if="$store.state.token != ''"
@@ -119,6 +120,12 @@ h1 {
   padding-left: 10px;
   padding-right: 10px;
   outline: 3px solid darkblue;
+}
+
+#logo {
+  height: 50px;
+  width: 50px;
+  padding-right: 50px;
 }
 
 #app {

@@ -38,46 +38,42 @@
 </template>
 
 <script>
-import VueCal from 'vue-cal';
-import 'vue-cal/dist/vuecal.css';
-
+import VueCal from "vue-cal";
+import "vue-cal/dist/vuecal.css";
 
 export default {
-components: {VueCal},
-data() {
-  return {
+  components: { VueCal },
+  data() {
+    return {
       selectedEvent: {},
-      showDialog: false
-
-  }
-},
-computed: {
+      showDialog: false,
+    };
+  },
+  computed: {
     events() {
-      return this.$store.state.events
-    }
+      return this.$store.state.events;
+    },
   },
 
-  methods:  {  
-    onEventClick (event, e) {
-      this.selectedEvent = event
-      this.showDialog = !this.showDialog
+  methods: {
+    onEventClick(event, e) {
+      this.selectedEvent = event;
+      this.showDialog = !this.showDialog;
 
-      e.stopPropagation()
+      e.stopPropagation();
+    },
+
+    clickOutside() {
+      this.showDialog = false;
+    },
   },
-
-    clickOutside(){
-      this.showDialog = false
-    }
-
-
-   }
-}
+};
 </script>
 
 <style scoped src="../../node_modules/vuetify/dist/vuetify.min.css" >
-
-
-.vuecal__event {cursor: pointer;}
+.vuecal__event {
+  cursor: pointer;
+}
 
 .vuecal__event-title {
   font-size: 1.2em;

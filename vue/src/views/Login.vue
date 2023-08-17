@@ -3,7 +3,7 @@
     <div id="login">
       <form @submit.prevent="login" class="container">
         <h1 id="mainhead">ActivElevate</h1>
-        <img src="../../../images/ActivElevate_Logo_3.png" alt="logo" />
+        <img id="logo" src="../../../images/ActivElevate_Logo_3.png" alt="logo" />
         <div role="alert" v-if="invalidCredentials">
           Invalid username and password!
         </div>
@@ -124,9 +124,11 @@ export default {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  border: 10px solid black;
+  border: 10px solid white;
+  border-radius: 20px;
   max-height: 300px;
   margin-bottom: 10px;
+  box-shadow: 0px 0px 20px black;
 }
 
 body {
@@ -178,7 +180,7 @@ body {
   text-decoration: none;
   display: inline-block;
   font-size: 30px;
-  border-radius: 5px;
+  border-radius: 15px;
   min-width: 100%
 }
 
