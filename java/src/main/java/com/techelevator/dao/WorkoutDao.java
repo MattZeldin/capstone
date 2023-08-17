@@ -12,7 +12,7 @@ public interface WorkoutDao {
     WorkoutDto getWorkoutByDate(LocalDate date);
     WorkoutDto createWorkout(WorkoutDto newWorkout);
 //    WorkoutDto updateWorkout(WorkoutDto updateWorkout);
-    double calculateAverageMinutes(String username);
+    double calculateTotalMinutes(String username);
     int countWorkouts(String username);
     WorkoutDto updateWorkoutDto(WorkoutDto updateWorkout);
     int deleteWorkoutById(int workoutId);

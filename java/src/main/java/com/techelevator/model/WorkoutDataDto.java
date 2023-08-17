@@ -3,7 +3,7 @@ package com.techelevator.model;
 public class WorkoutDataDto {
 
     private int numberOfWorkouts;
-    private double averageMinutes;
+    private double totalMinutes;
 
 
     public int getNumberOfWorkouts() {
@@ -14,17 +14,17 @@ public class WorkoutDataDto {
         this.numberOfWorkouts = numberOfWorkouts;
     }
 
-    public double getAverageMinutes() {
-        return averageMinutes;
+    public double getTotalMinutes() {
+        return totalMinutes;
     }
 
-    public void setAverageMinutes(double averageMinutes) {
-        this.averageMinutes = averageMinutes;
+    public void setTotalMinutes(double totalMinutes) {
+        this.totalMinutes = totalMinutes;
     }
 
-    public WorkoutDataDto(int numberOfWorkouts, double averageMinutes) {
+    public WorkoutDataDto(int numberOfWorkouts, double totalMinutes) {
         this.numberOfWorkouts = numberOfWorkouts;
-        this.averageMinutes = averageMinutes;
+        this.totalMinutes = totalMinutes;
     }
 
     public WorkoutDataDto() {}
@@ -33,7 +33,7 @@ public class WorkoutDataDto {
     public String toString() {
         return "WorkoutDataDto{" +
                 "numberOfWorkouts=" + numberOfWorkouts +
-                ", averageMinutes=" + averageMinutes +
+                ", totalMinutes=" + totalMinutes +
                 '}';
     }
 }

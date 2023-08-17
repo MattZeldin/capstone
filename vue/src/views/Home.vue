@@ -3,7 +3,6 @@
     <alert-notification/>
     <h1>Home</h1>
     <track-goals/>
-    <progress-bar/>
     <quotes/>
     
   </div>
@@ -12,7 +11,7 @@
 <script>
 import TrackGoals from "../components/TrackGoals.vue";
 import Quotes from "../components/Quotes.vue";
-import ProgressBar from "../components/ProgressBar.vue";
+// import ProgressBar from "../components/ProgressBar.vue";
 import AlertNotification from '../components/AlertNotification.vue';
 
 export default {
@@ -20,7 +19,7 @@ export default {
   components: {
     TrackGoals,
     Quotes,
-    ProgressBar,
+    // ProgressBar,
     AlertNotification
   },
   // data() {
